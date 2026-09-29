@@ -1,0 +1,1296 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b2418">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thamaratna5il.github.io/thamarat/">
+<link rel="canonical" href="https://thamaratna5il.github.io/thamarat/">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:site_name" content="ثمرات للاستثمار والتنمية الزراعية">
+<meta property="og:title" content="ثمرات للاستثمار والتنمية الزراعية — تمليك أراضي نخيل بغرب المنيا">
+<meta property="og:description" content="تمليك مباشر من الدولة، إدارة كاملة للمزرعة، ودراسة جدوى تفاعلية للمجدول والبرحي والسيوي.">
+<meta property="og:image" content="https://thamaratna5il.github.io/thamarat/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<title>ثمرات للاستثمار الزراعي</title>
+<meta name="description" content="شركة ثمرات للاستثمار والتنمية الزراعية — تمليك أراضي نخيل بغرب المنيا وحاسبة جدوى للمجدول والبرحي والسيوي">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap">
+<style>
+/* Layout: dark palm-grove hero with a floating 3D medallion, then long-form sections that alternate
+   deep forest and paler grove bands; the calculator is a two-column "ledger" (controls | results). */
+:root{
+  --forest:#0b2418;      /* deepest ground */
+  --grove:#113322;       /* surfaces */
+  --canopy:#1b4a31;      /* raised surfaces, borders */
+  --frond:#2f7a4c;       /* primary green */
+  --leaf:#6fb57d;        /* bright accent */
+  --sprout:#b9dcb0;      /* soft highlight */
+  --mist:#e7f1e2;        /* light text / light band */
+  --ink:#f3f7ef;         /* main text on dark */
+  --muted:#a4bfa9;       /* secondary text */
+  --loss:#e39a8a;        /* negative numbers */
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  --r:18px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--forest);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.85;direction:rtl;overflow-x:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);line-height:1.3;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--leaf);outline-offset:3px;border-radius:6px}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset-inline:0;top:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .35s,backdrop-filter .35s,border-color .35s;border-bottom:1px solid transparent}
+.nav.solid{background:color-mix(in srgb,var(--forest) 86%,transparent);backdrop-filter:blur(14px);border-color:var(--canopy)}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:68px}
+.nav .brand img{height:38px;width:auto}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;margin-inline-start:auto}
+.nav ul a{text-decoration:none;font-size:14.5px;color:var(--muted);padding:6px 12px;border-radius:99px;transition:color .2s,background .2s}
+.nav ul a:hover{color:var(--ink);background:var(--grove)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--body);text-decoration:none;border:0;cursor:pointer;border-radius:99px;padding:12px 22px;background:var(--leaf);color:var(--forest);transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);background:var(--sprout);box-shadow:0 10px 30px -10px var(--leaf)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--canopy)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--leaf);background:var(--grove)}
+.nav .btn{padding:9px 18px;font-size:14px}
+@media (max-width:900px){.nav ul{display:none}.nav .btn{margin-inline-start:auto}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(100svh,920px);display:grid;align-items:center;padding-block:120px 70px;overflow:hidden;isolation:isolate}
+#grove{position:absolute;inset:0;z-index:-2;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 70% 60% at 30% 45%,transparent 0,var(--forest) 95%),linear-gradient(to bottom,transparent 60%,var(--forest))}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;width:100%}
+.hero .eyebrow{font-size:14px;letter-spacing:.04em;color:var(--leaf);font-weight:600;display:flex;align-items:center;gap:10px}
+.hero .eyebrow::before{content:"";width:28px;height:1.5px;background:var(--leaf)}
+.hero h1{font-size:clamp(38px,6vw,76px);font-weight:700;margin-block:14px 18px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--leaf)}
+.hero .lede{font-size:clamp(16px,1.6vw,19px);color:var(--muted);max-width:52ch}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.facts{display:flex;flex-wrap:wrap;gap:28px 40px;margin-top:44px;padding-top:26px;border-top:1px solid var(--canopy)}
+.facts div{display:flex;flex-direction:column}
+.facts b{font:700 30px var(--display);color:var(--ink)}
+.facts span{font-size:13.5px;color:var(--muted)}
+
+/* 3D medallion */
+.stage{perspective:1400px;display:grid;place-items:center;min-height:440px}
+.coin{--rx:0deg;--ry:0deg;--s:1;position:relative;width:min(420px,78vw);aspect-ratio:1;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry)) scale(var(--s));transition:transform .12s linear;animation:bob 7s ease-in-out infinite}
+@keyframes bob{50%{translate:0 -14px}}
+.coin .layer{position:absolute;inset:0;border-radius:50%;background:linear-gradient(145deg,#cfc6a5,#8f8663)}
+.coin .face{position:absolute;inset:0;border-radius:50%;transform:translateZ(14px);background:
+  radial-gradient(circle at 32% 26%,#fffdf4 0,#f4efdd 38%,#e3dcc2 75%,#cfc6a5 100%);
+  box-shadow:inset 0 0 0 10px #efe8d2,inset 0 0 0 12px #c9bf9c,inset 0 -18px 40px -10px rgba(80,70,30,.35),inset 0 14px 30px -8px #fff;
+  display:grid;place-items:center;overflow:hidden}
+.coin .face img{width:70%;transform:translateZ(0);filter:drop-shadow(0 2px 0 rgba(255,255,255,.7)) drop-shadow(0 -1px 0 rgba(0,40,20,.25))}
+.coin .face::after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.55) 50%,transparent 58%);transform:translateX(var(--shine,-60%));transition:transform .2s linear;pointer-events:none}
+.coin .ring{position:absolute;inset:6%;border-radius:50%;border:1px dashed rgba(22,74,46,.25);transform:translateZ(15px)}
+.coin .shadow{position:absolute;inset:auto 12% -16% 12%;height:14%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);transform:rotateX(90deg) translateZ(-120px);filter:blur(6px)}
+.orbit{position:absolute;width:min(560px,96vw);aspect-ratio:1;border-radius:50%;border:1px solid var(--canopy);animation:spin 60s linear infinite}
+.orbit::before{content:"";position:absolute;top:12%;left:12%;width:9px;height:9px;border-radius:50%;background:var(--leaf);box-shadow:0 0 18px var(--leaf)}
+@keyframes spin{to{rotate:360deg}}
+.scrollcue{position:absolute;bottom:22px;inset-inline:0;margin:auto;width:max-content;font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:6px}
+.scrollcue i{width:1.5px;height:34px;background:linear-gradient(var(--leaf),transparent);animation:drip 2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.stage{order:-1;min-height:320px}.coin{width:min(280px,70vw)}.hero{padding-block:96px 60px}.scrollcue{display:none}}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(70px,9vw,120px);position:relative}
+.band{background:var(--grove)}
+.head{display:grid;gap:12px;max-width:760px;margin-bottom:48px}
+.kicker{font-size:13.5px;font-weight:600;color:var(--leaf);letter-spacing:.03em}
+.head h2{font-size:clamp(28px,3.8vw,46px);font-weight:700}
+.head p{color:var(--muted);font-size:17px}
+
+/* reveal: elements are visible by default; JS only hides those still below the fold */
+.rv.pre{opacity:0;transform:translateY(34px)}
+.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){.rv,.rv.pre{opacity:1;transform:none;transition:none}.coin,.orbit,.scrollcue i{animation:none}}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pane{background:var(--forest);border:1px solid var(--canopy);border-radius:var(--r);padding:clamp(22px,3vw,36px);min-width:0}
+.pane h3{font-size:22px;margin-bottom:14px;color:var(--sprout)}
+.pane ol{margin:0;padding-inline-start:22px;display:grid;gap:8px}
+.pane ol li::marker{color:var(--leaf);font-weight:700}
+.owner{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;font-size:14.5px;color:var(--muted)}
+.owner b{color:var(--ink);font-weight:600}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
+
+/* projects */
+.total{display:flex;flex-wrap:wrap;align-items:end;gap:10px 30px;margin-bottom:22px}
+.total b{font:700 clamp(46px,7vw,84px)/1 var(--display);color:var(--leaf)}
+.total span{color:var(--muted)}
+.strip{display:flex;height:16px;border-radius:99px;overflow:hidden;gap:3px;margin-bottom:40px}
+.strip i{display:block;height:100%}
+.projects{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.proj{grid-column:span 2;background:var(--grove);border:1px solid var(--canopy);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0;transition:border-color .3s,transform .3s}
+.proj:hover{border-color:var(--frond);transform:translateY(-4px)}
+.proj.wide{grid-column:span 3}
+.proj .top{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.proj h3{font-size:22px}
+.tag{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.tag.done{background:var(--frond);color:var(--ink)}
+.tag.now{background:transparent;color:var(--leaf);box-shadow:inset 0 0 0 1px var(--leaf)}
+.proj .area{font:700 34px var(--display);color:var(--ink)}
+.proj .area small{font:500 15px var(--body);color:var(--muted);margin-inline-start:6px}
+.proj .loc{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.proj p{font-size:14.5px;color:var(--mist);opacity:.88}
+.phases{display:grid;gap:6px;margin-top:4px}
+.phases div{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 12px;background:var(--forest);border-radius:10px}
+.phases b{color:var(--leaf)}
+@media (max-width:980px){.proj,.proj.wide{grid-column:span 3}}
+@media (max-width:640px){.projects{grid-template-columns:1fr}.proj,.proj.wide{grid-column:auto}}
+
+/* minya */
+.bigfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:50px}
+.bigfacts div{border-top:2px solid var(--leaf);padding-top:16px}
+.bigfacts b{font:700 clamp(34px,4.5vw,54px)/1.1 var(--display);display:block}
+.bigfacts span{color:var(--muted);font-size:15px}
+@media (max-width:700px){.bigfacts{grid-template-columns:1fr}}
+.criteria{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.crit{background:var(--forest);border:1px solid var(--canopy);border-radius:var(--r);padding:24px;min-width:0}
+.crit .n{font:700 15px var(--display);color:var(--forest);background:var(--leaf);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;margin-bottom:12px}
+.crit h3{font-size:19px;margin-bottom:10px}
+.crit ul{margin:0;padding-inline-start:18px;display:grid;gap:6px;font-size:14.5px;color:var(--mist)}
+.crit ul li::marker{color:var(--leaf)}
+.crit.span2{grid-column:span 2}
+@media (max-width:980px){.criteria{grid-template-columns:1fr 1fr}.crit.span2{grid-column:span 2}}
+@media (max-width:640px){.criteria{grid-template-columns:1fr}.crit.span2{grid-column:auto}}
+.salt{display:grid;gap:10px;margin-top:14px}
+.salt .row{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center;font-size:13.5px}
+.salt .bar{height:24px;border-radius:6px;background:var(--canopy);position:relative}
+.salt .bar i{position:absolute;inset-block:0;inset-inline-start:0;border-radius:6px;background:var(--muted);display:flex;align-items:center;justify-content:flex-end;padding-inline:8px;font-style:normal;font-size:12.5px;color:var(--forest);font-weight:700;width:0;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.salt .row.us .bar i{background:var(--leaf)}
+.salt small{color:var(--muted);font-size:12.5px}
+.dist{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.dist td,.dist th{padding:8px 10px;border-bottom:1px solid var(--canopy);text-align:start}
+.dist th{color:var(--muted);font-weight:500;font-size:12.5px}
+.dist td:nth-child(2){color:var(--leaf);font-weight:600}
+.closing{margin-top:40px;font:600 clamp(20px,2.4vw,28px)/1.5 var(--display);color:var(--sprout);max-width:30ch}
+
+/* strengths & services */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--canopy);font-size:15.5px}
+.checks li::before{content:"";width:20px;height:20px;margin-top:5px;border-radius:50%;background:var(--frond) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%23f3f7ef' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100%}
+.infra{display:grid;gap:14px}
+.infra .it{display:grid;grid-template-columns:52px 1fr;gap:16px;background:var(--forest);border:1px solid var(--canopy);border-radius:var(--r);padding:20px}
+.infra .ic{width:52px;height:52px;border-radius:14px;background:var(--canopy);display:grid;place-items:center}
+.infra .ic svg{width:28px;height:28px;stroke:var(--leaf);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.infra h3{font-size:18px;margin-bottom:4px}
+.infra p{font-size:14.5px;color:var(--muted)}
+.infra code{font:500 12.5px ui-monospace,Consolas,monospace;color:var(--sprout);background:var(--grove);padding:2px 7px;border-radius:6px;direction:ltr;display:inline-block;margin-top:6px}
+
+/* care */
+.care{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.care .c{background:var(--grove);border-radius:var(--r);padding:24px;border:1px solid var(--canopy);min-width:0}
+.care .c b{font:700 34px var(--display);color:var(--leaf);display:block;line-height:1.2}
+.care .c span{font-size:14.5px;color:var(--mist)}
+.care .c small{display:block;font-size:12.5px;color:var(--muted);margin-top:6px}
+@media (max-width:900px){.care{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.care{grid-template-columns:1fr}}
+.contracts{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.contracts span{color:var(--muted);font-size:14.5px;margin-inline-end:6px}
+.contracts em{font-style:normal;font-size:14.5px;padding:8px 16px;border-radius:99px;background:var(--forest);border:1px solid var(--canopy)}
+
+/* palms */
+.varieties{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+@media (max-width:900px){.varieties{grid-template-columns:1fr}}
+.photo{border-radius:var(--r);overflow:hidden;position:relative;min-height:320px;background:var(--canopy)}
+.photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.photo figcaption{position:absolute;inset-inline:0;bottom:0;padding:18px 20px;background:linear-gradient(transparent,rgba(5,20,12,.9));font-size:14px}
+.places{display:flex;flex-wrap:wrap;gap:8px;margin-block:14px 18px}
+.places span{padding:6px 14px;border-radius:99px;background:var(--forest);border:1px solid var(--canopy);font-size:14px}
+.places span.us{background:var(--frond);border-color:var(--frond)}
+.market{width:100%;border-collapse:collapse;font-size:14.5px}
+.market td{padding:10px 4px;border-bottom:1px solid var(--canopy)}
+.market td:last-child{text-align:end;font-weight:600;color:var(--sprout)}
+.tabs3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+@media (max-width:900px){.tabs3{grid-template-columns:1fr}}
+.tabs3 .pane h3{font-size:20px}
+.tabs3 .pane ul{margin:0;padding-inline-start:18px;display:grid;gap:8px;font-size:14.5px}
+.tabs3 .pane p{font-size:14.5px;color:var(--mist);margin-bottom:10px}
+.siwi{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.siwi .pane{padding:22px}
+.siwi .pane h3{font-size:18px;margin-bottom:10px}
+.siwi ul{margin:0;padding-inline-start:18px;display:grid;gap:6px;font-size:14px;color:var(--mist)}
+@media (max-width:980px){.siwi{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.siwi{grid-template-columns:1fr}}
+.why-barhi{display:grid;gap:10px;margin-top:6px}
+.why-barhi li{font-size:14.5px}
+.why-barhi b{color:var(--sprout)}
+
+/* ---------- calculator ---------- */
+.calc{background:linear-gradient(180deg,var(--grove),var(--forest))}
+.ledger{display:grid;grid-template-columns:340px 1fr;gap:26px;align-items:start}
+@media (max-width:1000px){.ledger{grid-template-columns:1fr}}
+.controls{position:sticky;top:calc(84px + env(safe-area-inset-top,0px));background:var(--forest);border:1px solid var(--canopy);border-radius:var(--r);padding:24px;display:grid;gap:22px}
+@media (max-width:1000px){.controls{position:static}}
+.lbl{font-size:13.5px;color:var(--muted);margin-bottom:8px;display:block}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--grove);padding:5px;border-radius:14px}
+.seg button{font:600 15px var(--display);border:0;border-radius:10px;padding:10px 4px;background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--leaf);color:var(--forest)}
+.area-in{display:grid;grid-template-columns:48px 1fr 48px;gap:8px;align-items:stretch}
+.area-in button{border:1px solid var(--canopy);background:var(--grove);color:var(--ink);border-radius:12px;font:600 22px var(--body);cursor:pointer}
+.area-in button:hover{border-color:var(--leaf)}
+.area-in input{width:100%;min-width:0;text-align:center;font:700 34px var(--display);background:var(--grove);color:var(--ink);border:1px solid var(--canopy);border-radius:12px;padding:6px 8px;font-variant-numeric:tabular-nums}
+.area-in input:focus{outline:none;border-color:var(--leaf)}
+.unit{text-align:center;font-size:13.5px;color:var(--muted);margin-top:8px}
+.unit b{color:var(--sprout);font-weight:600}
+input[type=range]{width:100%;accent-color:var(--leaf);margin-top:12px}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.presets button{font:500 13.5px var(--body);padding:6px 12px;border-radius:99px;border:1px solid var(--canopy);background:transparent;color:var(--ink);cursor:pointer}
+.presets button:hover,.presets button.on{border-color:var(--leaf);color:var(--leaf)}
+.err{color:var(--loss);font-size:13.5px}
+.assume{font-size:13px;color:var(--muted);display:grid;gap:4px;border-top:1px solid var(--canopy);padding-top:16px}
+.assume div{display:flex;justify-content:space-between;gap:10px}
+.assume b{color:var(--ink);font-weight:500}
+.copy{justify-content:center}
+
+.results{display:grid;gap:22px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:700px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--forest);border:1px solid var(--canopy);border-radius:16px;padding:18px;min-width:0}
+.kpi span{font-size:13px;color:var(--muted);display:block}
+.kpi b{font:700 clamp(19px,2.1vw,26px)/1.35 var(--body);display:block;margin-top:4px;font-variant-numeric:tabular-nums;word-break:break-word}
+.kpi small{font-size:12px;color:var(--muted)}
+.roi{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px 28px;align-items:center;background:var(--frond);border:0;padding:24px 26px}
+.roi .pct{font:700 clamp(52px,8vw,92px)/1 var(--display);color:var(--ink)}
+.roi span{color:var(--mist);font-size:15px}
+.roi .eq{font-size:13.5px;color:var(--sprout);margin-top:6px;display:block}
+@media (max-width:560px){.roi{grid-template-columns:1fr}}
+.card{background:var(--forest);border:1px solid var(--canopy);border-radius:var(--r);padding:22px;min-width:0}
+.card h3{font-size:19px;margin-bottom:4px}
+.card .sub{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.chart{width:100%;height:auto;display:block}
+.chart text{font-family:var(--body);fill:var(--muted);font-size:11px}
+.tablebox{overflow-x:auto;border-radius:12px;border:1px solid var(--canopy)}
+table.t{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px}
+table.t th{background:var(--canopy);color:var(--mist);font-weight:600;padding:10px 8px;text-align:center;font-size:12.5px;line-height:1.4}
+table.t td{padding:9px 8px;text-align:center;border-top:1px solid var(--canopy);font-variant-numeric:tabular-nums}
+table.t td:first-child{text-align:start;font-weight:600;color:var(--sprout)}
+table.t tr.phase td{background:var(--grove);color:var(--leaf);font-size:12.5px;text-align:start;font-weight:600}
+table.t td.neg{color:var(--loss)}
+table.t td.net{font-weight:700;color:var(--ink);background:color-mix(in srgb,var(--frond) 22%,transparent)}
+table.t td.na{color:var(--muted);opacity:.6}
+table.t tfoot td{background:var(--frond);font-weight:700;color:var(--ink)}
+.sumlist{display:grid;gap:0}
+.sumlist div{display:flex;justify-content:space-between;gap:14px;padding:11px 2px;border-bottom:1px solid var(--canopy);font-size:15px}
+.sumlist div b{font-variant-numeric:tabular-nums}
+.sumlist div.hi{color:var(--leaf);font-weight:700;border-bottom:0;padding-top:14px}
+.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:640px){.compare{grid-template-columns:1fr}}
+.compare div{padding:16px;border-radius:14px;background:var(--grove);border:1px solid var(--canopy)}
+.compare div.on{border-color:var(--leaf)}
+.compare h4{margin:0 0 6px;font:600 16px var(--display)}
+.compare p{font-size:13.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.compare p b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.note{font-size:12.5px;color:var(--muted)}
+.two-t{display:grid;grid-template-columns:1.2fr 1fr;gap:22px}
+@media (max-width:900px){.two-t{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--mist);color:var(--forest);padding-block:56px calc(28px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center}
+footer img{height:64px;width:auto}
+footer p{font-size:14.5px}
+footer .addr{font-weight:600;font-size:16px}
+footer .site{direction:ltr;font-weight:600;color:var(--frond)}
+footer .legal{grid-column:1/-1;border-top:1px solid #c8dcc2;padding-top:18px;font-size:12.5px;color:#46604e}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline:0;margin:auto;width:max-content;max-width:90vw;background:var(--leaf);color:var(--forest);font-weight:600;padding:10px 20px;border-radius:99px;transform:translateY(120px);transition:transform .35s;z-index:80}
+.toast.show{transform:none}
+/* ---------- pages & menu ---------- */
+.page{animation:pageIn .6s cubic-bezier(.2,.7,.2,1)}
+@keyframes pageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+section.first{padding-top:calc(68px + env(safe-area-inset-top,0px) + clamp(46px,6vw,80px))}
+.nav ul a.on{color:var(--forest);background:var(--leaf)}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--canopy);background:var(--grove);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.burger i{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+.nav.open .burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav.open .burger i:nth-child(2){opacity:0}
+.nav.open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:1060px){
+  .burger{display:flex}
+  .nav ul{display:none;position:absolute;top:100%;inset-inline:0;flex-direction:column;gap:2px;padding:10px 16px 18px;background:var(--forest);border-bottom:1px solid var(--canopy)}
+  .nav.open ul{display:flex}
+  .nav.open{background:var(--forest)}
+  .nav ul a{display:block;padding:12px 14px;font-size:16px;border-radius:12px}
+  .nav .btn{margin-inline-start:auto}
+}
+@media (max-width:400px){.nav .btn{padding:8px 12px;font-size:13px}}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:900px){.tiles{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.tiles{grid-template-columns:1fr}}
+.tile{display:flex;flex-direction:column;gap:10px;text-decoration:none;background:var(--forest);border:1px solid var(--canopy);border-radius:var(--r);padding:26px;min-width:0;transition:border-color .3s,transform .3s,background .3s}
+.tile h3{font-size:22px}
+.tile p{font-size:14.5px;color:var(--muted);flex:1}
+.tile em{font-style:normal;font-weight:600;color:var(--leaf);font-size:14.5px}
+.tile:hover{border-color:var(--leaf);transform:translateY(-5px)}
+.tile.hot{background:var(--frond);border-color:var(--frond)}
+.tile.hot .kicker,.tile.hot em{color:var(--ink)}
+.tile.hot p{color:var(--mist)}
+
+/* ---------- order ---------- */
+.orderwrap{display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start}
+@media (max-width:980px){.orderwrap{grid-template-columns:1fr}}
+.oform{display:grid;gap:18px;min-width:0}
+.oform fieldset{margin:0;border:1px solid var(--canopy);border-radius:var(--r);padding:22px;background:var(--forest);display:grid;gap:14px;min-width:0}
+.oform legend{font:600 18px var(--display);color:var(--sprout);padding-inline:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:600px){.grid2{grid-template-columns:1fr}}
+.fld{display:grid;gap:6px;min-width:0}
+.fld label,.lbl2{font-size:14px;color:var(--muted)}
+.fld input,.fld select,.fld textarea{font:500 16px var(--body);color:var(--ink);background:var(--grove);border:1px solid var(--canopy);border-radius:12px;padding:12px 14px;width:100%;min-width:0}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--muted);opacity:.6}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 3px color-mix(in srgb,var(--leaf) 25%,transparent)}
+.fld .bad{border-color:var(--loss)}
+.hint{font-size:12.5px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{cursor:pointer;position:relative}
+.chips input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:10px 18px;border-radius:99px;border:1px solid var(--canopy);background:var(--grove);font-size:15px;transition:all .2s}
+.chips input:checked+span{background:var(--leaf);color:var(--forest);border-color:var(--leaf);font-weight:600}
+.chips input:focus-visible+span{outline:2px solid var(--leaf);outline-offset:2px}
+.btn.wa{justify-content:center;font-size:17px;padding:16px 26px;background:#25a55f;color:#fff}
+.btn.wa:hover{background:#2fbf6f}
+.btn.wa svg{width:22px;height:22px;fill:currentColor}
+.osum{position:sticky;top:calc(84px + env(safe-area-inset-top,0px));background:var(--forest);border:1px solid var(--canopy);border-radius:var(--r);padding:22px;min-width:0}
+@media (max-width:980px){.osum{position:static}}
+.osum h3{font-size:20px;margin-bottom:8px}
+.osum .sumlist div{font-size:14px}
+.osum .sumlist span{color:var(--muted)}
+.osum .sumlist b{text-align:end;overflow-wrap:anywhere}
+.thanks{margin-top:18px;padding:18px;border-radius:14px;background:var(--frond);display:grid;gap:8px}
+.thanks b{font:700 20px var(--display)}
+.thanks .note{color:var(--mist)}
+footer .fcontact p{font-size:13.5px}
+footer .flinks{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 18px}
+footer .flinks a{font-size:14px;text-decoration:none;color:#2c5a3c}
+footer .flinks a:hover{text-decoration:underline}
+</style>
+
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="ثمرات — الرئيسية"><img src="assets/logo-cream.png" alt="ثمرات Thamarat"></a>
+    <ul id="menu">
+      <li><a href="#home" data-link="home">الرئيسية</a></li>
+      <li><a href="#about" data-link="about">من نحن</a></li>
+      <li><a href="#works" data-link="works">سابقة الأعمال</a></li>
+      <li><a href="#minya" data-link="minya">ليه غرب المنيا</a></li>
+      <li><a href="#palms" data-link="palms">الأصناف</a></li>
+      <li><a href="#calc" data-link="calc">دراسة الجدوى</a></li>
+    </ul>
+    <a class="btn" href="#order" data-link="order">اطلب الآن</a>
+    <button class="burger" id="burger" type="button" aria-label="القائمة" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</nav>
+
+<main>
+<div class="page" data-page="home">
+<header class="hero">
+  <canvas id="grove" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">غرب المنيا · تمليك مباشر من الدولة</div>
+      <h1>ثمرات للاستثمار<br>و<em>التنمية الزراعية</em></h1>
+      <p class="lede">استصلاح الأراضي الصحراوية وإنشاء وإدارة المزارع وزراعة وتكاثر أمهات النخيل المجدول والبرحي والسيوي بغرب المنيا — من الاستصلاح والتجهيز حتى الحصاد والتسويق، تحت يد خبراء ومتخصصين.</p>
+      <div class="ctas">
+        <a class="btn" href="#calc">احسب عائد مزرعتك</a>
+        <a class="btn ghost" href="#order">اطلب الآن</a>
+        <a class="btn ghost" href="#works">شوف سابقة أعمالنا</a>
+      </div>
+      <div class="facts">
+        <div><b class="num" data-count="5">5</b><span>مشروعات كبرى</span></div>
+        <div><b class="num" data-count="4013">4,013</b><span>فدان إجمالي المساحات</span></div>
+        <div><b class="num" data-count="1314">1,314</b><span>فدان تم تسليمها بالكامل</span></div>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="coin" id="coin" aria-hidden="true"></div>
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true">انزل<i></i></div>
+</header>
+<section class="band">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">اكتشف ثمرات</span>
+      <h2>كل اللي محتاج تعرفه قبل ما تستثمر</h2>
+    </div>
+    <div class="tiles">
+      <a class="tile rv" href="#about"><span class="kicker">من نحن</span><h3>شركة ومؤسسين بخبرة في غرب المنيا</h3><p>تخصصنا، فكرة المشروع، نقاط القوة، والبنية التحتية والرعاية.</p><em>اعرف أكتر ←</em></a>
+      <a class="tile rv" href="#works"><span class="kicker">سابقة الأعمال</span><h3><span class="num">4,013</span> فدان في 5 مشروعات</h3><p>الراعي وNFS اتسلموا بالكامل، والروضة الخضراء وGNA والماسة شغالين.</p><em>شوف المشروعات ←</em></a>
+      <a class="tile rv" href="#minya"><span class="kicker">الموقع</span><h3>ليه غرب المنيا مش مكان تاني؟</h3><p>مياه عذبة، تمليك مباشر من الدولة، 30 كم من المنيا وقطار سريع.</p><em>المعايير ←</em></a>
+      <a class="tile rv" href="#palms"><span class="kicker">الأصناف</span><h3>المجدول والبرحي والسيوي</h3><p>مواصفات كل صنف، سوق التمور في مصر، والفرق بين الفسائل وبنت الجورة.</p><em>الأصناف ←</em></a>
+      <a class="tile rv" href="#calc"><span class="kicker">دراسة الجدوى</span><h3>احسب عائد مزرعتك على أي مساحة</h3><p>10 سنين أرباح وقيمة الأرض ومعدل العائد، بالكسور كمان.</p><em>افتح الحاسبة ←</em></a>
+      <a class="tile hot rv" href="#order"><span class="kicker">طلب شراء</span><h3>جاهز تحجز أرضك؟</h3><p>اكتب بياناتك والصنف والمساحة وطريقة الدفع، وطلبك يوصلنا على واتساب.</p><em>قدّم طلبك ←</em></a>
+    </div>
+  </div>
+</section>
+</div>
+<div class="page" data-page="about">
+<section class="first band">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">عن الشركة</span>
+      <h2>أرضك باسمك، ومزرعتك في إيد خبراء</h2>
+      <p>الشركة حديثة التأسيس رسميًا، لكن مؤسسيها لهم سابقة أعمال وبيع كبيرة في المجال الزراعي بغرب المنيا.</p>
+    </div>
+    <div class="about">
+      <div class="pane rv">
+        <h3>تخصص الشركة</h3>
+        <ol>
+          <li>زراعة وتكاثر أمهات النخيل المجدول والبرحي والسيوي بغرب المنيا.</li>
+          <li>استصلاح الأراضي الصحراوية وإنشاء وإدارة المزارع.</li>
+        </ol>
+      </div>
+      <div class="pane rv">
+        <h3>فكرة المشروع</h3>
+        <p>قائمة على تمليك الأراضي الزراعية تمليكًا مباشرًا من الدولة، وإدارة ورعاية المشروع بما فيها المزرعة الخاصة بك إدارة كاملة، بدايةً من الاستصلاح والتجهيز، مرورًا بالزراعة والحصاد والتسويق، تحت يد خبراء ومتخصصين في مجال الزراعة والاستصلاح.</p>
+      </div>
+    </div>
+    <div class="owner rv">
+      <span>الممثل القانوني: <b>السيد أحمد محمد محمد السيد خليفة</b></span>
+      <span>المقر الرئيسي: <b>41 ش بهاء الدين الغتوري - سموحة - الإسكندرية</b> (أمام محطة سيدي جابر)</span>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">نقاط القوة للمجموعة</span>
+      <h2>من التأسيس لحد بيع المحصول في السوق</h2>
+    </div>
+    <div class="two">
+      <ul class="checks rv">
+        <li>وُفّقت الشركة لاختيار أفضل موقع زراعي في جمهورية مصر العربية: غرب المنيا بأفضل تربة خليط مميزة للزراعة، ومياه جوفية شروب بمتوسط 600 جزء في المليون، وقربها من جميع الأسواق المحيطة ومن المدن وجميع الخدمات، وتوفر الأيدي العاملة المدربة، وإمكانية الوصول للموقع بأكثر من طريق، وتنفرد بمرور القطار السريع بالقرب من مشروعات الشركة، وتُعد أراضيها الأعلى في معدل الإقبال الاستثماري والزيادة السريعة في قيمة الأصول.</li>
+        <li>جميع أراضي الشركة تمليك مباشر من الدولة بعقود رسمية ومستقرة من الدولة مباشرة "ليست وضع يد".</li>
+        <li>الشركة تقوم بكافة الأعمال الخاصة بالمزرعة من تأسيس حتى بيع المحصول في الأسواق "رعاية كاملة".</li>
+        <li>تمتلك الشركة معدات الاستصلاح وحفر الآبار مثل الجرارات والحفارات، مما يؤدي إلى إتمام عمليات الاستصلاح والزراعة وحفر الآبار بسهولة تامة تحت إدارة الشركة، ووفرة اقتصادية في عمليات الاستصلاح وحفر الآبار.</li>
+        <li>التواجد الدائم والمستمر للشركة بالمزرعة لتعدد مشاريع الشركة في غرب المنيا "للإدارة والرعاية".</li>
+        <li>تحديد تفصيلي للمزرعة التي تمتلكها عن طريق "إحداثيات الموقع، يافطة مخصصة لكل عميل".</li>
+        <li>توافر زيارات بشكل منتظم للمزرعة وإمكانية متابعة مزرعتك بشكل تفصيلي على مدار العام.</li>
+        <li>تعتمد الشركة فسائل منتقاة ذات جودة عالية بضمان الصنف والنوع حتى الإنتاج.</li>
+        <li>تعتمد الشركة أجود خامات المواسير ومستلزماتها من خلال مصانع معتمدة لعمل شبكات الري بمزرعتك.</li>
+        <li>تعتمد الشركة أجود الخامات المعتمدة لعمل محطات الطاقة الشمسية ذات الجودة المتميزة.</li>
+        <li>تمتلك الشركة مقرات بمحافظتي الإسكندرية والمنيا للتعامل المباشر مع العملاء.</li>
+        <li>تمتلك الشركة سجلًا تجاريًا وبطاقة ضريبية مسجلة تسجيلًا قانونيًا بالهيئات المعنية في الدولة.</li>
+        <li>تمتلك الشركة استراحات مجهزة تجهيزًا تامًا لاستقبال الزوار وإقامة السادة العملاء.</li>
+      </ul>
+      <div>
+        <h3 class="rv" style="font-size:24px;margin-bottom:6px">إنشاء وتجهيز البنية التحتية للمزارع والأراضي الصحراوية</h3>
+        <p class="rv" style="color:var(--muted);margin-bottom:20px">بمعدات الشركة المملوكة لها.</p>
+        <div class="infra">
+          <div class="it rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17h18M5 17V9l7-4 7 4v8M9 17v-5h6v5"/></svg></div><div><h3>تقسيم المزارع والحوش وإنشاء الطرق وأعمال التسوية</h3><p>تمتلك الشركة معدات التسوية والطرق.</p><code>Loader Caterpillar G980 · Dozer Caterpillar D9</code></div></div>
+          <div class="it rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v14M8 6l4-4 4 4M6 22h12M9 16h6l-1 6h-4z"/></svg></div><div><h3>حفر الآبار</h3><p>تمتلك الشركة أحدث المعدات والتقنيات الخاصة بحفر واستكشاف الآبار.</p><code>Rotary Drilling Rigs · Percussion Cable Tool</code></div></div>
+          <div class="it rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h18M7 12v6M12 12v6M17 12v6M12 4c2 3 3 4.5 3 6a3 3 0 0 1-6 0c0-1.5 1-3 3-6z"/></svg></div><div><h3>إنشاء وتجهيز شبكات الري الحديثة الرئيسية والفرعية</h3><p>تمتلك الشركة أحدث البرمجيات والمعدات.</p><code>Komatsu PC120-5 Excavator</code></div></div>
+          <div class="it rv"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M12 1v1.5M5 7H3.5M20.5 7H19M4 21l2-8h12l2 8zM8 13l-1 8M16 13l1 8M5 17h14"/></svg></div><div><h3>تصميم وإنشاء محطات الطاقة الشمسية للمزارع</h3><p>بأجود الخامات المعتمدة.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">الرعاية والإشراف</span>
+      <h2>فريق على الأرض طول السنة</h2>
+    </div>
+    <div class="care">
+      <div class="c rv"><b>لكل 100 فدان</b><span>10 عمال، ومهندسَين اثنين، و3 مشرفين، وعربيتَي نصف نقل.</span></div>
+      <div class="c rv"><b><span class="num">10</span> سنوات</b><span>ضمان على المزرعة بالكامل.</span></div>
+      <div class="c rv"><b><span class="num">1,200</span> ج</b><span>الرعاية والإشراف على الفدان شهريًا.</span><small>ملحوظة: غير شاملة التسميد</small></div>
+      <div class="c rv"><b><span class="num">1,000</span> / <span class="num">1,500</span></b><span>متوسط سعر التسميد في الفدان: البرحي والسيوي 1,000 جنيه، والمجدول 1,500 جنيه.</span></div>
+    </div>
+    <div class="contracts rv">
+      <span>العقود:</span>
+      <em>1 · عقد الأرض</em><em>2 · عقد الإشراف والرعاية أو المشاركة</em><em>3 · عقد الاستصلاح والزراعة</em><em>4 · عقد التسويق "التعاقد على المحصول"</em>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="page" data-page="works">
+<section class="first">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">المشروعات الخاصة بالمجموعة</span>
+      <h2>خمس مشروعات كبرى في غرب المنيا</h2>
+      <p>تمتلك المجموعة خمس مشروعات كبرى: شركة الروضة الخضراء، شركة الراعي، شركة GNA، شركة الماسة، شركة NFS.</p>
+    </div>
+    <div class="total rv"><b class="num" data-count="4013">4,013</b><span>فدان إجمالي مساحات مشروعات المجموعة</span></div>
+    <div class="strip rv" aria-label="توزيع المساحات بين المشروعات">
+      <i style="flex:1631;background:var(--leaf)" title="الماسة 1631"></i>
+      <i style="flex:880;background:var(--frond)" title="NFS 880"></i>
+      <i style="flex:582;background:var(--sprout)" title="الروضة الخضراء 582"></i>
+      <i style="flex:486;background:#4f9a66" title="GNA 486"></i>
+      <i style="flex:434;background:#8cc795" title="الراعي 434"></i>
+    </div>
+    <div class="projects">
+      <article class="proj wide rv">
+        <div class="top"><h3>شركة الراعي للاستثمار الزراعي</h3><span class="tag done">تم التسليم بالكامل</span></div>
+        <div class="area"><span class="num">434</span><small>فدان</small></div>
+        <div class="loc">غرب المنيا، مركز المنيا</div>
+        <p>من المشاريع التي تم الانتهاء منها وتسليمها بالكامل.</p>
+      </article>
+      <article class="proj wide rv">
+        <div class="top"><h3>شركة NFS للاستثمار الزراعي</h3><span class="tag done">تم التسليم بالكامل</span></div>
+        <div class="area"><span class="num">880</span><small>فدان</small></div>
+        <div class="loc">غرب مدينة ديروط</div>
+        <p>من المشاريع التي تم الانتهاء منها وتسليمها بالكامل.</p>
+      </article>
+      <article class="proj rv">
+        <div class="top"><h3>شركة الروضة الخضراء</h3><span class="tag now">مشروع حالي</span></div>
+        <div class="area"><span class="num">582</span><small>فدان</small></div>
+        <div class="loc">غرب المنيا، مركز أبو رقاص</div>
+        <div class="phases">
+          <div>المرحلة الأولى <b>204 فدان · تم التسليم</b></div>
+          <div>المرحلة الثانية <b>189 فدان</b></div>
+          <div>المرحلة الثالثة <b>189 فدان</b></div>
+        </div>
+        <p>المرحلة الثانية مقسمة إلى قطع 5 فدان محاطة بسور شجري وعليها يافطة لكل مالك، وواجهة القطعة 155 متر والواجهة الجانبية 121 متر، والمرحلة الثالثة مثل تقسيم المرحلة الثانية. لكل مرحلة طاقة شمسية 200 كيلو وعمق البئر 275 متر، ولكل مرحلة استراحة على مساحة 300 متر مجهزة تجهيزًا كاملًا للإقامة واستقبال الملاك، كما يوجد سكن مجهز للعاملين في المشروع.</p>
+      </article>
+      <article class="proj rv">
+        <div class="top"><h3>شركة GNA</h3><span class="tag now">مشروع حالي</span></div>
+        <div class="area"><span class="num">486</span><small>فدان</small></div>
+        <div class="loc">غرب المنيا، مركز المنيا</div>
+        <div class="phases">
+          <div>المرحلة الأولى <b>286 فدان · مانجو</b></div>
+          <div>المرحلة الثانية <b>200 فدان · 70 نخيل سيوي</b></div>
+        </div>
+        <p>المرحلة الأولى تم تسليم منها 286 فدان مزروعة بأشجار المانجو المختلفة والأنواع الحديثة المتقزمة، والمرحلة الثانية 200 فدان وتم تسليم منها 70 فدان نخيل سيوي. الطاقة الشمسية 200 كيلو وعمق البئر 275 متر. ويتميز مشروع GNA بإتاحة أراضٍ مجهزة بمساحات وزراعات مختلفة حسب رغبة العميل.</p>
+      </article>
+      <article class="proj rv">
+        <div class="top"><h3>شركة الماسة</h3><span class="tag now">أحدث مشروعاتنا</span></div>
+        <div class="area"><span class="num">1,631</span><small>فدان</small></div>
+        <div class="loc">غرب المنيا، مركز دير مواس</div>
+        <div class="phases"><div>مساحات تبدأ من <b>50 فدان</b></div></div>
+        <p>أحدث مشروعات الشركة، يتم الآن تجهيز البنية التحتية من الآبار والطرق وشبكات الري الرئيسية والطاقة الشمسية والاستراحات. قطع أراضٍ مستصلحة ومجهزة للزراعة لكبار المزارعين والمستثمرين.</p>
+      </article>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="minya">
+<section class="first band">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">ليه الشركة اختارت غرب المنيا… مش مكان تاني؟</span>
+      <h2>معايير علمية وراء قرار الاستثمار في أرض غرب المنيا</h2>
+      <p>قبل اتخاذ قرار الاستثمار، قامت الشركة بدراسة مقارنة دقيقة بين كل الأراضي الصحراوية المطروحة في مصر، على أساس العناصر الحاكمة لنجاح أي مشروع زراعي. وكانت النتيجة أن غرب المنيا تتفوّق في كل عنصر تقريبًا.</p>
+    </div>
+    <div class="bigfacts">
+      <div class="rv"><b><span class="num">30</span> كم</b><span>من مدينة المنيا فقط</span></div>
+      <div class="rv"><b>تمليك مباشر</b><span>من الدولة عبر الريف المصري</span></div>
+      <div class="rv"><b><span class="num">250</span> كم/س</b><span>قطار سريع يخدم المنطقة</span></div>
+    </div>
+    <div class="criteria">
+      <div class="crit span2 rv">
+        <div class="n">1</div>
+        <h3>مياه الري — نقاء وتوازن غير متاح في أماكن أخرى</h3>
+        <ul>
+          <li>ملوحة المياه في غرب المنيا تتراوح بين 450 و900 فقط — بمعنى مياه شروب عذبة، بمتوسط 600 جزء في المليون.</li>
+          <li>توزيع الأملاح في التربة متوازن ومعتدل، بلا تركيزات ضارة بالجذور.</li>
+        </ul>
+        <div class="salt" id="salt">
+          <div class="row us"><span>غرب المنيا</span><div class="bar"><i data-w="900">450 – 900</i></div></div>
+          <div class="row"><span>سيوة</span><div class="bar"><i data-w="1700">~1700</i></div></div>
+          <div class="row"><span>المغرة</span><div class="bar"><i data-w="4000">~4000</i></div></div>
+          <small>ملوحة مياه الري (جزء في المليون) — الأقل أفضل</small>
+        </div>
+      </div>
+      <div class="crit rv">
+        <div class="n">2</div>
+        <h3>الوضع القانوني — تمليك، لا وضع يد</h3>
+        <ul>
+          <li>تمليك مباشر من الدولة عن طريق شركة الريف المصري، ضمن مبادرة الرئيس لاستصلاح وزراعة 2.5 مليون فدان.</li>
+          <li>في أغلب الأراضي الصحراوية الأخرى، لا يوجد سوى "وضع يد" بلا سند قانوني رسمي — وهو خطر مباشر على استثمار المشترك.</li>
+        </ul>
+      </div>
+      <div class="crit rv">
+        <div class="n">3</div>
+        <h3>التربة — خليط مثالي وصرف زراعي سليم</h3>
+        <ul>
+          <li>تربة خليط من الطفلة الخفيفة والرملة، غنية بالعناصر الغذائية.</li>
+          <li>صرف زراعي جيد بلا أي مشاكل، ولا توجد طبقة صخرية صماء تحت السطح.</li>
+          <li>بالمقارنة: سيوة والفرافرة يعانيان من صرف زراعي سيئ ووجود طبقة صماء تعيق نمو الجذور.</li>
+        </ul>
+      </div>
+      <div class="crit span2 rv">
+        <div class="n">4</div>
+        <h3>القرب من الأسواق — تسويق أسهل وسعر أعلى للمحصول</h3>
+        <div class="tablebox" style="border:0">
+          <table class="dist">
+            <thead><tr><th>السوق</th><th>غرب المنيا</th><th>مناطق أخرى</th></tr></thead>
+            <tbody>
+              <tr><td>أسواق المنيا</td><td>30 كم</td><td>الإسكندرية 600 كم</td></tr>
+              <tr><td>أسواق أسيوط</td><td>100 كم</td><td>—</td></tr>
+              <tr><td>أسواق بني سويف</td><td>120 كم</td><td>—</td></tr>
+              <tr><td>أسواق القاهرة</td><td>240 كم</td><td>600 كم لسيوة عن الإسكندرية</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul style="margin-top:10px"><li>غرب المنيا تنفرد بقربها من أكثر من سوق رئيسي في نفس الوقت — ما يعني سهولة بيع كل أنواع المحاصيل بسعر مناسب.</li></ul>
+      </div>
+      <div class="crit rv">
+        <div class="n">5</div>
+        <h3>القرب من المدن — حياة طبيعية، لا واحة معزولة</h3>
+        <ul>
+          <li>تبعد الأرض عن مدينة المنيا ووادي النيل 30 كم فقط — أقل من المسافة بين برج العرب والإسكندرية.</li>
+          <li>على خلاف كل الأراضي الصحراوية الجديدة التي تُعد "واحات" منعزلة داخل الصحراء الغربية.</li>
+          <li>هذا القرب يعني: سهولة المعيشة والتنقل، سهولة شراء مستلزمات الزراعة والاحتياجات الشخصية، متابعة مستمرة للأرض، تكاليف زراعة أقل، وقرب من الرعاية الطبية والمستشفيات.</li>
+        </ul>
+      </div>
+      <div class="crit rv">
+        <div class="n">6</div>
+        <h3>الأيدي العاملة — متوفرة وبأقل تكلفة</h3>
+        <ul>
+          <li>توفر الأيدي العاملة المدرَّبة واليومية بأقل التكاليف، بسبب قرب القرى السكنية.</li>
+          <li>باقي الأراضي الصحراوية الجديدة بعيدة عن العمران والقرى، فترتفع تكلفة العمالة ويصعب توفيرها.</li>
+        </ul>
+      </div>
+      <div class="crit rv">
+        <div class="n">7</div>
+        <h3>الطرق والمواصلات — 4 طرق وقطار كهربائي سريع</h3>
+        <ul>
+          <li>4 طرق تصل إلى المنيا: الصحراوي الشرقي، الجيش الشرقي، الطريق الزراعي، والصحراوي الغربي.</li>
+          <li>الصحراوي الغربي محور دولي رئيسي لحركة التجارة بين مصر وأفريقيا، بطول 1155 كم، ويجري تطويره ليضم 6 حارات مرورية في كل اتجاه، منها حارات مخصصة للشاحنات.</li>
+          <li>المنيا تنفرد بوجود القطار الكهربائي السريع (250 كم/س)، المتوقع أن يصل من الإسكندرية إلى المنيا في ساعتين وربع فقط — وله محطات قريبة من مشاريع الشركة.</li>
+          <li>في المقابل، كل الأراضي الصحراوية الأخرى يصعب الوصول إليها.</li>
+        </ul>
+      </div>
+      <div class="crit rv">
+        <div class="n">8</div>
+        <h3>اعتدال المناخ — زراعة كل المحاصيل، لا محصول واحد</h3>
+        <ul>
+          <li>اعتدال المناخ في المنيا يسمح بزراعة جميع المحاصيل والأشجار.</li>
+          <li>الأراضي الصحراوية الأخرى غالبًا مقيّدة بمحصول أو فاكهة معينة بسبب طبيعة مناخها.</li>
+        </ul>
+      </div>
+      <div class="crit rv">
+        <div class="n">9</div>
+        <h3>السعر ومعدل زيادة قيمة الأصل — القيمة الأعلى بالسعر الأقل</h3>
+        <ul>
+          <li>سعر أرض المنيا، بكل هذه المواصفات، يُعد رخيصًا إذا قورن بأراضٍ بنفس المواصفات مثل الطريق الصحراوي إسكندرية – مصر.</li>
+          <li>أرض المنيا هي الأعلى من حيث معدل زيادة السعر بين كل الأراضي الصحراوية، بسبب تجمّع كل المزايا السابقة فيها معًا.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="closing rv">في كل معيار منها، غرب المنيا في المقدمة… علشان كده اختيارنا ما كانش صدفة.</p>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="palms">
+<section class="first">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">الأصناف والزراعة</span>
+      <h2>المجدول والبرحي والسيوي</h2>
+      <p>تعتبر أصناف المجدول والبرحي والنخيل السيوي من أفضل وأنجح أصناف النخيل للاستثمار والزراعة في منطقة غرب المنيا، نظرًا لملاءمة الظروف المناخية الصحراوية، وعائدها الاقتصادي المرتفع، وكل ما ذُكر سابقًا من مميزات "ليه اخترنا المنيا".</p>
+    </div>
+    <div class="varieties">
+      <div class="rv">
+        <h3 style="font-size:22px">أماكن زراعة النخيل في مصر</h3>
+        <div class="places"><span class="us">غرب المنيا</span><span>الوادي الجديد</span><span>الواحات البحرية</span><span>طريق مصر إسكندرية الصحراوي</span><span>المغرة</span><span>سيوة</span></div>
+        <h3 style="font-size:22px;margin-bottom:6px">البلح البرحي: فرصة استثمارية</h3>
+        <p style="color:var(--muted);font-size:14.5px;margin-bottom:12px">المؤشرات الاقتصادية والربحية لأعلى أصناف النخيل إنتاجية — إنتاجية عالية · طلب على البلح الطازج · سعر مجزٍ</p>
+        <div class="kpis" style="margin-bottom:18px">
+          <div class="kpi"><span>إنتاج النخلة المكتملة سنويًا</span><b>200 كجم</b></div>
+          <div class="kpi"><span>أعلى سعر لكيلو البرحي للمستهلك في مصر</span><b>100 جنيه</b></div>
+          <div class="kpi"><span>سعر طن البرحي في التصدير (من 800 دولار)</span><b>1,300 دولار</b></div>
+          <div class="kpi"><span>تصل إليها صادرات التمور المصرية</span><b>86 دولة</b></div>
+        </div>
+        <ol class="why-barhi">
+          <li><b>عناصر نجاح متكاملة في المنيا:</b> تكاملت عناصر نجاح وتميز زراعة نخيل البرحي في المنيا، حيث التربة الممتازة والمياه العذبة والمناخ الملائم وملكية الأرض المستقرة التي ترتفع قيمتها الاقتصادية مع الوقت نظرًا للموقع المتميز.</li>
+          <li><b>من أعلى الأصناف إنتاجية:</b> تنتج النخلة المكتملة حوالي 200 كجم سنويًا، وهو ما يرفع عائد الفدان بشكل كبير حتى مع سعر كيلو متوسط.</li>
+          <li><b>طلب قوي على البلح الطازج:</b> يُؤكل البرحي طازجًا في مرحلة "الخلال" (البلح الأصفر) بطعمه المقرمش والحلو، ويُعد من أكثر التمور المصرية طلبًا محليًا وفي الأسواق الدولية.</li>
+          <li><b>سعر مجزٍ في السوق المصري:</b> يُباع الكيلو من 35 إلى 65 جنيهًا في سوق الجملة، ويصل إلى 80 – 100 جنيه للمستهلك حسب الجودة والتعبئة.</li>
+          <li><b>مصدرا دخل:</b> البلح نفسه + بيع الفسائل المطلوبة للتوسع في زراعة البرحي، وهو ما يرفع العائد في سنوات الإنتاج الأولى.</li>
+        </ol>
+      </div>
+      <div style="display:grid;gap:18px;align-content:start">
+        <figure class="photo rv" style="margin:0;min-height:420px"><img src="assets/palm.jpg" alt="نخلة برحي محمّلة بالبلح الأصفر" loading="lazy"><figcaption>نخيل البرحي في مرحلة الخلال</figcaption></figure>
+        <div class="card rv">
+          <h3>مصر وسوق التمور</h3>
+          <table class="market">
+            <tr><td>ترتيب مصر في إنتاج التمور</td><td>الأولى عالميًا</td></tr>
+            <tr><td>الإنتاج السنوي</td><td>1.87 مليون طن</td></tr>
+            <tr><td>عدد النخيل</td><td>أكثر من 24 مليون</td></tr>
+            <tr><td>صادرات 2025</td><td>161.6 مليون دولار</td></tr>
+            <tr><td>ترتيب مصر في التصدير 2025</td><td>الرابعة عالميًا</td></tr>
+            <tr><td>مستهدف الصادرات 2027</td><td>200 ألف طن</td></tr>
+          </table>
+          <p class="note" style="margin-top:12px"><b style="color:var(--sprout)">سوق عالمي في نمو مستمر:</b> قُدّر سوق التمور العالمي بنحو 27.8 مليار دولار في 2023، ومتوقع أن يصل إلى 49.4 مليار دولار بحلول 2033، مع تزايد الإقبال عالميًا على البلح الطازج في مرحلة الخلال، والبرحي من الأصناف التي تستهدفها مصر للتصدير إلى جانب المجدول والسيوي.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="rv" style="font-size:24px;margin-top:60px">التمر السيوي — من أشهر أصناف التمور المصرية</h3>
+    <div class="siwi">
+      <div class="pane rv"><h3>الخصائص العامة</h3><ul>
+        <li>ثمرة متوسطة إلى كبيرة الحجم، بيضاوية الشكل، ولونها يميل للبني الغامق أو العسلي الداكن عند النضج الكامل.</li>
+        <li>قوامه شبه جاف إلى نصف رطب، وملمسه متماسك وليس لزجًا بشدة مثل بعض الأصناف الرطبة.</li>
+        <li>طعمه حلو مركّز، وله نكهة مميزة تُنسب لطبيعة تربة وماء واحة سيوة (المياه الجوفية الغنية بالمعادن).</li>
+        <li>من الأصناف التي تتحمل التخزين لفترات أطول مقارنة بالتمور الرطبة.</li></ul></div>
+      <div class="pane rv"><h3>القيمة الغذائية</h3><p class="note" style="margin-bottom:8px">تقريبيًا لكل 100 جرام من التمر الجاف عمومًا، وينطبق على السيوي بنفس النطاق</p><ul>
+        <li>سعرات حرارية: حوالي 270–300 سعرة</li>
+        <li>كربوهيدرات: 70–75 جرام، معظمها سكريات طبيعية (جلوكوز وفركتوز)</li>
+        <li>ألياف غذائية: 6–8 جرام</li>
+        <li>بروتين: حوالي 2 جرام</li>
+        <li>دهون: قليلة جدًا (أقل من 1 جرام)</li>
+        <li>معادن: غني بالبوتاسيوم، المغنسيوم، النحاس، والمنجنيز، وبه كمية جيدة من الحديد</li>
+        <li>فيتامينات: يحتوي على فيتامين B6 وكميات من فيتامين K</li></ul></div>
+      <div class="pane rv"><h3>فوائد صحية شائعة</h3><ul>
+        <li>مصدر طاقة سريع بسبب تركيز السكريات الطبيعية.</li>
+        <li>الألياف تساعد على تنظيم الهضم.</li>
+        <li>البوتاسيوم يدعم صحة القلب وضغط الدم.</li>
+        <li>مضادات الأكسدة (مثل الفلافونويد والكاروتينات) تساهم في تقليل الالتهابات.</li></ul></div>
+      <div class="pane rv"><h3>استخدامات</h3><ul>
+        <li>يؤكل كما هو كوجبة خفيفة أو مع الإفطار في رمضان.</li>
+        <li>يدخل في صناعة العجوة، الحلويات، والمعجنات المحشوة بالتمر.</li>
+        <li>يُستخدم كمُحلٍّ طبيعي بديل للسكر في بعض الوصفات.</li></ul></div>
+    </div>
+
+    <h3 class="rv" style="font-size:24px;margin-top:60px">الفرق بين الفسائل وبنت الجورة والأنسجة</h3>
+    <div class="tabs3">
+      <div class="pane rv"><h3>الفسائل</h3>
+        <p>الفسائل هي أجزاء نباتية صغرى تخرج من براعم نائمة على ساق النخلة الأم قرب سطح الأرض، وتُعرف بالخِلفات. آلية الاستنساخ: تُفصل بعناية فائقة عن الأم لضمان بقائها حية، وتمتلك جذورًا قوية تساعدها على النمو.</p>
+        <ul><li>الحفاظ على الصفات الوراثية: تضمن إنتاج نخلة مطابقة تمامًا للنخلة الأم في جودة الثمار والصنف والصفات.</li>
+        <li>إثمار أسرع: تبدأ الفسائل المستخرجة من أشجار مثمرة في إعطاء المحصول خلال فترة أسرع بكثير مقارنة بالزراعة بواسطة البذور.</li>
+        <li>الموثوقية العالية: تُعد الطريقة الأكثر شيوعًا ونجاحًا لضمان الحصول على أنواع تمر مرغوبة ومعروفة الجودة.</li></ul></div>
+      <div class="pane rv"><h3>بنت الجورة</h3>
+        <p>هي في الأصل فسيلة، ولكن يتم فصلها وتربيتها وتجهيزها في مشاتل مخصصة تحت إشراف فريق عمل محترف.</p>
+        <ul><li>ارتفاع نسبة نجاحها بشكل ملحوظ عند نقلها للزراعة الدائمة، لأنها تكون قد تجاوزت مرحلة الصدمة الأولى، وتبدأ بالإثمار في وقت أسرع (عادة بعد سنتين إلى ثلاث سنوات من الزراعة المستديمة)، وغالبًا ما تكون تكلفتها أو سعرها أعلى من الفسيلة المباشرة.</li>
+        <li>سرعة الإنتاج (عائد أسرع): تبدأ في الإثمار وإنتاج الثمار غالبًا في السنة الثالثة من زراعتها بالأرض المستديمة؛ لأن عمرها الفعلي وزمن تجذيرها أكبر من الفسيلة الجديدة.</li>
+        <li>أمان أكبر للمزارع: نظرًا لأنها قضت وقتًا أطول في النمو وأثبتت قدرتها على الحياة والانطلاق، لكنها أغلى ثمنًا بسبب تكلفة الرعاية.</li></ul></div>
+      <div class="pane rv"><h3>زراعة النخيل بالأنسجة</h3>
+        <p>تقنية مخبرية متطورة لإكثار النخيل، عن طريق أخذ أجزاء صغيرة أو خلايا من نخلة أم ممتازة وتنميتها في بيئة مغذية ومعقمة.</p>
+        <ul><li>خلوها من الأمراض: تنتج شتلات نظيفة وخالية من الآفات والأمراض الفطرية والبكتيرية.</li>
+        <li>مطابقة الأصناف: تضمن الحصول على نفس صفات الشجرة الأم بنسبة 100% وضمان الصنف.</li>
+        <li>سرعة الإنتاج: توفر أعدادًا هائلة من الشتلات في وقت قصير مقارنة بالفسائل التقليدية.</li>
+        <li>قوة النمو والإنتاج: تتميز بقدرة عالية على التجذير والإنتاج المبكر والثابت مقارنة بالفسائل العادية.</li></ul></div>
+    </div>
+    <div class="pane rv" style="margin-top:18px">
+      <h3>مخطط تصميم الأرض — أسباب توافر مسافة بين الأشجار المزروعة</h3>
+      <div class="places" style="margin:0"><span>1 · عدم تكاثر الأمراض</span><span>2 · عدم تشابك الجذور</span><span>3 · حجب أشعة الشمس</span></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" data-page="calc">
+<section class="first calc">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">دراسة جدوى استرشادية تفاعلية</span>
+      <h2>اختار الصنف والمساحة… والدراسة تتحسب لك</h2>
+      <p>الأرقام مبنية على دراسات الجدوى الاسترشادية للشركة لمدة 10 سنوات، بمتوسط 60 فسيلة للفدان. اكتب أي مساحة حتى لو فيها كسور (2.5 أو 7.25 فدان) وكل الجداول تتعدل فورًا.</p>
+    </div>
+    <div class="ledger">
+      <aside class="controls">
+        <div>
+          <span class="lbl" id="vlbl">الصنف</span>
+          <div class="seg" role="group" aria-labelledby="vlbl">
+            <button type="button" data-v="majdoul" aria-pressed="true">مجدول</button>
+            <button type="button" data-v="barhi" aria-pressed="false">برحي</button>
+            <button type="button" data-v="siwi" aria-pressed="false">سيوي</button>
+          </div>
+        </div>
+        <div>
+          <label class="lbl" for="area">المساحة بالفدان</label>
+          <div class="area-in">
+            <button type="button" id="plus" aria-label="زوّد نص فدان">+</button>
+            <input id="area" type="text" inputmode="decimal" value="5" autocomplete="off">
+            <button type="button" id="minus" aria-label="قلّل نص فدان">−</button>
+          </div>
+          <input type="range" id="slider" min="0.5" max="100" step="0.5" value="5" aria-label="المساحة بالفدان">
+          <div class="unit" id="unit"></div>
+          <div class="err" id="err" hidden></div>
+        </div>
+        <div>
+          <span class="lbl">مساحات شائعة</span>
+          <div class="presets" id="presets">
+            <button type="button" data-a="1">1</button><button type="button" data-a="2.5">2.5</button><button type="button" data-a="5">5</button><button type="button" data-a="10">10</button><button type="button" data-a="25">25</button><button type="button" data-a="50">50</button>
+          </div>
+        </div>
+        <div class="assume" id="assume"></div>
+        <a class="btn copy" id="toorder" href="#order">اطلب المساحة دي</a>
+        <button type="button" class="btn ghost copy" id="copy">انسخ ملخص الدراسة</button>
+      </aside>
+
+      <div class="results" aria-live="polite">
+        <div class="kpis">
+          <div class="kpi roi"><div class="pct num" id="k-roi">0%</div><div><span>معدل العائد على الاستثمار خلال 10 سنوات</span><span class="eq">(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة</span></div></div>
+          <div class="kpi"><span>إجمالي التكلفة حتى التبشير</span><b id="k-cost">—</b><small>ج.م</small></div>
+          <div class="kpi"><span>صافي ربح التمور والفسائل</span><b id="k-profit">—</b><small>ج.م · 10 سنوات</small></div>
+          <div class="kpi"><span>قيمة الأرض بعد 10 سنوات</span><b id="k-land">—</b><small>ج.م</small></div>
+          <div class="kpi"><span>صافي العائد الإجمالي</span><b id="k-gain">—</b><small>ج.م</small></div>
+        </div>
+
+        <div class="card">
+          <h3>الأرباح السنوية التراكمية</h3>
+          <p class="sub" id="chartsub">صافي الأرباح بعد خصم نسبة إدارة الشركة، متراكمة سنة بعد سنة.</p>
+          <svg class="chart" id="chart" viewBox="0 0 760 280" role="img" aria-label="رسم بياني للأرباح التراكمية"></svg>
+        </div>
+
+        <div class="card">
+          <h3 id="t-title">دراسة استرشادية للأرباح</h3>
+          <p class="sub" id="t-sub"></p>
+          <div class="tablebox"><table class="t" id="yearly"></table></div>
+          <p class="note" style="margin-top:10px">* جميع المبالغ بالجنيه المصري. الأرقام استرشادية وقد تختلف حسب الأسعار الفعلية وظروف الإنتاج والسوق.</p>
+        </div>
+
+        <div class="two-t">
+          <div class="card">
+            <h3>زيادة قيمة الأرض بمعدل 20% سنويًا</h3>
+            <p class="sub" id="land-sub"></p>
+            <div class="tablebox"><table class="t" id="landt" style="min-width:480px"></table></div>
+          </div>
+          <div class="card">
+            <h3>معدل العائد على الاستثمار خلال 10 سنوات</h3>
+            <p class="sub" id="sum-sub"></p>
+            <div class="sumlist" id="sumlist"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>نفس المساحة… بالأصناف التلاتة</h3>
+          <p class="sub">مقارنة سريعة على المساحة اللي كتبتها.</p>
+          <div class="compare" id="compare"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<div class="page" data-page="order">
+<section class="first band">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="kicker">طلب شراء</span>
+      <h2>احجز أرضك في غرب المنيا</h2>
+      <p>املأ بياناتك واختار الصنف والمساحة وطريقة الدفع. لما تدوس "إرسال الطلب على واتساب" هيفتح واتساب والطلب مكتوب بكل تفاصيله لخدمة العملاء، اضغط إرسال وبس.</p>
+    </div>
+    <div class="orderwrap">
+      <form class="oform rv" id="oform" novalidate>
+        <fieldset>
+          <legend>بياناتك</legend>
+          <div class="grid2">
+            <div class="fld"><label for="o-name">الاسم بالكامل *</label><input id="o-name" name="name" autocomplete="name" required placeholder="مثال: محمد أحمد علي"></div>
+            <div class="fld"><label for="o-phone">رقم الموبايل *</label><input id="o-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="01xxxxxxxxx" dir="ltr"></div>
+            <div class="fld"><label for="o-wa">رقم واتساب (لو مختلف)</label><input id="o-wa" name="wa" type="tel" inputmode="tel" placeholder="01xxxxxxxxx" dir="ltr"></div>
+            <div class="fld"><label for="o-email">البريد الإلكتروني</label><input id="o-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" dir="ltr"></div>
+            <div class="fld"><label for="o-city">المحافظة / المدينة *</label><input id="o-city" name="city" autocomplete="address-level2" required placeholder="مثال: الإسكندرية"></div>
+            <div class="fld"><label for="o-job">المهنة</label><input id="o-job" name="job" autocomplete="organization-title" placeholder="اختياري"></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>عايز تشتري إيه؟</legend>
+          <div class="fld"><span class="lbl2">الصنف *</span>
+            <div class="chips" id="o-variety" role="radiogroup" aria-label="الصنف">
+              <label><input type="radio" name="variety" value="مجدول" checked><span>مجدول</span></label>
+              <label><input type="radio" name="variety" value="برحي"><span>برحي</span></label>
+              <label><input type="radio" name="variety" value="سيوي"><span>سيوي</span></label>
+              <label><input type="radio" name="variety" value="محتاج استشارة"><span>محتاج استشارة</span></label>
+            </div>
+          </div>
+          <div class="grid2">
+            <div class="fld"><label for="o-area">المساحة بالفدان *</label><input id="o-area" name="area" inputmode="decimal" required placeholder="مثال: 5 أو 2.5" dir="ltr"><small id="o-area-hint" class="hint"></small></div>
+            <div class="fld"><label for="o-project">المشروع المفضّل</label>
+              <select id="o-project" name="project">
+                <option value="أي مشروع مناسب">أي مشروع مناسب — حسب ترشيح الشركة</option>
+                <option value="الروضة الخضراء — مركز أبو رقاص">الروضة الخضراء — مركز أبو رقاص</option>
+                <option value="GNA — مركز المنيا">GNA — مركز المنيا</option>
+                <option value="الماسة — مركز دير مواس (من 50 فدان)">الماسة — مركز دير مواس (من 50 فدان)</option>
+              </select></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>طريقة الدفع *</legend>
+          <div class="chips" role="radiogroup" aria-label="طريقة الدفع">
+            <label><input type="radio" name="pay" value="كاش" checked><span>كاش</span></label>
+            <label><input type="radio" name="pay" value="تقسيط"><span>تقسيط</span></label>
+            <label><input type="radio" name="pay" value="أحدد مع خدمة العملاء"><span>أحدد مع خدمة العملاء</span></label>
+          </div>
+          <small class="hint">إمكانية التقسيط ومدته بيتأكدوا مع ممثل خدمة العملاء.</small>
+        </fieldset>
+        <fieldset>
+          <legend>التواصل</legend>
+          <div class="grid2">
+            <div class="fld"><label for="o-time">أنسب وقت للتواصل</label>
+              <select id="o-time" name="time"><option>أي وقت</option><option>الصبح (9 – 12)</option><option>الضهر (12 – 4)</option><option>المسا (4 – 9)</option></select></div>
+            <div class="fld"><label for="o-visit">تحب تزور المزرعة؟</label>
+              <select id="o-visit" name="visit"><option>أيوه، عايز أحدد زيارة</option><option>مش دلوقتي</option></select></div>
+          </div>
+          <div class="fld"><label for="o-notes">ملاحظات أو أسئلة</label><textarea id="o-notes" name="notes" rows="3" placeholder="اكتب أي تفاصيل تانية"></textarea></div>
+        </fieldset>
+        <div class="err" id="o-err" hidden></div>
+        <a class="btn wa" id="o-send" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3z"/></svg>
+          إرسال الطلب على واتساب
+        </a>
+      </form>
+      <aside class="osum rv" id="osum">
+        <h3>ملخص طلبك</h3>
+        <div class="sumlist" id="o-summary"></div>
+        <p class="note" style="margin-top:14px">التكلفة التقديرية محسوبة من دراسة الجدوى الاسترشادية للشركة (ثمن الأرض + مصروفات حتى التبشير)، والسعر النهائي بيتأكد مع خدمة العملاء.</p>
+        <div class="thanks" id="o-thanks" hidden>
+          <b>شكرًا لك!</b>
+          <p>تم تجهيز طلبك. سيتم التواصل من خلال أحد ممثلي خدمة العملاء لمزيد من التفاصيل.</p>
+          <p class="note">لو واتساب ما اتفتحش، ابعت الطلب يدويًا على الرقم <span class="num" style="user-select:all">01274577688</span></p>
+          <button type="button" class="btn ghost" id="o-copy">انسخ نص الطلب</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-green.png" alt="ثمرات Thamarat">
+    <div>
+      <p class="addr">41 ش بهاء الدين الغتوري - سموحة - الإسكندرية</p>
+      <p>أمام محطة سيدي جابر · مقرات بمحافظتي الإسكندرية والمنيا</p>
+    </div>
+    <div class="fcontact"><p>واتساب خدمة العملاء</p><p class="site" style="user-select:all">01274577688</p><p class="site">thamarat.com</p></div>
+    <nav class="flinks" aria-label="روابط الموقع"><a href="#home">الرئيسية</a><a href="#about">من نحن</a><a href="#works">سابقة الأعمال</a><a href="#minya">ليه غرب المنيا</a><a href="#palms">الأصناف</a><a href="#calc">دراسة الجدوى</a><a href="#order">طلب شراء</a></nav>
+    <p class="legal">شركة ثمرات للاستثمار والتنمية الزراعية · سجل تجاري وبطاقة ضريبية مسجلة. دراسات الجدوى المعروضة استرشادية وليست التزامًا بعائد محدد.</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- nav ---------- */
+const nav=$('#nav');
+let route='home';
+const onScroll=()=>nav.classList.toggle('solid',scrollY>40||route!=='home');
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* ---------- 3D medallion: stacked layers give it real thickness ---------- */
+const coin=$('#coin');
+const DEPTH=14;
+for(let i=0;i<DEPTH;i++){const l=document.createElement('div');l.className='layer';l.style.transform=`translateZ(${i}px)`;l.style.filter=`brightness(${.62+i*.018})`;coin.appendChild(l)}
+coin.insertAdjacentHTML('beforeend',`<div class="face"><img src="assets/logo-green.png" alt=""></div><div class="ring"></div><div class="shadow"></div>`);
+let tx=0,ty=0,cx=0,cy=0,sp=1;
+const stage=$('#stage');
+addEventListener('pointermove',e=>{
+  const r=stage.getBoundingClientRect();
+  tx=((e.clientX-(r.left+r.width/2))/innerWidth)*50;
+  ty=-((e.clientY-(r.top+r.height/2))/innerHeight)*36;
+},{passive:true});
+function tick(t){
+  const idleY=reduce?0:Math.sin(t/2600)*14, idleX=reduce?0:Math.cos(t/3300)*6;
+  const scrollP=Math.min(1,scrollY/(innerHeight*.9));
+  cx+=(tx+idleY-cx)*.06; cy+=(ty+idleX-cy)*.06;
+  const spin=scrollP*140;
+  coin.style.setProperty('--ry',(cx+spin)+'deg');
+  coin.style.setProperty('--rx',(cy+scrollP*18)+'deg');
+  coin.style.setProperty('--s',(1-scrollP*.25).toFixed(3));
+  coin.querySelector('.face').style.setProperty('--shine',(-60+(cx+spin)*2.2)+'%');
+  stage.style.opacity=(1-scrollP*.9).toFixed(3);
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+/* ---------- ambient grove canvas: drifting light motes + palm silhouettes ---------- */
+const cv=$('#grove'),ctx=cv.getContext('2d');
+let W,H,motes=[];
+function palm(x,base,h,sway){
+  ctx.save();ctx.translate(x,base);
+  ctx.strokeStyle='rgba(47,122,76,.28)';ctx.lineWidth=h*.035;ctx.lineCap='round';
+  ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(h*.12+sway,-h*.5,h*.06+sway,-h);ctx.stroke();
+  ctx.translate(h*.06+sway,-h);
+  ctx.fillStyle='rgba(47,122,76,.22)';
+  for(let i=0;i<9;i++){const a=-Math.PI*.95+i*(Math.PI*.95/8)+sway*.004;
+    ctx.save();ctx.rotate(a);ctx.beginPath();ctx.moveTo(0,0);
+    ctx.quadraticCurveTo(h*.22,-h*.09,h*.42,h*.06);ctx.quadraticCurveTo(h*.22,-h*.02,0,0);ctx.fill();ctx.restore();}
+  ctx.restore();
+}
+function size(){const d=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);
+  motes=Array.from({length:Math.round(W/14)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.4,v:Math.random()*.25+.08,p:Math.random()*6}))}
+function draw(t){
+  ctx.clearRect(0,0,W,H);
+  const sw=reduce?0:Math.sin(t/1800)*6;
+  palm(W*.08,H*1.02,H*.62,sw);palm(W*.18,H*1.05,H*.45,-sw*.8);palm(W*.93,H*1.03,H*.55,sw*.7);
+  for(const m of motes){m.y-=reduce?0:m.v;m.x+=reduce?0:Math.sin(t/2000+m.p)*.15;if(m.y<-4){m.y=H+4;m.x=Math.random()*W}
+    ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,7);ctx.fillStyle=`rgba(185,220,176,${.18+.22*Math.sin(t/900+m.p)**2})`;ctx.fill()}
+  if(!reduce||t===0)requestAnimationFrame(draw);
+}
+size();addEventListener('resize',size);requestAnimationFrame(draw);
+
+/* ---------- reveal on scroll (only for elements below the first screen) ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+function prep(page){if(reduce)return;page.querySelectorAll('.rv').forEach((el,i)=>{el.classList.remove('pre');if(el.getBoundingClientRect().top>innerHeight){el.classList.add('pre');el.style.transitionDelay=((i%3)*90)+'ms';io.observe(el)}})}
+
+/* ---------- router: each page lives behind a #hash ---------- */
+const pages=$$('.page'),menu=$('#menu'),burger=$('#burger');
+const TITLES={home:'ثمرات للاستثمار الزراعي',about:'من نحن · ثمرات',works:'سابقة الأعمال · ثمرات',minya:'ليه غرب المنيا · ثمرات',palms:'الأصناف · ثمرات',calc:'دراسة الجدوى · ثمرات',order:'طلب شراء · ثمرات'};
+function go(){
+  let r=location.hash.slice(1)||'home';
+  if(!pages.some(p=>p.dataset.page===r))r='home';
+  route=r;
+  pages.forEach(p=>{p.hidden=p.dataset.page!==r});
+  $$('[data-link]').forEach(a=>a.classList.toggle('on',a.dataset.link===r&&a.closest('ul')));
+  nav.classList.remove('open');burger.setAttribute('aria-expanded','false');
+  document.title=TITLES[r];
+  window.scrollTo({top:0,behavior:'instant'});
+  onScroll();
+  const p=pages.find(p=>p.dataset.page===r);
+  requestAnimationFrame(()=>prep(p));
+  if(r==='order')orderRefresh&&orderRefresh();
+}
+burger.onclick=()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)};
+addEventListener('hashchange',go);
+
+/* salinity bars + counters animate when visible */
+const salt=$('#salt');
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){salt.querySelectorAll('i').forEach(i=>i.style.width=(i.dataset.w/4000*100)+'%');o.disconnect()}}).observe(salt);
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+$$('[data-count]').forEach(el=>{
+  const end=+el.dataset.count;
+  new IntersectionObserver((es,o)=>{if(!es[0].isIntersecting||reduce)return;o.disconnect();const t0=performance.now();
+    const step=t=>{const p=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-p,3);el.textContent=fmt(end*e);if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}).observe(el);
+});
+
+/* ---------- feasibility model (per feddan, from the company's studies) ---------- */
+const PALMS=60, MGMT=.25, GROW=.20;
+const ORD=['الأولى','الثانية','الثالثة','الرابعة','الخامسة','السادسة','السابعة','الثامنة','التاسعة','العاشرة'];
+const V={
+  majdoul:{name:'المجدول',land:600000,price:180,offPrice:3000,
+    care:[25000,25000,25000,35000,35000,50000,65000,65000,65000,65000],
+    kg:[0,0,0,5,15,30,50,60,70,70], off:[0,0,0,1,3,3,3,2,0,0]},
+  barhi:{name:'البرحي',land:600000,price:40,offPrice:2500,
+    care:[25000,25000,25000,35000,35000,50000,65000,65000,65000,65000],
+    kg:[0,0,15,35,50,80,120,160,210,250], off:[0,0,0,1,3,3,3,2,0,0]},
+  siwi:{name:'السيوي',land:300000,price:35,offPrice:300,
+    care:[25000,25000,25000,27000,27000,27000,29000,29000,29000,29000],
+    kg:[0,0,0,15,60,120,150,150,150,150], off:[0,0,0,2,2,2,2,2,2,2]}
+};
+function model(key,f){
+  const v=V[key],palms=PALMS*f;let cum=0,pre=0,payback=null,firstYear=null,best=0;
+  const rows=v.care.map((c,i)=>{
+    const care=c*f,dates=v.kg[i]*palms*v.price,offs=v.off[i]*palms*v.offPrice,rev=dates+offs,profit=rev-care;
+    const net=profit>0?profit*(1-MGMT):profit;
+    if(rev===0)pre+=care; else if(firstYear===null)firstYear=i;
+    cum+=net;best=Math.max(best,net);
+    return {i,care,kg:v.kg[i],dates,off:v.off[i],offs,rev,profit,net,cum};
+  });
+  const landCost=v.land*f,cost=landCost+pre,netSum=cum;
+  const land=[];let val=landCost;for(let i=0;i<10;i++){const inc=val*GROW;land.push({i,val,inc,tot:val+inc});val+=inc}
+  const landAfter=val,gain=netSum+landAfter-cost,roi=gain/cost;
+  rows.forEach(r=>{if(payback===null&&r.cum>=cost)payback=r.i});
+  return {v,f,palms,rows,pre,landCost,cost,netSum,land,landAfter,gain,roi,payback,firstYear,best};
+}
+
+/* ---------- UI ---------- */
+let key='majdoul',area=5;
+const areaIn=$('#area'),slider=$('#slider'),err=$('#err');
+const money=n=>Math.round(n).toLocaleString('en-US');
+const sgn=n=>n<0?'-'+money(-n):money(n);
+const fnum=n=>(+n.toFixed(2)).toLocaleString('en-US',{maximumFractionDigits:2});
+function parseArea(s){
+  s=String(s).trim().replace(/[٠-٩]/g,d=>'٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[٫,،]/g,'.');
+  if(/^\d+\s*\/\s*\d+$/.test(s)){const[a,b]=s.split('/').map(Number);return b?a/b:NaN}
+  return s===''?NaN:Number(s);
+}
+function setArea(a,from){
+  if(!(a>0)){err.textContent='اكتب مساحة أكبر من صفر — مثلًا 2.5';err.hidden=false;return}
+  if(a>100000){err.textContent='المساحة أكبر من المتاح في المشروعات — جرّب رقم أصغر';err.hidden=false;return}
+  err.hidden=true;area=Math.round(a*10000)/10000;
+  if(from!=='input')areaIn.value=fnum(area);
+  if(from!=='slider')slider.value=Math.min(100,area);
+  $$('#presets button').forEach(b=>b.classList.toggle('on',+b.dataset.a===area));
+  render();
+}
+areaIn.addEventListener('input',()=>setArea(parseArea(areaIn.value),'input'));
+areaIn.addEventListener('blur',()=>{if(!err.hidden)return;areaIn.value=fnum(area)});
+slider.addEventListener('input',()=>setArea(+slider.value,'slider'));
+$('#plus').onclick=()=>setArea(Math.floor(area*2+1e-9)/2+.5);
+$('#minus').onclick=()=>setArea(Math.max(.5,Math.ceil(area*2-1e-9)/2-.5));
+$$('#presets button').forEach(b=>b.onclick=()=>setArea(+b.dataset.a));
+$$('.seg button').forEach(b=>b.onclick=()=>{key=b.dataset.v;$$('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+
+function render(){
+  const m=model(key,area),v=m.v,F=fnum(area);
+  $('#unit').innerHTML=`<b>${fnum(m.palms)}</b> نخلة · ${fnum(area*24)} قيراط · ${money(area*4200.83)} م²`;
+  $('#assume').innerHTML=`
+    <div><span>سعر الفدان</span><b>${money(v.land)} ج</b></div>
+    <div><span>سعر كيلو ${v.name}</span><b>${v.price} ج</b></div>
+    <div><span>سعر الفسيلة</span><b>${money(v.offPrice)} ج</b></div>
+    <div><span>عدد الفسائل للفدان</span><b>${PALMS}</b></div>
+    <div><span>نسبة إدارة الشركة من الأرباح</span><b>25%</b></div>
+    <div><span>زيادة قيمة الأرض سنويًا</span><b>20%</b></div>`;
+  $('#k-roi').textContent=Math.round(m.roi*100).toLocaleString('en-US')+'%';
+  $('#k-cost').textContent=money(m.cost);
+  $('#k-profit').textContent=money(m.netSum);
+  $('#k-land').textContent=money(m.landAfter);
+  $('#k-gain').textContent=money(m.gain);
+
+  $('#t-title').textContent=`دراسة استرشادية لأرباح ${F} فدان ${v.name}`;
+  $('#t-sub').textContent=`زراعة ${F} فدان ${v.name}، بمتوسط ${PALMS} فسيلة في كل فدان (إجمالي ${fnum(m.palms)} فسيلة) · المدة: 10 سنوات`;
+  const na='<td class="na">لا يوجد</td>';
+  let h=`<thead><tr><th>سنة الزراعة</th><th>الرعاية السنوية</th><th>متوسط إنتاج النخلة (كجم)</th><th>سعر الكيلو</th><th>إجمالي إيرادات التمور</th><th>عدد الفسائل لكل نخلة</th><th>سعر الفسيلة</th><th>إيرادات الفسائل</th><th>إجمالي الإيرادات</th><th>إجمالي الربح</th><th>الأرباح السنوية بعد خصم نسبة إدارة الشركة</th></tr></thead><tbody>`;
+  m.rows.forEach((r,i)=>{
+    if(i===0)h+=`<tr class="phase"><td colspan="11">مرحلة النمو (قبل التبشير)</td></tr>`;
+    if(i===m.firstYear)h+=`<tr class="phase"><td colspan="11">مرحلة الإنتاج</td></tr>`;
+    const grow=r.rev===0;
+    h+=`<tr><td>${ORD[i]}</td><td>${money(r.care)}</td>`+
+      (grow?`<td>-</td>${na}${na}${na}${na}${na}`:`<td>${r.kg}</td><td>${v.price}</td><td>${money(r.dates)}</td><td>${r.off||'-'}</td><td>${money(v.offPrice)}</td><td>${money(r.offs)}</td>`)+
+      `<td>${money(r.rev)}</td><td class="${r.profit<0?'neg':''}">${sgn(r.profit)}</td><td class="net ${r.net<0?'neg':''}">${sgn(r.net)}</td></tr>`;
+  });
+  h+=`</tbody><tfoot><tr><td colspan="10">إجمالي أرباح التمور والفسائل بعد خصم نسبة إدارة الشركة خلال عشر سنوات</td><td>${money(m.netSum)}</td></tr></tfoot>`;
+  $('#yearly').innerHTML=h;
+
+  $('#land-sub').textContent=`سعر ${F} فدان: ${money(m.landCost)} جنيه`;
+  let l=`<thead><tr><th>السنة</th><th>سعر الأرض</th><th>نسبة الزيادة</th><th>الزيادة</th><th>الإجمالي</th></tr></thead><tbody>`;
+  m.land.forEach(r=>l+=`<tr><td>${ORD[r.i]}</td><td>${money(r.val)}</td><td>20%</td><td>${money(r.inc)}</td><td class="net">${money(r.tot)}</td></tr>`);
+  $('#landt').innerHTML=l+'</tbody>';
+
+  $('#sum-sub').textContent=`${F} فدان ${v.name}`;
+  $('#sumlist').innerHTML=`
+    <div><span>ثمن شراء ${F} فدان</span><b>${money(m.landCost)}</b></div>
+    <div><span>مصروفات وتكاليف حتى التبشير</span><b>${money(m.pre)}</b></div>
+    <div><span>إجمالي التكلفة حتى التبشير</span><b>${money(m.cost)}</b></div>
+    <div><span>صافي ربح التمور والفسائل بعد 10 سنوات</span><b>${money(m.netSum)}</b></div>
+    <div><span>قيمة الأرض بعد 10 سنوات</span><b>${money(m.landAfter)}</b></div>
+    <div><span>صافي ربح الأرض بعد 10 سنوات</span><b>${money(m.gain)}</b></div>
+    <div><span>بداية التبشير (أول إنتاج)</span><b>السنة ${ORD[m.firstYear]}</b></div>
+    <div><span>استرداد التكلفة من أرباح المحصول</span><b>${m.payback===null?'بعد السنة العاشرة':'السنة '+ORD[m.payback]}</b></div>
+    <div class="hi"><span>معدل العائد على الاستثمار</span><b>${Math.round(m.roi*100).toLocaleString('en-US')}%</b></div>`;
+
+  drawChart(m);
+  $('#compare').innerHTML=Object.keys(V).map(k=>{const c=model(k,area);return `<div class="${k===key?'on':''}"><h4>${c.v.name}</h4>
+    <p><span>التكلفة</span><b>${money(c.cost)}</b></p><p><span>صافي الأرباح</span><b>${money(c.netSum)}</b></p>
+    <p><span>قيمة الأرض</span><b>${money(c.landAfter)}</b></p><p><span>العائد</span><b>${Math.round(c.roi*100)}%</b></p></div>`}).join('');
+  last=m;
+}
+
+function drawChart(m){
+  const svg=$('#chart'),Wd=760,Hd=280,L=78,R=20,T=18,B=40;
+  const vals=m.rows.map(r=>r.cum),mx=Math.max(m.cost,...vals),mn=Math.min(0,...vals);
+  const step=niceStep((mx-mn)/4);const top=Math.ceil(mx/step)*step,bot=Math.floor(mn/step)*step;
+  const y=v=>T+(top-v)/(top-bot)*(Hd-T-B), bw=(Wd-L-R)/10;
+  let s='';
+  for(let t=bot;t<=top+1e-6;t+=step){s+=`<line x1="${L}" x2="${Wd-R}" y1="${y(t)}" y2="${y(t)}" stroke="var(--canopy)" stroke-width="${t===0?1.5:1}"/><text x="${L-8}" y="${y(t)+4}" text-anchor="end">${short(t)}</text>`}
+  m.rows.forEach((r,i)=>{const x=L+i*bw+bw*.18,w=bw*.64,y0=y(0),y1=y(r.cum);
+    s+=`<rect x="${x}" y="${Math.min(y0,y1)}" width="${w}" height="${Math.max(1,Math.abs(y1-y0))}" rx="4" fill="${r.cum<0?'var(--loss)':(m.payback!==null&&i>=m.payback?'var(--leaf)':'var(--frond)')}"><title>السنة ${ORD[i]}: ${sgn(r.cum)} ج</title></rect>`;
+    s+=`<text x="${x+w/2}" y="${Hd-B+18}" text-anchor="middle">${i+1}</text>`});
+  const yc=y(m.cost);
+  s+=`<line x1="${L}" x2="${Wd-R}" y1="${yc}" y2="${yc}" stroke="var(--sprout)" stroke-dasharray="5 5"/><text x="${Wd-R}" y="${yc-7}" text-anchor="end" style="fill:var(--sprout)">إجمالي التكلفة ${short(m.cost)}</text>`;
+  s+=`<text x="${(Wd+L)/2}" y="${Hd-4}" text-anchor="middle">السنة</text>`;
+  svg.innerHTML=s;
+  $('#chartsub').textContent=`صافي الأرباح بعد خصم نسبة إدارة الشركة، متراكمة سنة بعد سنة. الأعمدة الفاتحة = السنوات بعد استرداد إجمالي التكلفة.`;
+}
+function niceStep(x){const p=Math.pow(10,Math.floor(Math.log10(x||1))),n=x/p;return (n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p}
+function short(v){const a=Math.abs(v),s=v<0?'-':'';if(a>=1e6)return s+(+(a/1e6).toFixed(2))+' مليون';if(a>=1e3)return s+(+(a/1e3).toFixed(0))+' ألف';return s+a}
+
+let last;
+$('#copy').onclick=async()=>{
+  const m=last;
+  const txt=`دراسة جدوى استرشادية — ثمرات للاستثمار والتنمية الزراعية
+${fnum(m.f)} فدان ${m.v.name} (${fnum(m.palms)} نخلة)
+إجمالي التكلفة حتى التبشير: ${money(m.cost)} ج
+صافي أرباح التمور والفسائل (10 سنوات): ${money(m.netSum)} ج
+قيمة الأرض بعد 10 سنوات: ${money(m.landAfter)} ج
+صافي العائد الإجمالي: ${money(m.gain)} ج
+معدل العائد على الاستثمار: ${Math.round(m.roi*100)}%
+41 ش بهاء الدين الغتوري - سموحة - الإسكندرية`;
+  try{await navigator.clipboard.writeText(txt);toast('اتنسخ الملخص')}catch(e){toast('النسخ مش متاح هنا — حدد الأرقام وانسخها يدويًا')}
+};
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),2200)}
+
+/* ---------- order form → WhatsApp ---------- */
+const WA='201274577688';
+const of=$('#oform'),send=$('#o-send'),oerr=$('#o-err');
+const VK={'مجدول':'majdoul','برحي':'barhi','سيوي':'siwi'};
+const val=n=>{const el=of.elements[n];return (el&&el.value||'').trim()};
+const radio=n=>(of.querySelector(`input[name="${n}"]:checked`)||{}).value||'';
+function orderData(){
+  const a=parseArea(val('area')),v=radio('variety'),k=VK[v];
+  const m=(k&&a>0)?model(k,a):null;
+  return {name:val('name'),phone:val('phone'),wa:val('wa'),email:val('email'),city:val('city'),job:val('job'),variety:v,area:a,
+    project:val('project'),pay:radio('pay'),time:val('time'),visit:val('visit'),notes:val('notes'),m};
+}
+function message(d){
+  const L=['*طلب شراء جديد — موقع ثمرات*','',
+  '*بيانات العميل*','الاسم: '+d.name,'الموبايل: '+d.phone];
+  if(d.wa)L.push('واتساب: '+d.wa);
+  if(d.email)L.push('البريد: '+d.email);
+  L.push('المحافظة / المدينة: '+d.city);
+  if(d.job)L.push('المهنة: '+d.job);
+  L.push('','*تفاصيل الطلب*','الصنف: '+d.variety,'المساحة: '+fnum(d.area)+' فدان ('+fnum(d.area*24)+' قيراط)','المشروع المفضّل: '+d.project,'طريقة الدفع: '+d.pay);
+  if(d.m)L.push('عدد النخل: '+fnum(d.m.palms)+' نخلة','التكلفة التقديرية حتى التبشير: '+money(d.m.cost)+' ج.م','العائد التقديري خلال 10 سنوات: '+Math.round(d.m.roi*100)+'%');
+  L.push('','*التواصل*','أنسب وقت: '+d.time,'زيارة المزرعة: '+d.visit);
+  if(d.notes)L.push('ملاحظات: '+d.notes);
+  return L.join('\n');
+}
+function problems(d){
+  const p=[];
+  if(d.name.length<3)p.push(['name','اكتب الاسم بالكامل']);
+  const digits=d.phone.replace(/[^\d٠-٩]/g,'');
+  if(digits.length<10||digits.length>15)p.push(['phone','اكتب رقم موبايل صحيح (مثال 01012345678)']);
+  if(d.city.length<2)p.push(['city','اكتب المحافظة أو المدينة']);
+  if(!(d.area>0))p.push(['area','اكتب المساحة بالفدان (مثال 5 أو 2.5)']);
+  return p;
+}
+function orderRefresh(){
+  const d=orderData();
+  send.href='https://wa.me/'+WA+'?text='+encodeURIComponent(message(d));
+  const hint=$('#o-area-hint');
+  hint.textContent=d.area>0?`= ${fnum(d.area*24)} قيراط · ${fnum(d.area*60)} نخلة`:'';
+  if(d.project.startsWith('الماسة')&&d.area>0&&d.area<50)hint.textContent+=' · مشروع الماسة بيبدأ من 50 فدان';
+  const rows=[['الاسم',d.name||'—'],['الموبايل',d.phone||'—'],['الصنف',d.variety],['المساحة',d.area>0?fnum(d.area)+' فدان':'—'],['المشروع',d.project],['طريقة الدفع',d.pay]];
+  if(d.m)rows.push(['التكلفة التقديرية',money(d.m.cost)+' ج.م'],['العائد التقديري (10 سنوات)',Math.round(d.m.roi*100)+'%']);
+  $('#o-summary').innerHTML=rows.map(([a,b])=>`<div><span>${a}</span><b></b></div>`).join('');
+  $$('#o-summary b').forEach((b,i)=>b.textContent=rows[i][1]);
+}
+of.addEventListener('input',()=>{orderRefresh();$$('.oform .bad').forEach(x=>x.classList.remove('bad'));oerr.hidden=true});
+of.addEventListener('change',orderRefresh);
+of.addEventListener('submit',e=>e.preventDefault());
+send.addEventListener('click',e=>{
+  orderRefresh();
+  const d=orderData(),p=problems(d);
+  if(p.length){e.preventDefault();p.forEach(([n])=>of.elements[n].classList.add('bad'));oerr.textContent=p.map(x=>x[1]).join(' · ');oerr.hidden=false;of.elements[p[0][0]].focus();return}
+  $('#o-thanks').hidden=false;
+  setTimeout(()=>$('#osum').scrollIntoView({behavior:'smooth',block:'start'}),300);
+});
+$('#o-copy').onclick=async()=>{try{await navigator.clipboard.writeText(message(orderData()));toast('اتنسخ نص الطلب')}catch(e){toast('النسخ مش متاح هنا')}};
+$('#toorder').addEventListener('click',()=>{
+  const map={majdoul:'مجدول',barhi:'برحي',siwi:'سيوي'};
+  const r=of.querySelector(`input[name="variety"][value="${map[key]}"]`);if(r)r.checked=true;
+  of.elements.area.value=fnum(area);
+});
+
+setArea(5);
+go();
+})();
+</script>
+
+</body>
+</html>
