@@ -303,7 +303,7 @@ input[type=range]{width:100%;accent-color:var(--leaf);margin-top:12px}
 .chart{width:100%;height:auto;display:block}
 .chart text{font-family:var(--body);fill:var(--muted);font-size:11px}
 .tablebox{overflow-x:auto;border-radius:12px;border:1px solid var(--canopy)}
-table.t{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px}
+table.t{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
 table.t th{background:var(--canopy);color:var(--mist);font-weight:600;padding:10px 8px;text-align:center;font-size:12.5px;line-height:1.4}
 table.t td{padding:9px 8px;text-align:center;border-top:1px solid var(--canopy);font-variant-numeric:tabular-nums}
 table.t td:first-child{text-align:start;font-weight:600;color:var(--sprout)}
@@ -1174,16 +1174,16 @@ function render(){
   $('#t-title').textContent=`دراسة استرشادية لأرباح ${F} فدان ${v.name}`;
   $('#t-sub').textContent=`زراعة ${F} فدان ${v.name}، بمتوسط ${PALMS} فسيلة في كل فدان (إجمالي ${fnum(m.palms)} فسيلة) · المدة: 10 سنوات`;
   const na='<td class="na">لا يوجد</td>';
-  let h=`<thead><tr><th>سنة الزراعة</th><th>الرعاية السنوية</th><th>متوسط إنتاج النخلة (كجم)</th><th>سعر الكيلو</th><th>إجمالي إيرادات التمور</th><th>عدد الفسائل لكل نخلة</th><th>سعر الفسيلة</th><th>إيرادات الفسائل</th><th>إجمالي الإيرادات</th><th>إجمالي الربح</th><th>الأرباح السنوية بعد خصم نسبة إدارة الشركة</th></tr></thead><tbody>`;
+  let h=`<thead><tr><th>سنة الزراعة</th><th>الرعاية السنوية</th><th>متوسط إنتاج النخلة (كجم)</th><th>سعر الكيلو</th><th>إجمالي إيرادات التمور</th><th>عدد الفسائل لكل نخلة</th><th>سعر الفسيلة</th><th>إيرادات الفسائل</th><th>إجمالي الإيرادات</th><th>إجمالي الربح</th></tr></thead><tbody>`;
   m.rows.forEach((r,i)=>{
-    if(i===0)h+=`<tr class="phase"><td colspan="11">مرحلة النمو (قبل التبشير)</td></tr>`;
-    if(i===m.firstYear)h+=`<tr class="phase"><td colspan="11">مرحلة الإنتاج</td></tr>`;
+    if(i===0)h+=`<tr class="phase"><td colspan="10">مرحلة النمو (قبل التبشير)</td></tr>`;
+    if(i===m.firstYear)h+=`<tr class="phase"><td colspan="10">مرحلة الإنتاج</td></tr>`;
     const grow=r.rev===0;
     h+=`<tr><td>${ORD[i]}</td><td>${money(r.care)}</td>`+
       (grow?`<td>-</td>${na}${na}${na}${na}${na}`:`<td>${r.kg}</td><td>${v.price}</td><td>${money(r.dates)}</td><td>${r.off||'-'}</td><td>${money(v.offPrice)}</td><td>${money(r.offs)}</td>`)+
-      `<td>${money(r.rev)}</td><td class="${r.profit<0?'neg':''}">${sgn(r.profit)}</td><td class="net ${r.net<0?'neg':''}">${sgn(r.net)}</td></tr>`;
+      `<td>${money(r.rev)}</td><td class="net ${r.profit<0?'neg':''}">${sgn(r.profit)}</td></tr>`;
   });
-  h+=`</tbody><tfoot><tr><td colspan="10">إجمالي أرباح التمور والفسائل بعد خصم نسبة إدارة الشركة خلال عشر سنوات</td><td>${money(m.netSum)}</td></tr></tfoot>`;
+  h+=`</tbody><tfoot><tr><td colspan="9">إجمالي أرباح التمور والفسائل بعد خصم نسبة إدارة الشركة خلال عشر سنوات</td><td>${money(m.netSum)}</td></tr></tfoot>`;
   $('#yearly').innerHTML=h;
 
   $('#land-sub').textContent=`سعر ${F} فدان: ${money(m.landCost)} جنيه`;
