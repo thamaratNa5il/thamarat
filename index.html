@@ -843,7 +843,7 @@ footer .flinks a:hover{text-decoration:underline}
 
       <div class="results" aria-live="polite">
         <div class="kpis">
-          <div class="kpi roi"><div class="pct num" id="k-roi">0%</div><div><span>معدل العائد على الاستثمار خلال 10 سنوات</span><span class="eq">(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة</span></div></div>
+          <div class="kpi roi"><div class="pct num" id="k-roi">0%</div><div><span>معدل العائد على الاستثمار خلال 10 سنوات</span><span class="eq" id="k-eq">(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة</span></div></div>
           <div class="kpi"><span>إجمالي التكلفة حتى التبشير</span><b id="k-cost">—</b><small>ج.م</small></div>
           <div class="kpi"><span>صافي ربح التمور والفسائل</span><b id="k-profit">—</b><small>ج.م · 10 سنوات</small></div>
           <div class="kpi"><span>قيمة الأرض بعد 10 سنوات</span><b id="k-land">—</b><small>ج.م</small></div>
@@ -1107,7 +1107,7 @@ const V={
   barhi:{name:'البرحي',land:600000,price:40,offPrice:2500,
     care:[25000,25000,25000,35000,35000,50000,65000,65000,65000,65000],
     kg:[0,0,15,35,50,80,120,160,210,250], off:[0,0,0,1,3,3,3,2,0,0]},
-  siwi:{name:'السيوي',land:350000,price:35,offPrice:300,
+  siwi:{name:'السيوي',roiOnLand:true,land:350000,price:35,offPrice:300,
     care:[25000,25000,25000,27000,27000,27000,29000,29000,29000,29000],
     kg:[0,0,0,15,60,120,150,150,150,150], off:[0,0,0,2,2,2,2,2,2,2]}
 };
@@ -1122,9 +1122,12 @@ function model(key,f){
   });
   const landCost=v.land*f,cost=landCost+pre,netSum=cum;
   const land=[];let val=landCost;for(let i=0;i<10;i++){const inc=val*GROW;land.push({i,val,inc,tot:val+inc});val+=inc}
-  const landAfter=val,gain=netSum+landAfter-cost,roi=gain/cost;
+  const landAfter=val,gain=netSum+landAfter-cost;
+  /* السيوي: النسبة محسوبة على ثمن الأرض زي ملف الدراسة */
+  const roi=v.roiOnLand?(netSum+landAfter)/landCost:gain/cost;
+  const roiDates=netSum/landCost,roiLand=landAfter/landCost;
   rows.forEach(r=>{if(payback===null&&r.cum>=cost)payback=r.i});
-  return {v,f,palms,rows,pre,landCost,cost,netSum,land,landAfter,gain,roi,payback,firstYear,best};
+  return {v,f,palms,rows,pre,landCost,cost,netSum,land,landAfter,gain,roi,roiDates,roiLand,payback,firstYear,best};
 }
 
 /* ---------- UI ---------- */
@@ -1165,6 +1168,7 @@ function render(){
     <div><span>عدد الفسائل للفدان</span><b>${PALMS}</b></div>
     <div><span>نسبة إدارة الشركة من الأرباح</span><b>25%</b></div>
     <div><span>زيادة قيمة الأرض سنويًا</span><b>20%</b></div>`;
+  $('#k-eq').textContent=v.roiOnLand?'(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض) ÷ ثمن شراء الأرض':'(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة';
   $('#k-roi').textContent=Math.round(m.roi*100).toLocaleString('en-US')+'%';
   $('#k-cost').textContent=money(m.cost);
   $('#k-profit').textContent=money(m.netSum);
@@ -1197,7 +1201,9 @@ function render(){
     <div><span>مصروفات وتكاليف حتى التبشير</span><b>${money(m.pre)}</b></div>
     <div><span>إجمالي التكلفة حتى التبشير</span><b>${money(m.cost)}</b></div>
     <div><span>صافي ربح التمور والفسائل بعد 10 سنوات</span><b>${money(m.netSum)}</b></div>
+${v.roiOnLand?`<div><span>معدل العائد على الاستثمار (تمور وفسائل)</span><b>${Math.round(m.roiDates*100)}%</b></div>`:''}
     <div><span>قيمة الأرض بعد 10 سنوات</span><b>${money(m.landAfter)}</b></div>
+    ${v.roiOnLand?`<div><span>معدل العائد على الاستثمار (أرض)</span><b>${Math.round(m.roiLand*100)}%</b></div>`:''}
     <div><span>صافي ربح الأرض بعد 10 سنوات</span><b>${money(m.gain)}</b></div>
     <div><span>بداية التبشير (أول إنتاج)</span><b>السنة ${ORD[m.firstYear]}</b></div>
     <div><span>استرداد التكلفة من أرباح المحصول</span><b>${m.payback===null?'بعد السنة العاشرة':'السنة '+ORD[m.payback]}</b></div>
