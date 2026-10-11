@@ -9,5 +9,9 @@
     "binding": "ASSETS",
     "not_found_handling": "404-page",
     "run_worker_first": ["/api/*"]
-  }
+  },
+  // حد أقصى 12 رسالة في الدقيقة لكل زائر علشان نحمي رصيد الـ API
+  "ratelimits": [
+    { "name": "CHAT_LIMIT", "namespace_id": "4521", "simple": { "limit": 12, "period": 60 } }
+  ]
 }
