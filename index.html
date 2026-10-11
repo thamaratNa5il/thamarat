@@ -1157,6 +1157,9 @@ $('#plus').onclick=()=>setArea(Math.floor(area*2+1e-9)/2+.5);
 $('#minus').onclick=()=>setArea(Math.max(.5,Math.ceil(area*2-1e-9)/2-.5));
 $$('#presets button').forEach(b=>b.onclick=()=>setArea(+b.dataset.a));
 $$('.seg button').forEach(b=>b.onclick=()=>{key=b.dataset.v;$$('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+/* used by the chat assistant (assets/chatbot.js): same math as the calculator, and opening a study in it */
+window.thamaratModel=model;
+window.thamaratSetCalc=(k,a)=>{if(!V[k])return;key=k;$$('.seg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===k));setArea(a)};
 
 function render(){
   const m=model(key,area),v=m.v,F=fnum(area);
@@ -1316,6 +1319,7 @@ setArea(5);
 go();
 })();
 </script>
+<script type="module" src="assets/chatbot.js"></script>
 
 </body>
 </html>

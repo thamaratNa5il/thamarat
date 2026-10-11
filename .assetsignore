@@ -4,3 +4,7 @@ README.md
 wrangler.jsonc
 .assetsignore
 .nojekyll
+worker.js
+node_modules
+.wrangler
+.dev.vars
