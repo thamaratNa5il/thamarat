@@ -407,6 +407,25 @@ footer .fcontact p{font-size:13.5px}
 footer .flinks{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 18px}
 footer .flinks a{font-size:14px;text-decoration:none;color:#cfe6d3}
 footer .flinks a:hover{text-decoration:underline}
+/* our locations (footer) */
+footer .locs{grid-column:1/-1;max-width:560px;width:100%;justify-self:start}
+footer .locs h3{font:600 18px var(--display);color:#eef6ea;margin:0 0 14px}
+.hq{border:1px solid #3d6a4c;border-radius:18px;background:rgba(255,255,255,.035);overflow:hidden}
+.hq summary{list-style:none;display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer}
+.hq summary::-webkit-details-marker{display:none}
+.hq .pin{width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;background:#24513a;color:#cfe6d3}
+.hq .pin svg{width:20px;height:20px}
+.hq .lt{flex:1;min-width:0}
+.hq .lt b{display:block;font:600 16px var(--display);color:#eef6ea}
+.hq .lt small{display:block;font-size:12.5px;color:#b7cfbd;line-height:1.6}
+.hq .chev{width:20px;height:20px;flex:none;color:#cfe6d3;transition:transform .25s}
+.hq:not([open]) .chev{transform:rotate(180deg)}
+.hq .lbody{padding:0 16px 16px;display:grid;gap:14px}
+.hq iframe{display:block;width:100%;height:260px;border:0;border-radius:14px;background:#24513a}
+.hq .dir{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:99px;background:#9fd6a8;color:#0e2617;font:600 16px var(--body);text-decoration:none;transition:background .2s,transform .2s}
+.hq .dir:hover{background:#b9e3bf;transform:translateY(-1px)}
+.hq .dir svg{width:18px;height:18px}
+@media (max-width:760px){.hq iframe{height:220px}}
 </style>
 
 <link rel="stylesheet" href="assets/field.css">
@@ -1085,7 +1104,24 @@ footer .flinks a:hover{text-decoration:underline}
       <p>أمام محطة سيدي جابر · مقرات بمحافظتي الإسكندرية والمنيا</p>
     </div>
     <div class="fcontact"><p>واتساب خدمة العملاء</p><p class="site" style="user-select:all">01274577688</p><p class="site">thamarat.com</p></div>
-    <nav class="flinks" aria-label="روابط الموقع"><a href="#home">الرئيسية</a><a href="#about">من نحن</a><a href="#works">سابقة الأعمال</a><a href="#minya">ليه غرب المنيا</a><a href="#palms">الأصناف</a><a href="#field">من أرض الواقع</a><a href="#calc">دراسة الجدوى</a><a href="#order">طلب شراء</a></nav>
+    <div class="locs" id="locations">
+      <h3>مواقعنا</h3>
+      <details class="hq" open>
+        <summary>
+          <span class="pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <span class="lt"><b>مقر الشركة — الإسكندرية</b><small>41 ش بهاء الدين الغتوري - سموحة · أمام محطة سيدي جابر</small></span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg>
+        </summary>
+        <div class="lbody">
+          <iframe title="خريطة مقر شركة ثمرات بالإسكندرية" src="https://www.google.com/maps?q=41+Mohammed+Bahaa+Al+Din+Al+Ghouri,+Ezbet+Saad,+Sidi+Gaber,+Alexandria+Governorate+5432065&hl=ar&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <a class="dir" href="https://www.google.com/maps/dir/?api=1&destination=41+Mohammed+Bahaa+Al+Din+Al+Ghouri,+Ezbet+Saad,+Sidi+Gaber,+Alexandria+Governorate+5432065" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 22 2l-9 19-2-8-8-2z"/></svg>
+            الاتجاهات في خرائط جوجل
+          </a>
+        </div>
+      </details>
+    </div>
+    <nav class="flinks" aria-label="روابط الموقع"><a href="#home">الرئيسية</a><a href="#about">من نحن</a><a href="#works">سابقة الأعمال</a><a href="#minya">ليه غرب المنيا</a><a href="#palms">الأصناف</a><a href="#field">من أرض الواقع</a><a href="#calc">دراسة الجدوى</a><a href="#order">طلب شراء</a><a href="#locations">مواقعنا</a></nav>
     <p class="legal">شركة ثمرات للاستثمار والتنمية الزراعية · سجل تجاري وبطاقة ضريبية مسجلة. دراسات الجدوى المعروضة استرشادية وليست التزامًا بعائد محدد.</p>
     <p class="copy">جميع الحقوق محفوظة · <span dir="ltr">© <span id="cyear">2026</span> Ahmed Mostafa Ghareep</span></p>
   </div>
