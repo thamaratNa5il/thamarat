@@ -425,6 +425,13 @@ footer .flinks a:hover{text-decoration:underline}
 .qa .ans a{color:var(--sprout);font-weight:600}
 .faq-cta{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px}
 .faq-cta p{margin:0;color:var(--muted)}
+.qa .ans .plist{list-style:none;padding:0;margin:8px 0 12px;display:grid;gap:6px}
+.plist li{display:grid;grid-template-columns:8.5em 5.5em 1fr auto;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;background:var(--grove)}
+.plist .pn{font-weight:700;color:var(--ink)}
+.plist .pa{font-variant-numeric:tabular-nums;font-weight:600;color:var(--sprout)}
+.plist .pl{color:var(--muted);font-size:14.5px}
+.plist .ps{font-size:12.5px;font-weight:600;color:var(--on-leaf);background:var(--leaf);padding:2px 10px;border-radius:99px;white-space:nowrap}
+@media (max-width:560px){.plist li{grid-template-columns:1fr auto;row-gap:2px}.plist .pn{grid-area:1/1}.plist .pa{grid-area:1/2}.plist .pl{grid-area:2/1}.plist .ps{grid-area:2/2;justify-self:end}}
 /* social icons (footer) */
 footer .social{display:flex;gap:10px;margin-top:10px}
 footer .social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#24513a;color:#eef6ea;border:1px solid #3d6a4c;transition:background .2s,transform .2s,color .2s}
@@ -1049,7 +1056,7 @@ footer .locs h3{font:600 18px var(--display);color:#eef6ea;margin:0 0 14px}
       <div class="qs">
       <details class="qa"><summary>الأرض تمليك ولا وضع يد؟</summary><div class="ans"><p>كل أراضي الشركة <b>تمليك مباشر من الدولة بعقود رسمية ومستقرة، مش وضع يد</b>، عن طريق شركة الريف المصري ضمن مبادرة استصلاح وزراعة مليون ونصف مليون فدان.</p></div></details>
       <details class="qa"><summary>إيه العقود اللي همضيها؟</summary><div class="ans"><ol><li>عقد الأرض</li><li>عقد الإشراف والرعاية أو المشاركة</li><li>عقد الاستصلاح والزراعة</li><li>عقد التسويق (التعاقد على المحصول)</li></ol><p>والشركة عندها سجل تجاري وبطاقة ضريبية مسجلة قانونيًا.</p></div></details>
-      <details class="qa"><summary>إيه اللي يطمّني أستثمر معاكم؟</summary><div class="ans"><p>سابقة أعمالنا على الأرض: المجموعة عندها <b>5 مشروعات كبرى في غرب المنيا بإجمالي 4,013 فدان</b>، منها <b>1,314 فدان اتسلموا بالكامل</b> لأصحابها:</p><ul><li><b>الراعي</b>: 434 فدان، مركز المنيا (اتسلم بالكامل)</li><li><b>FNS</b>: 880 فدان، غرب ديروط (اتسلم بالكامل)</li><li><b>الروضة الخضراء</b>: 582 فدان، مركز أبو قرقاص</li><li><b>GNA</b>: 486 فدان، مركز المنيا</li><li><b>الماسة</b>: 1,631 فدان، مركز دير مواس</li></ul><p><a href="#works">شوف سابقة الأعمال</a> · <a href="#field">صور وفيديوهات من أرض الواقع</a></p></div></details>
+      <details class="qa"><summary>إيه اللي يطمّني أستثمر معاكم؟</summary><div class="ans"><p>سابقة أعمالنا على الأرض: المجموعة عندها <b>5 مشروعات كبرى في غرب المنيا بإجمالي 4,013 فدان</b>، منها <b>1,314 فدان اتسلموا بالكامل</b> لأصحابها:</p><ul class="plist"><li><span class="pn"><bdi>الراعي</bdi></span><span class="pa"><bdi>434</bdi> فدان</span><span class="pl">مركز المنيا</span><span class="ps">اتسلم بالكامل</span></li><li><span class="pn"><bdi>FNS</bdi></span><span class="pa"><bdi>880</bdi> فدان</span><span class="pl">غرب ديروط</span><span class="ps">اتسلم بالكامل</span></li><li><span class="pn"><bdi>الروضة الخضراء</bdi></span><span class="pa"><bdi>582</bdi> فدان</span><span class="pl">مركز أبو قرقاص</span></li><li><span class="pn"><bdi>GNA</bdi></span><span class="pa"><bdi>486</bdi> فدان</span><span class="pl">مركز المنيا</span></li><li><span class="pn"><bdi>الماسة</bdi></span><span class="pa"><bdi>1,631</bdi> فدان</span><span class="pl">مركز دير مواس</span></li></ul><p><a href="#works">شوف سابقة الأعمال</a> · <a href="#field">صور وفيديوهات من أرض الواقع</a></p></div></details>
       <details class="qa"><summary>هل في ضمان؟</summary><div class="ans"><p>أيوه، <b>ضمان 5 سنين على المزرعة بالكامل</b>، وبنعتمد فسائل منتقاة عالية الجودة بضمان الصنف والنوع لحد الإنتاج.</p></div></details>
       </div>
     </div>
