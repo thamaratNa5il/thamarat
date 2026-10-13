@@ -179,7 +179,7 @@ page.querySelectorAll('.fx-tri button').forEach((b, i) => b.onclick = () => jump
 function onScroll() { if (page.hidden) return; hsScroll(); rail(); }
 addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', () => { if (!page.hidden) { hsLayout(); onScroll(); } });
-addEventListener('hashchange', () => setTimeout(() => { if (!page.hidden) { hsLayout(); onScroll(); } else vids.forEach(v => v.pause()); }, 30));
+addEventListener('routechange', () => setTimeout(() => { if (!page.hidden) { hsLayout(); onScroll(); } else vids.forEach(v => v.pause()); }, 30));
 if (!page.hidden) requestAnimationFrame(() => { hsLayout(); onScroll(); });
 addEventListener('load', () => { if (!page.hidden) { hsLayout(); onScroll(); } });
 track.querySelectorAll('img').forEach(i => i.addEventListener('load', () => !page.hidden && hsLayout(), { once: true }));

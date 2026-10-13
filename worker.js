@@ -74,11 +74,47 @@ async function chat(req, env) {
   return json({ reply: text });
 }
 
+
+/* كل صفحة ليها لينك حقيقي (/faq، /calc …): بنرجّع نفس index.html بعنوان ووصف ومعاينة خاصين بالصفحة،
+   علشان جوجل وواتساب وفيسبوك يشوفوا كل صفحة لوحدها. لازم المسارات دي تبقى في run_worker_first في wrangler.jsonc. */
+const SITE = 'https://thamaratmisr.com';
+const PAGES = {
+  about:   ['من نحن · ثمرات', 'شركة ثمرات للاستثمار والتنمية الزراعية: زراعة وتكاثر أمهات النخيل واستصلاح الأراضي بغرب المنيا، بخبرة مؤسسين في 5 مشروعات كبرى.'],
+  works:   ['سابقة الأعمال · ثمرات', '5 مشروعات في غرب المنيا بإجمالي 4,013 فدان، منها 1,314 فدان اتسلموا بالكامل: الراعي وFNS والروضة الخضراء وGNA والماسة.'],
+  minya:   ['ليه غرب المنيا · ثمرات', 'مياه عذبة، تمليك مباشر من الدولة، تربة خليط، 30 كم من مدينة المنيا وقرب القطار السريع — ليه غرب المنيا أنسب مكان لزراعة النخيل.'],
+  palms:   ['الأصناف · ثمرات', 'المجدول والبرحي والسيوي: مواصفات كل صنف، سوق التمور في مصر، والفرق بين الفسائل وبنت الجورة.'],
+  field:   ['من أرض الواقع · ثمرات', 'صور وفيديوهات حقيقية من مواقعنا في غرب المنيا: استصلاح الأراضي، المشاتل والفسائل، ونخيل مزارعنا المثمر.'],
+  calc:    ['دراسة الجدوى · ثمرات', 'احسب عائد مزرعة نخيل المجدول أو البرحي أو السيوي على أي مساحة: أرباح 10 سنين وقيمة الأرض ومعدل العائد (استرشادي).'],
+  faq:     ['أسئلة شائعة · ثمرات', 'إجابات عن الملكية والعقود والضمان وإدارة المزرعة والزيارة وأقل مساحة والعائد والحجز مع شركة ثمرات.'],
+  order:   ['طلب شراء · ثمرات', 'احجز أرضك في غرب المنيا: اختار الصنف والمساحة وابعت طلبك لخدمة العملاء على واتساب.'],
+  privacy: ['سياسة الخصوصية · ثمرات', 'إزاي شركة ثمرات بتتعامل مع البيانات اللي بتوصلها من الموقع.']
+};
+
+async function page(req, env, key) {
+  const [title, desc] = PAGES[key];
+  const url = SITE + '/' + key;
+  const res = await env.ASSETS.fetch(new Request(new URL('/', req.url), req));
+  const set = (attr, val) => ({ element(e) { e.setAttribute(attr, val); } });
+  return new HTMLRewriter()
+    .on('title', { element(e) { e.setInnerContent(title); } })
+    .on('meta[name="description"]', set('content', desc))
+    .on('meta[property="og:title"]', set('content', title))
+    .on('meta[property="og:description"]', set('content', desc))
+    .on('meta[property="og:url"]', set('content', url))
+    .on('link[rel="canonical"]', set('href', url))
+    .transform(res);
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
     if (url.pathname === '/api/chat') {
       try { return await chat(req, env); } catch (e) { return json({ error: 'server' }, 500); }
+    }
+    const key = url.pathname.replace(/^\/+|\/+$/g, '');
+    if (Object.hasOwn(PAGES, key) && req.method === 'GET') {
+      if (url.pathname !== '/' + key) return Response.redirect(SITE + '/' + key + url.search, 301);
+      try { return await page(req, env, key); } catch (e) { return env.ASSETS.fetch(new Request(new URL('/', req.url), req)); }
     }
     return env.ASSETS.fetch(req);
   }
