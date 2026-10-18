@@ -298,7 +298,7 @@ export function summaryText(r, extra = '') {
     ``,
     `الأرقام استرشادية وليست التزامًا بعائد محدد.`,
     extra,
-    `للتواصل: 01274577688 — thamaratmisr.com`
+    `thamaratmisr.com`
   ];
   return lines.filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n').trim();
 }

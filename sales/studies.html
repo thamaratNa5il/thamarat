@@ -413,7 +413,7 @@ function refNo(p) {
   return `TH-${y}${m}${dd}-${String(h % 1000).padStart(3, '0')}`;
 }
 const today = () => new Date().toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' });
-const footer = (n, total) => `<div class="ft"><span>41 ش بهاء الدين الغتوري - سموحة - الإسكندرية · <span class="num">01274577688</span></span><span class="site">www.thamaratmisr.com</span><span>صفحة ${n} من ${total}</span></div>`;
+const footer = (n, total) => `<div class="ft"><span>41 ش بهاء الدين الغتوري - سموحة - الإسكندرية</span><span class="site">www.thamaratmisr.com</span><span>صفحة ${n} من ${total}</span></div>`;
 const miniHead = (r, title) => `<div class="mini-hd"><span>${esc(title)} — ${E.areaWord(r.p.area)} ${r.v.short}</span><img src="/assets/logo-green.png" alt="ثمرات"></div>`;
 
 function chartSVG(r) {
@@ -490,7 +490,7 @@ function sheets(r, client) {
       <li>الأرض تمليك مباشر عن طريق شركة الريف المصري ضمن مبادرة استصلاح وزراعة مليون ونصف مليون فدان.</li>
       <li>ضمان الشركة على المزرعة بالكامل 5 سنين.</li>
     </ul>
-    <div class="contact"><div><b>للاستفسار والحجز</b><p>واتساب وتليفون: <span class="num">01274577688</span> · الموقع: <span class="num">www.thamaratmisr.com</span></p><p>المقر: 41 ش بهاء الدين الغتوري - سموحة - الإسكندرية (أمام محطة سيدي جابر)</p></div></div>`;
+    <div class="contact"><div><b>للاستفسار والحجز</b><p>الموقع: <span class="num">www.thamaratmisr.com</span></p><p>المقر: 41 ش بهاء الدين الغتوري - سموحة - الإسكندرية (أمام محطة سيدي جابر)</p></div></div>`;
   /* ---------- صفحة 2: الأرباح السنوية ---------- */
   const longest = Math.max(...r.rows.map(x => Math.max(money(Math.abs(x.cum)).length, money(x.rev).length)), money(r.totals.rev).length);
   const cols = 9 + (split ? 2 : 0) + (showOff ? 2 : 0);
