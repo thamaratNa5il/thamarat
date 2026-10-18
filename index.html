@@ -16,6 +16,8 @@
 <meta property="og:image" content="https://thamaratmisr.com/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script>try{if(localStorage.getItem("thamarat-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
+<script>try{var q=new URLSearchParams(location.search);if(q.has("intro")||q.has("introT")||(!matchMedia("(prefers-reduced-motion: reduce)").matches&&!sessionStorage.getItem("thamarat-intro"))){document.documentElement.classList.add("intro-on");var l=document.createElement("link");l.rel="modulepreload";l.href="assets/vendor/three.module.min.js";document.head.appendChild(l)}}catch(e){}</script>
+<style>#intro{display:none}html.intro-on{overflow:hidden}html.intro-on body>*:not(#intro){visibility:hidden}html.intro-on #intro{display:block;position:fixed;inset:0;z-index:2147483000;background:linear-gradient(180deg,#5f9fd6 0%,#bcdaea 48%,#f1dcb4 72%,#d7b98d 100%);transition:opacity .6s ease}#intro canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block;opacity:0;transition:opacity .6s ease}#intro.ready canvas{opacity:1}#intro.out{opacity:0;pointer-events:none}#intro .intro-skip{position:absolute;z-index:2;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:20px;font:600 15px/1 "Tajawal",Tahoma,sans-serif;color:#fff;background:rgba(14,38,23,.45);border:1px solid rgba(255,255,255,.35);border-radius:99px;padding:11px 20px;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}#intro .intro-skip:hover{background:rgba(14,38,23,.7)}#intro .intro-tag{position:absolute;z-index:2;left:0;right:0;bottom:calc(7% + env(safe-area-inset-bottom,0px));text-align:center;font:600 clamp(18px,3.4vw,30px)/1.4 "Alexandria","Tajawal",sans-serif;color:#fff;text-shadow:0 2px 18px rgba(40,20,5,.55);opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease;pointer-events:none}#intro .intro-tag.on{opacity:1;transform:none}#intro .intro-load{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px;border-radius:50%;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;animation:introSpin 1s linear infinite}#intro.ready .intro-load{display:none}@keyframes introSpin{to{transform:rotate(360deg)}}</style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <title>ثمرات Thamarat للاستثمار والتنمية الزراعية — تمليك أراضي نخيل بغرب المنيا</title>
 <meta name="description" content="شركة ثمرات (Thamarat) للاستثمار والتنمية الزراعية — تمليك أراضي نخيل بغرب المنيا وحاسبة جدوى للمجدول والبرحي والسيوي">
@@ -489,6 +491,7 @@ footer .locs h3{font:600 18px var(--display);color:#eef6ea;margin:0 0 14px}
 <link rel="stylesheet" href="assets/field.css">
 </head>
 <body>
+<div id="intro"><span class="intro-load"></span><div class="intro-tag">للاستثمار والتنمية الزراعية</div><button class="intro-skip" type="button" aria-label="تخطي المقدمة">تخطي ‹</button></div>
 <nav class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="/" aria-label="ثمرات — الرئيسية"><img id="navlogo" src="assets/logo-green.png" alt="ثمرات Thamarat"></a>
@@ -1641,6 +1644,7 @@ setArea(5);
 go();
 })();
 </script>
+<script type="module" src="assets/intro.js"></script>
 <script src="assets/field.js"></script>
 <script type="module" src="assets/chatbot.js"></script>
 
