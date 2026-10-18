@@ -219,12 +219,12 @@ function buildPalm(tex, { H = 6, fronds = 26, clusters = 0, detail = 1, shadows 
   if (clusters) {
     const stalkMat = new THREE.MeshStandardMaterial({ color: 0xd9a23a, roughness: .6 });
     for (let c = 0; c < clusters; c++) {
-      const az = c / clusters * Math.PI * 2 + .4;
+      const az = c / clusters * Math.PI * 2 + .4 + R() * .25;
       const d = V(Math.cos(az), 0, Math.sin(az));
       const b = crown.clone().addScaledVector(d, .22).add(V(0, -.3, 0));
-      const end = b.clone().addScaledVector(d, .8).add(V(0, -.55, 0));
+      const end = b.clone().addScaledVector(d, .95).add(V(0, -.6, 0));
       const curve = new THREE.CatmullRomCurve3([b, b.clone().addScaledVector(d, .5).add(V(0, .08, 0)), end]);
-      const stalk = new THREE.Mesh(taperTube(curve, 14, 6, t => .045 - .015 * t), stalkMat);
+      const stalk = new THREE.Mesh(taperTube(curve, 14, 6, t => .055 - .018 * t), stalkMat);
       stalk.castShadow = shadows; group.add(stalk);
       clusterData.push({ az, end });
     }
@@ -232,11 +232,11 @@ function buildPalm(tex, { H = 6, fronds = 26, clusters = 0, detail = 1, shadows 
   return { group, crown, clusters: clusterData };
 }
 
-function dateGeo(R, len, { halves = false } = {}) {
+function dateGeo(R, len, { halves = false, seg = 40 } = {}) {
   // تمرة: بيضاوية مستطيلة على محور X، مدببة شوية من ناحية
   const deform = (p) => { const k = 1 - .14 * (p.x / len); p.y *= k; p.z *= k; return p; };
   const mk = (ts, tl) => {
-    const g = new THREE.SphereGeometry(1, 40, 20, 0, Math.PI * 2, ts, tl);
+    const g = new THREE.SphereGeometry(1, seg, Math.max(6, seg / 2), 0, Math.PI * 2, ts, tl);
     g.scale(len, R, R);
     const pos = g.attributes.position, p = V();
     for (let i = 0; i < pos.count; i++) { deform(p.fromBufferAttribute(pos, i)); pos.setXYZ(i, p.x, p.y, p.z); }
@@ -297,41 +297,60 @@ async function start(guard) {
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 
   // النخلة الرئيسية
-  const palm = buildPalm(tex, { clusters: 6, seed: 7 });
+  const palm = buildPalm(tex, { clusters: 10, seed: 7 });
   scene.add(palm.group);
 
   // نخيل في الخلفية
+  const bgPalms = [];
   for (let i = 0; i < 9; i++) {
     const a = Math.PI + .35 + (i / 8 - .5) * 3.6 + rr(-.15, .15), d = rr(14, 30);
-    const bg = buildPalm(tex, { H: rr(4.8, 6.8), fronds: 16, detail: .55, shadows: false, seed: 100 + i });
+    const bg = buildPalm(tex, { H: rr(4.8, 6.8), fronds: 16, detail: .55, shadows: false, clusters: 8, seed: 100 + i });
     bg.group.position.set(Math.sin(a) * d, 0, Math.cos(a) * d); bg.group.rotation.y = rand() * 6.3;
-    scene.add(bg.group);
+    scene.add(bg.group); bg.group.updateMatrixWorld(true); bgPalms.push(bg);
   }
 
-  // البلح على السباطات
-  const DR = .05, DL = .085;
+  // البلح على السباطات — كثيف وحجمه كبير
+  const DR = .075, DL = .125;
   const skinMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, map: tex.wrinkle, bumpMap: tex.wrinkle, bumpScale: 1.6, roughness: .42, clearcoat: .55, clearcoatRoughness: .35 });
-  const dGeo = dateGeo(DR, DL);
-  const PER = 64;
+  const dGeo = dateGeo(DR, DL, { seg: 22 });
+  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), one = V(1, 1, 1), col = new THREE.Color();
+  const dateColor = () => { const s = rand(); return s < .35 ? col.setHex(0xb0581c) : s < .75 ? col.setHex(0x7b3214) : col.setHex(0x4c1b0b); };
+  // نقط سباطة: شكل عنقود (أعرض فوق ومدبب تحت)
+  const bunch = (end, k, per) => {
+    const h = Math.pow((k + rand()) / per, .9), rad = .46 * (1 - h * .6) * Math.pow(rand(), .35), a = rand() * 6.3;
+    return end.clone().add(V(Math.cos(a) * rad, -.1 - h * 1.15, Math.sin(a) * rad));
+  };
+  const PER = mobile ? 95 : 130;
   const hang = new THREE.InstancedMesh(dGeo, skinMat, palm.clusters.length * PER);
   hang.castShadow = true;
   const strandPts = [];
   const hangPos = [];
-  const m = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), one = V(1, 1, 1), col = new THREE.Color();
-  const dateColor = () => { const s = rand(); return s < .35 ? col.setHex(0xb0581c) : s < .75 ? col.setHex(0x7b3214) : col.setHex(0x4c1b0b); };
   palm.clusters.forEach((c, ci) => {
     for (let k = 0; k < PER; k++) {
-      const h = Math.pow(rand(), .8), rad = .3 * (1 - h * .55) * Math.sqrt(rand()), a = rand() * 6.3;
-      const p = c.end.clone().add(V(Math.cos(a) * rad, -.08 - h * .8, Math.sin(a) * rad));
+      const p = bunch(c.end, k, PER);
       e.set(rr(-.3, .3), rand() * 6.3, Math.PI / 2 + rr(-.3, .3)); q.setFromEuler(e);
       m.compose(p, q, one); const idx = ci * PER + k; hang.setMatrixAt(idx, m); hang.setColorAt(idx, dateColor());
       hangPos.push({ p, q: q.clone(), idx, ci });
-      strandPts.push(c.end.x, c.end.y, c.end.z, p.x, p.y + DL * .9, p.z);
+      if (k % 2 === 0) strandPts.push(c.end.x, c.end.y, c.end.z, p.x, p.y + DL * .9, p.z);
     }
   });
   scene.add(hang);
   const strands = new THREE.BufferGeometry(); strands.setAttribute('position', new THREE.Float32BufferAttribute(strandPts, 3));
-  scene.add(new THREE.LineSegments(strands, new THREE.LineBasicMaterial({ color: 0xcf9a3e, transparent: true, opacity: .8 })));
+  scene.add(new THREE.LineSegments(strands, new THREE.LineBasicMaterial({ color: 0xcf9a3e, transparent: true, opacity: .75 })));
+
+  // بلح نخيل الخلفية (أخف في التفاصيل)
+  const BPER = mobile ? 45 : 70;
+  const bgCount = bgPalms.reduce((n, b) => n + b.clusters.length * BPER, 0);
+  const bgDates = new THREE.InstancedMesh(dateGeo(DR, DL, { seg: 10 }), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: .5 }), bgCount);
+  let bi = 0;
+  bgPalms.forEach(b => b.clusters.forEach(c => {
+    for (let k = 0; k < BPER; k++) {
+      const p = b.group.localToWorld(bunch(c.end, k, BPER));
+      e.set(rr(-.3, .3), rand() * 6.3, Math.PI / 2 + rr(-.3, .3)); q.setFromEuler(e);
+      m.compose(p, q, one); bgDates.setMatrixAt(bi, m); bgDates.setColorAt(bi++, dateColor());
+    }
+  }));
+  scene.add(bgDates);
 
   /* ---------- الكاميرا ---------- */
   const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, .015, 400);
@@ -344,12 +363,12 @@ async function start(guard) {
   };
   const thL = .35;
   const Ry = new THREE.Quaternion().setFromAxisAngle(V(0, 1, 0), thL);
-  const L = V(Math.sin(thL), 0, Math.cos(thL)).multiplyScalar(2.1).add(V(-.35 * Math.cos(thL), .058, .35 * Math.sin(thL)));
+  const L = V(Math.sin(thL), 0, Math.cos(thL)).multiplyScalar(2.1).add(V(-.35 * Math.cos(thL), DR * .97, .35 * Math.sin(thL)));
   const local = (x, y, z) => V(x, y, z).applyQuaternion(Ry).add(L);
-  const closeDist = () => { const a = Math.min(camera.aspect, 1.6); return .34 / ((a < 1 ? 1.05 : .6) * 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * a); };
+  const closeDist = () => { const a = Math.min(camera.aspect, 1.6); return .34 * (HL / .1) / ((a < 1 ? 1.05 : .6) * 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * a); };
 
   // التمرة الأخيرة (نصين + نواة)
-  const HR = .06, HL = .1;
+  const HR = DR, HL = DL;
   const hg = dateGeo(HR, HL, { halves: true });
   const heroSkin = new THREE.MeshPhysicalMaterial({ color: 0x6e2810, map: tex.wrinkle, bumpMap: tex.wrinkle, bumpScale: 1.4, roughness: .38, clearcoat: .7, clearcoatRoughness: .3 });
   const fleshMat = new THREE.MeshStandardMaterial({ map: tex.flesh, roughness: .55 });
