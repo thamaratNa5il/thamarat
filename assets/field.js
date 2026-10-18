@@ -16,7 +16,7 @@ const STEPS = [ // مراحل الاستصلاح
   ['r-solar', 'الطاقة الشمسية',      'محطات طاقة شمسية في قلب المزرعة.'],
   ['r-pipes', 'شبكات الري',          'مدّ المواسير وتجهيز شبكات الري.'],
   ['r-build', 'مباني الخدمة',        'مباني الخدمة في موقع المزرعة.'],
-  ['r-rows',  'جاهزة للزراعة',       'خطوط مستقيمة جاهزة تستقبل الفسائل.']
+  ['r-rows',  'جاهزة للزراعة',       '']
 ];
 const RECLAIM_VIDS = [
   ['v-r1', 'الحفار شغال', 'حفر خط ري رئيسي'],
@@ -69,7 +69,7 @@ const PLAY = '<svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>';
 /* مراحل الاستصلاح */
 const steps = page.querySelector('#fx-steps');
 STEPS.forEach(([f, t, d]) => steps.append(h(
-  `<figure class="fx-step"><div class="ph" data-full="${D}${f}.webp" data-cap="${t} — ${d}" tabindex="0" role="button" aria-label="كبّر الصورة: ${t}"><img src="${D}${f}-s.webp" alt="${t}" loading="lazy"></div><figcaption><b>${t}</b><span>${d}</span></figcaption></figure>`)));
+  `<figure class="fx-step"><div class="ph" data-full="${D}${f}.webp" data-cap="${d ? t + ' — ' + d : t}" tabindex="0" role="button" aria-label="كبّر الصورة: ${t}"><img src="${D}${f}-s.webp" alt="${t}" loading="lazy"></div><figcaption><b>${t}</b>${d ? `<span>${d}</span>` : ''}</figcaption></figure>`)));
 page.querySelectorAll('.fx-arrows button').forEach(b => b.onclick = () => {
   const dir = +b.dataset.dir; // RTL: الجاي على الشمال
   steps.scrollBy({ left: -dir * (steps.querySelector('.fx-step').offsetWidth + 18), behavior: 'smooth' });
