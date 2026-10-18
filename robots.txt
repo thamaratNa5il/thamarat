@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /studies
 
 Sitemap: https://thamaratmisr.com/sitemap.xml

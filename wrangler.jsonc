@@ -2,13 +2,15 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "thamarat",
   "compatibility_date": "2026-09-01",
-  // الـ worker بيشتغل على /api/* (مساعد الشات) وعلى لينكات الصفحات (/faq، /calc …)، وباقي الموقع ملفات ثابتة زي ما هو
+  // الـ worker بيشتغل على /studies (أداة الدراسات للسيلز — محمية بباسورد) وعلى /api/* (مساعد الشات) وعلى لينكات الصفحات (/faq، /calc …)، وباقي الموقع ملفات ثابتة زي ما هو
   "main": "worker.js",
+  // صفحة أداة الدراسات (sales/studies.html) بتتقري جوه الـ worker كنص، ومش بتتنشر كملف عام
+  "rules": [{ "type": "Text", "globs": ["**/*.html"], "fallthrough": true }],
   "assets": {
     "directory": "./",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "run_worker_first": ["/api/*", "/about", "/about/", "/works", "/works/", "/minya", "/minya/", "/palms", "/palms/", "/field", "/field/", "/calc", "/calc/", "/faq", "/faq/", "/order", "/order/", "/privacy", "/privacy/"]
+    "run_worker_first": ["/api/*", "/about", "/about/", "/works", "/works/", "/minya", "/minya/", "/palms", "/palms/", "/field", "/field/", "/calc", "/calc/", "/faq", "/faq/", "/order", "/order/", "/privacy", "/privacy/", "/studies", "/studies/*"]
   },
   // حد أقصى 12 رسالة في الدقيقة لكل زائر علشان نحمي رصيد الـ API
   "ratelimits": [

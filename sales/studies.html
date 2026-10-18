@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f3f7ec">
+<title>دراسات الجدوى · ثمرات</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" crossorigin="anonymous" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap">
+<style>
+/* أداة دراسات الجدوى لفريق المبيعات — الواجهة بألوان الموقع، والدراسة نفسها ورق A4 أبيض بالهوية (أخضر #79A508) */
+:root{
+  --bg:#f3f7ec;--surface:#fff;--soft:#eaf2dd;--line:#dbe7cc;--ink:#15260f;--muted:#5a6d50;
+  --accent:#79A508;--accent-hi:#8bbb12;--accent-text:#4d6b05;--on-accent:#15260f;--loss:#b3412d;
+  --display:"Alexandria","Tajawal",Tahoma,sans-serif;--body:"Tajawal",Tahoma,"Segoe UI",sans-serif;--r:16px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1a0a;--surface:#15240f;--soft:#1b2e13;--line:#2a4120;--ink:#eef5e6;--muted:#a7ba9b;--accent-text:#a8d23a;--loss:#f0a08e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a0a;--surface:#15240f;--soft:#1b2e13;--line:#2a4120;--ink:#eef5e6;--muted:#a7ba9b;--accent-text:#a8d23a;--loss:#f0a08e;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;direction:rtl}
+button,input,select,textarea{font:inherit;color:inherit}
+.num{font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:16px}
+@media (min-width:700px){.wrap{padding-inline:28px}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:62px}
+.top img{height:34px}
+:root[data-theme="dark"] .top img,.dark-logo{filter:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .top img{filter:brightness(0) invert(1) opacity(.92)}}
+:root[data-theme="dark"] .top img{filter:brightness(0) invert(1) opacity(.92)}
+.top .ttl{font:600 15px var(--display);color:var(--muted);border-inline-start:1px solid var(--line);padding-inline-start:14px}
+.top .sp{flex:1}
+.top a{font-size:14px;color:var(--muted);text-decoration:none;padding:7px 12px;border-radius:99px}
+.top a:hover{background:var(--soft);color:var(--ink)}
+@media (max-width:520px){.top .ttl{display:none}}
+
+/* ask */
+.ask{padding:34px 0 18px}
+.ask h1{font:700 clamp(24px,4vw,34px)/1.35 var(--display);margin:0 0 6px}
+.ask p.lead{margin:0 0 18px;color:var(--muted);max-width:760px}
+.qbox{background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:6px;display:grid;gap:0;transition:border-color .2s,box-shadow .2s}
+.qbox:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.qbox textarea{border:0;background:transparent;resize:vertical;min-height:92px;padding:14px 16px;font-size:17px;line-height:1.75;outline:none}
+.qbox .row{display:flex;align-items:center;gap:10px;padding:6px 8px 6px;flex-wrap:wrap}
+.qbox .hint{font-size:13px;color:var(--muted);flex:1;min-width:180px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:11px 18px;font-weight:700;font-size:15px;cursor:pointer;background:var(--accent);color:var(--on-accent);text-decoration:none;transition:background .15s,transform .15s}
+.btn:hover{background:var(--accent-hi)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.ghost:hover{background:var(--soft);box-shadow:inset 0 0 0 1.5px var(--accent)}
+.btn.wa{background:#25D366;color:#06260f}
+.btn.wa:hover{background:#3ee07a}
+.btn svg{width:18px;height:18px;flex:none}
+.btn[disabled]{opacity:.6;cursor:progress}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chips button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 13px;font-size:13.5px;cursor:pointer;color:var(--muted);text-align:start}
+.chips button:hover{border-color:var(--accent);color:var(--ink)}
+
+/* understood */
+.und{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.und .say{display:flex;gap:10px;align-items:flex-start}
+.und .say b{font:600 15px var(--display)}
+.und .say .tag{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--soft);color:var(--accent-text);white-space:nowrap;font-weight:700}
+.und .sent{margin:4px 0 0;color:var(--ink)}
+.und .notes{margin:8px 0 0;padding:0;list-style:none;font-size:14px;color:var(--muted)}
+.und .notes li::before{content:"• ";color:var(--accent)}
+.ctrls{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.f{display:grid;gap:5px;min-width:0}
+.f>span{font-size:13px;color:var(--muted);font-weight:500}
+.f input,.f select{width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);font-size:15px;min-width:0}
+.f input:focus,.f select:focus{outline:none;border-color:var(--accent)}
+.f input[type=number]{direction:ltr;text-align:right}
+.seg{display:flex;background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:3px;gap:3px}
+.seg button{flex:1;border:0;background:transparent;border-radius:7px;padding:7px 4px;cursor:pointer;font-weight:700;font-size:14px;color:var(--muted)}
+.seg button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+.chk{display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;padding-top:22px}
+.chk input{width:18px;height:18px;accent-color:var(--accent)}
+details.adv{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+details.adv summary{cursor:pointer;font-size:14px;color:var(--accent-text);font-weight:700}
+
+/* library */
+.sec{margin-top:30px}
+.sec h2{font:700 19px var(--display);margin:0 0 4px}
+.sec>p{margin:0 0 14px;color:var(--muted);font-size:14.5px}
+.lib{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 15px;text-align:start;cursor:pointer;display:grid;gap:6px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card.on{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
+.card b{font:600 15.5px var(--display)}
+.card small{color:var(--muted);font-size:12.5px;line-height:1.5}
+.card .kp{display:flex;justify-content:space-between;font-size:13px;border-top:1px solid var(--line);padding-top:7px;margin-top:2px}
+.card .kp em{font-style:normal;color:var(--accent-text);font-weight:800}
+.recent{display:flex;gap:8px;flex-wrap:wrap}
+.recent button{border:1px dashed var(--line);background:transparent;border-radius:10px;padding:6px 11px;font-size:13px;cursor:pointer;color:var(--muted);max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.recent button:hover{border-color:var(--accent);color:var(--ink)}
+
+/* actions */
+.bar{position:sticky;top:62px;z-index:15;margin-top:30px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);padding:10px 0;border-bottom:1px solid var(--line)}
+.bar .in{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
+.bar .f{flex:1 1 170px}
+.bar .acts{display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:700px){.bar{position:static}.bar .f{flex:1 1 140px}.bar .acts{width:100%}.bar .acts .btn{flex:1 1 auto;padding:10px 12px}}
+.toast{position:fixed;bottom:20px;inset-inline:16px;margin-inline:auto;max-width:460px;background:var(--ink);color:var(--bg);padding:12px 16px;border-radius:12px;font-size:14.5px;z-index:60;box-shadow:0 12px 30px -12px rgba(0,0,0,.4);opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s;pointer-events:none}
+.toast.on{opacity:1;transform:none}
+
+/* paper */
+.doc{padding:24px 0 80px;display:grid;justify-items:center;gap:22px}
+.pg{width:794px;transform-origin:top right}
+.pgbox{position:relative}
+.sheet{width:794px;height:1123px;background:#fff;color:#1b2a12;position:relative;overflow:hidden;padding:40px 46px 70px;box-shadow:0 18px 40px -22px rgba(20,40,10,.45),0 0 0 1px rgba(20,40,10,.06);font-family:var(--body);font-size:13px;line-height:1.65}
+.sheet h3{font:700 16px var(--display);color:#2f4a07;margin:22px 0 10px;display:flex;align-items:center;gap:10px}
+.sheet h3::before{content:"";width:5px;height:20px;border-radius:3px;background:#79A508}
+.sheet .hd{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding-bottom:16px;border-bottom:3px solid #79A508}
+.sheet .hd img{height:52px;width:auto}
+.sheet .hd .k{font-size:11.5px;color:#5b6c4d;letter-spacing:.2px}
+.sheet .hd h2{font:700 25px/1.35 var(--display);margin:2px 0 4px;color:#1b2a12}
+.sheet .hd .sub{font-size:14px;color:#3e5232}
+.sheet .mini-hd{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #79A508}
+.sheet .mini-hd img{height:34px}
+.sheet .mini-hd span{font:600 13px var(--display);color:#3e5232}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:14px;border:1px solid #dfe9d1;border-radius:10px;overflow:hidden}
+.meta div{padding:8px 12px;border-inline-start:1px solid #dfe9d1}
+.meta div:first-child{border-inline-start:0}
+.meta>div>span{display:block;font-size:10.5px;color:#6a7a5c}
+.meta b{font-size:13px}
+.sysbox{margin-top:16px;background:#f2f8e6;border:1px solid #d6e7b5;border-radius:12px;padding:12px 16px}
+.sysbox b{font:700 14px var(--display);color:#3d5c06}
+.sysbox p{margin:3px 0 0;font-size:13.5px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.kpi{border:1px solid #dfe9d1;border-radius:12px;padding:11px 13px}
+.kpi>span{font-size:11.5px;color:#5b6c4d;display:block}
+.kpi b{font:700 19px var(--display);color:#1b2a12;display:block;margin-top:2px}
+.kpi b small{font:500 11px var(--body);color:#5b6c4d}
+.kpi.hero{background:#79A508;border-color:#79A508}
+.kpi.hero>span,.kpi.hero b small{color:#1d3105}
+.kpi.hero b{color:#15260f;font-size:23px}
+.chart{border:1px solid #dfe9d1;border-radius:12px;padding:10px 12px 4px}
+.chart svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:16px;font-size:11px;color:#5b6c4d;margin-bottom:4px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:5px;vertical-align:-1px}
+table.t{width:100%;border-collapse:collapse;font-size:11.5px}
+table.t th{background:#eef5e2;color:#2f4a07;font-weight:700;padding:7px 5px;border-bottom:2px solid #79A508;line-height:1.35;vertical-align:bottom;font-size:10.8px}
+table.t td{padding:5.5px 5px;border-bottom:1px solid #e7efdc;text-align:center;white-space:nowrap}
+table.t td:first-child,table.t th:first-child{text-align:start}
+table.t tr:nth-child(even) td{background:#fafcf6}
+table.t tr.tot td{background:#f2f8e6;font-weight:800;border-top:2px solid #79A508;border-bottom:0}
+table.t .neg{color:#b3412d}
+table.t .pos{color:#3d5c06;font-weight:700}
+table.t .dim{color:#9aa78e}
+table.t.compact td{padding:4px 5px}
+table.t.small{font-size:10.6px}table.t.small td,table.t.small th{padding-inline:3px}
+table.t.tiny{font-size:9.6px}table.t.tiny th{font-size:9.6px}table.t.tiny td,table.t.tiny th{padding-inline:2px}
+table.kv{width:100%;border-collapse:collapse;font-size:13px}
+table.kv td{padding:8px 12px;border-bottom:1px solid #e7efdc}
+table.kv td:last-child{text-align:left;font-weight:700;white-space:nowrap}
+table.kv tr.em td{background:#f2f8e6;font-weight:800;color:#2f4a07}
+table.kv tr.big td{background:#79A508;color:#15260f;font:700 15px var(--display)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.split{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:12px}
+.split div{border:1px solid #dfe9d1;border-radius:10px;padding:8px 10px}
+.split>div>span{font-size:10.5px;color:#6a7a5c;display:block}
+.split b{font-size:13.5px}
+.notes-doc{margin:0;padding-inline-start:18px;font-size:12.5px;color:#34452a;display:grid;gap:4px}
+.formula{font-size:11.5px;color:#5b6c4d;margin-top:6px}
+.contact{margin-top:18px;display:flex;gap:16px;align-items:center;background:#f2f8e6;border-radius:12px;padding:14px 16px}
+.contact b{font:700 14px var(--display);color:#2f4a07}
+.contact p{margin:2px 0 0;font-size:12.5px}
+.ft{position:absolute;inset-inline:46px;bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #dfe9d1;padding-top:9px;font-size:10.5px;color:#5b6c4d}
+.ft .site{direction:ltr;font-weight:700;color:#3d5c06}
+.disc{font-size:11px;color:#6a7a5c;margin-top:10px}
+
+/* print = PDF احتياطي */
+@media print{
+  @page{size:A4;margin:0}
+  html,body{background:#fff!important}
+  body>*:not(#docWrap){display:none!important}
+  #docWrap{display:block!important;padding:0!important}
+  .doc{padding:0;gap:0;display:block}
+  .pgbox{height:auto!important;width:auto!important}
+  .pg{transform:none!important;width:auto}
+  .sheet{box-shadow:none;page-break-after:always;break-after:page}
+  .sheet:last-child{page-break-after:auto}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a href="/" style="padding:0"><img src="/assets/logo-green.png" alt="ثمرات"></a>
+  <span class="ttl">دراسات الجدوى · فريق المبيعات</span>
+  <span class="sp"></span>
+  <a href="/" >الموقع</a>
+  <a href="/studies/logout">خروج</a>
+</div></header>
+
+<main class="wrap">
+  <section class="ask">
+    <h1>اكتب الدراسة اللي العميل عايزها</h1>
+    <p class="lead">اكتبها بكلامك العادي — الصنف، المساحة، ونظام الاستثمار. الدراسة بتطلع كاملة بنفس هيكل دراساتنا، وتقدر تعدّل أي رقم بعدها وتحمّلها PDF أو تبعتها واتساب.</p>
+    <form class="qbox" id="qform">
+      <textarea id="q" rows="3" placeholder="مثلًا: عايز دراسة جدوى لفدانين سيوي بنظام إن الشركة تتحمل المصاريف من السنة بعد التالتة وتاخد 25% من الإنتاج"></textarea>
+      <div class="row">
+        <span class="hint">ينفع تكتب كمان: مدة الدراسة (لمدة 15 سنة)، سعر الكيلو، سعر الفدان، أو زيادة قيمة الأرض.</span>
+        <button class="btn" id="go" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l-6 6 6 6"/></svg>اعمل الدراسة</button>
+      </div>
+    </form>
+    <div class="chips" id="examples"></div>
+    <div class="und" id="und" hidden></div>
+  </section>
+
+  <section class="sec">
+    <h2>الدراسات الأساسية</h2>
+    <p>دراساتنا المعتمدة زي ما هي — دوس على أي واحدة تفتحها، وبعدين عدّل عليها لو محتاج.</p>
+    <div class="lib" id="libBase"></div>
+  </section>
+  <section class="sec">
+    <h2>أنظمة الاستثمار</h2>
+    <p>نفس المساحة والصنف اللي مختارهم دلوقتي، بأنظمة الاستثمار المختلفة.</p>
+    <div class="lib" id="libSys"></div>
+  </section>
+  <section class="sec" id="recentSec" hidden>
+    <h2>آخر دراسات عملتها</h2>
+    <div class="recent" id="recent" style="margin-top:10px"></div>
+  </section>
+</main>
+
+<div class="bar" id="bar"><div class="wrap in">
+  <label class="f"><span>اسم العميل</span><input id="client" placeholder="بيظهر على الدراسة — اختياري" maxlength="60"></label>
+  <label class="f"><span>رقم واتساب العميل</span><input id="phone" type="tel" inputmode="tel" placeholder="01xxxxxxxxx" maxlength="20" style="direction:ltr;text-align:right"></label>
+  <div class="acts">
+    <button class="btn" id="pdf" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>تحميل PDF</button>
+    <button class="btn wa" id="wa" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3z"/></svg>إرسال واتساب</button>
+    <button class="btn ghost" id="copy" type="button">نسخ الملخص</button>
+    <button class="btn ghost" id="link" type="button">نسخ لينك الدراسة</button>
+  </div>
+</div></div>
+
+<div id="docWrap"><div class="doc" id="doc"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module">
+import * as E from '/assets/study-engine.js';
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const money = E.money, fnum = E.fnum;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const N = n => `<span class="num">${n < 0 ? '-' + money(-n) : money(n)}</span>`;
+const pct = x => Math.round(x * 100).toLocaleString('en-US') + '%';
+
+let P = E.normalize({ variety: 'siwi', area: 2.5 });
+let lastQuery = '', understood = null, R = null;
+
+/* ---------------- أمثلة ---------------- */
+const EXAMPLES = [
+  'فدانين سيوي، الشركة تتحمل المصاريف من السنة بعد التالتة وتاخد 25% من الإنتاج',
+  '5 فدان مجدول والشركة تتحمل كل حاجة من الأول وتاخد 25% من الإنتاج',
+  '3 فدادين برحي العميل يدفع الرعاية والشركة تاخد 10% من الأرباح لمدة 15 سنة',
+  'نص فدان مجدول بالنظام الأساسي',
+  'فدان ونص سيوي سعر الكيلو 40 والفدان ب 400 ألف'
+];
+$('#examples').innerHTML = EXAMPLES.map(t => `<button type="button">${esc(t)}</button>`).join('');
+$$('#examples button').forEach((b, i) => b.onclick = () => { $('#q').value = EXAMPLES[i]; ask(); });
+
+/* ---------------- فهم الطلب ---------------- */
+$('#qform').addEventListener('submit', e => { e.preventDefault(); ask(); });
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); ask(); } });
+
+const KEYS = ['variety','area','years','clientCareYears','share','base','shareOffshoots','kgPrice','landPrice','offPrice','growth','palms','system'];
+function clean(o) {
+  const out = {};
+  for (const k of KEYS) if (o && o[k] !== undefined && o[k] !== null && o[k] !== '') out[k] = o[k];
+  if (out.variety && !E.VARIETIES[out.variety]) delete out.variety;
+  for (const k of ['area','years','clientCareYears','share','kgPrice','landPrice','offPrice','growth','palms']) if (k in out && !isFinite(+out[k])) delete out[k];
+  if ('base' in out && !['profit','production'].includes(out.base)) delete out.base;
+  if ('shareOffshoots' in out) out.shareOffshoots = out.shareOffshoots !== false && out.shareOffshoots !== 'false';
+  return out;
+}
+function fromParsed(parsed) {
+  const base = { variety: 'siwi', area: 1 };
+  return E.normalize({ ...base, ...parsed });
+}
+async function ask() {
+  const text = $('#q').value.trim();
+  if (!text) { $('#q').focus(); return; }
+  lastQuery = text;
+  const local = E.parseQuery(text);
+  const notes = [...local.notes];
+  if (!local.params.variety) notes.push('ما اتحددش الصنف — اتعمل سيوي، غيّره من تحت لو محتاج');
+  if (!local.params.area) notes.push('ما اتحددتش المساحة — اتعملت فدان واحد');
+  P = fromParsed(clean(local.params));
+  understood = { src: 'local', notes };
+  render(true);
+  $('#go').disabled = true;
+  try {
+    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 9000);
+    const r = await fetch('/api/study-parse', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ q: text }), signal: ctl.signal });
+    clearTimeout(tm);
+    if (r.ok && lastQuery === text) {
+      const d = await r.json();
+      const ai = clean(d.params || {});
+      if (Object.keys(ai).length) {
+        const aiNotes = Array.isArray(d.params?.notes) ? d.params.notes.filter(x => typeof x === 'string').slice(0, 4) : [];
+        const keepNotes = notes.filter(n => !(ai.variety && n.includes('الصنف')) && !(ai.area && n.includes('المساحة')));
+        P = fromParsed({ ...clean(local.params), ...ai });
+        understood = { src: 'ai', notes: [...keepNotes, ...aiNotes] };
+        render(false);
+      }
+    }
+  } catch (e) { /* الفهم المحلي كفاية */ }
+  $('#go').disabled = false;
+  remember(text);
+}
+
+/* ---------------- لوحة «فهمت طلبك كده» + التعديل ---------------- */
+function careOptions() {
+  let o = `<option value="99">العميل يتحمل الرعاية طول المدة</option><option value="0">الشركة تتحمل الرعاية من أول سنة</option>`;
+  for (let i = 1; i < Math.min(P.years, 10); i++) o += `<option value="${i}">العميل أول ${E.yearsWord(i)}، والشركة من السنة ${E.ORD[i]}</option>`;
+  return o;
+}
+function renderUnd() {
+  const box = $('#und'); box.hidden = false;
+  const v = E.VARIETIES[P.variety];
+  const src = understood ? (understood.src === 'ai' ? 'فهم ذكي' : 'فهم تلقائي') : 'دراسة جاهزة';
+  const notes = understood?.notes || [];
+  const careVal = P.clientCareYears >= P.years ? 99 : P.clientCareYears;
+  box.innerHTML = `
+    <div class="say"><span class="tag">${src}</span><div><b>${E.areaWord(P.area)} ${v.short} · ${E.yearsN(P.years)}</b>
+      <p class="sent">${esc(E.describeSystem(P))}.</p></div></div>
+    ${notes.length ? `<ul class="notes">${notes.map(n => `<li>${esc(n)}</li>`).join('')}</ul>` : ''}
+    <div class="ctrls">
+      <div class="f"><span>الصنف</span><div class="seg" id="c-var">${Object.entries(E.VARIETIES).map(([k, x]) => `<button type="button" data-v="${k}" aria-pressed="${k === P.variety}">${x.short}</button>`).join('')}</div></div>
+      <label class="f"><span>المساحة (فدان)</span><input id="c-area" type="number" min="0.1" step="0.5" value="${+P.area.toFixed(4)}"></label>
+      <label class="f"><span>مدة الدراسة</span><select id="c-years">${Array.from({ length: 21 }, (_, i) => i + 5).map(y => `<option value="${y}" ${y === P.years ? 'selected' : ''}>${E.yearsN(y)}</option>`).join('')}</select></label>
+      <label class="f" style="grid-column:span 2;min-width:0"><span>مصروفات الرعاية</span><select id="c-care">${careOptions()}</select></label>
+      <label class="f"><span>نسبة الشركة %</span><input id="c-share" type="number" min="0" max="90" step="1" value="${+(P.share * 100).toFixed(2)}"></label>
+      <label class="f"><span>النسبة محسوبة من</span><select id="c-base"><option value="profit">صافي الربح</option><option value="production">الإنتاج (الإيراد)</option></select></label>
+      ${P.base === 'production' ? `<label class="chk"><input type="checkbox" id="c-off" ${P.shareOffshoots ? 'checked' : ''}>النسبة تشمل الفسائل</label>` : ''}
+    </div>
+    <details class="adv" ${P.kgPrice || P.landPrice || P.offPrice || P.growth !== 0.2 || P.palms !== 60 ? 'open' : ''}><summary>الأسعار والافتراضات</summary>
+      <div class="ctrls">
+        <label class="f"><span>سعر الفدان (ج)</span><input id="c-land" type="number" min="0" step="10000" placeholder="${v.land}" value="${P.landPrice || ''}"></label>
+        <label class="f"><span>سعر كيلو ${v.short} (ج)</span><input id="c-kg" type="number" min="0" step="1" placeholder="${v.price}" value="${P.kgPrice || ''}"></label>
+        <label class="f"><span>سعر الفسيلة (ج)</span><input id="c-offp" type="number" min="0" step="50" placeholder="${v.offPrice}" value="${P.offPrice || ''}"></label>
+        <label class="f"><span>زيادة قيمة الأرض سنويًا %</span><input id="c-grow" type="number" min="0" max="100" step="1" value="${+(P.growth * 100).toFixed(2)}"></label>
+        <label class="f"><span>عدد النخيل في الفدان</span><input id="c-palms" type="number" min="10" max="200" step="1" value="${P.palms}"></label>
+      </div></details>`;
+  $('#c-care').value = String(careVal);
+  $('#c-base').value = P.base;
+  const upd = (patch, keepOpen) => { P = E.normalize({ ...P, ...patch }); render(false, keepOpen); };
+  $$('#c-var button').forEach(b => b.onclick = () => upd({ variety: b.dataset.v }));
+  const numIn = (id, fn) => $(id).addEventListener('change', e => { const x = e.target.value === '' ? null : +e.target.value; fn(x); });
+  numIn('#c-area', x => x > 0 && upd({ area: x }));
+  $('#c-years').onchange = e => upd({ years: +e.target.value, clientCareYears: P.clientCareYears >= P.years ? 99 : P.clientCareYears });
+  $('#c-care').onchange = e => upd({ clientCareYears: +e.target.value });
+  numIn('#c-share', x => x !== null && x >= 0 && upd({ share: x / 100 }));
+  $('#c-base').onchange = e => upd({ base: e.target.value });
+  if ($('#c-off')) $('#c-off').onchange = e => upd({ shareOffshoots: e.target.checked });
+  numIn('#c-land', x => upd({ landPrice: x || null }));
+  numIn('#c-kg', x => upd({ kgPrice: x || null }));
+  numIn('#c-offp', x => upd({ offPrice: x || null }));
+  numIn('#c-grow', x => x !== null && upd({ growth: x / 100 }));
+  numIn('#c-palms', x => x && upd({ palms: x }));
+}
+
+/* ---------------- مكتبة الدراسات ---------------- */
+const BASE = [
+  { t: 'فدان مجدول', p: { variety: 'majdoul', area: 1 } },
+  { t: 'فدان برحي', p: { variety: 'barhi', area: 1 } },
+  { t: 'فدان سيوي', p: { variety: 'siwi', area: 1 } },
+  { t: '2.5 فدان سيوي', p: { variety: 'siwi', area: 2.5 } },
+  { t: '5 فدان سيوي', p: { variety: 'siwi', area: 5 } }
+];
+const sysList = () => [
+  { t: E.SYSTEMS.standard.name, p: { system: 'standard' } },
+  { t: E.SYSTEMS.mgmt10.name, p: { system: 'mgmt10' } },
+  { t: E.SYSTEMS.full25.name, p: { system: 'full25' } },
+  { t: 'الشركة من السنة الرابعة · 25% من الإنتاج', p: { clientCareYears: 3, share: 0.25, base: 'production' } }
+];
+function card(item, params, desc) {
+  const r = E.study(params);
+  const same = JSON.stringify(E.normalize(params)) === JSON.stringify(P);
+  return `<button type="button" class="card${same ? ' on' : ''}" data-p='${esc(JSON.stringify(params))}'><b>${esc(item.t)}</b><small>${esc(desc)}</small>
+    <span class="kp"><span>التكلفة <span class="num">${money(r.cost)}</span></span><span>العائد <em class="num">${pct(r.roi)}</em></span></span></button>`;
+}
+function renderLib() {
+  $('#libBase').innerHTML = BASE.map(b => card(b, { ...b.p, system: 'standard' }, `${fnum(60 * b.p.area)} نخلة · النظام الأساسي`)).join('');
+  const keep = { variety: P.variety, area: P.area, years: P.years, landPrice: P.landPrice, kgPrice: P.kgPrice, offPrice: P.offPrice, growth: P.growth, palms: P.palms };
+  $('#libSys').innerHTML = sysList().map(s => {
+    const prm = E.normalize({ ...keep, ...(s.p.system ? { clientCareYears: E.SYSTEMS[s.p.system].clientCareYears, share: E.SYSTEMS[s.p.system].share, base: E.SYSTEMS[s.p.system].base } : s.p) });
+    return card({ t: s.t }, prm, `${E.areaWord(P.area)} ${E.VARIETIES[P.variety].short} — ${E.describeSystem(prm)}`);
+  }).join('');
+  $$('.lib .card').forEach(c => c.onclick = () => {
+    const prm = JSON.parse(c.dataset.p);
+    delete prm.system;
+    P = E.normalize({ ...E.normalize(prm), system: undefined });
+    understood = null;
+    render(false);
+    $('#bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+/* ---------------- الدراسة (ورق A4) ---------------- */
+function refNo(p) {
+  const s = JSON.stringify(p); let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  const d = new Date(); const y = String(d.getFullYear()).slice(2), m = String(d.getMonth() + 1).padStart(2, '0'), dd = String(d.getDate()).padStart(2, '0');
+  return `TH-${y}${m}${dd}-${String(h % 1000).padStart(3, '0')}`;
+}
+const today = () => new Date().toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' });
+const footer = (n, total) => `<div class="ft"><span>41 ش بهاء الدين الغتوري - سموحة - الإسكندرية · <span class="num">01274577688</span></span><span class="site">www.thamaratmisr.com</span><span>صفحة ${n} من ${total}</span></div>`;
+const miniHead = (r, title) => `<div class="mini-hd"><span>${esc(title)} — ${E.areaWord(r.p.area)} ${r.v.short}</span><img src="/assets/logo-green.png" alt="ثمرات"></div>`;
+
+function chartSVG(r) {
+  const W = 700, H = 210, padT = 16, padB = 30, padX = 8;
+  const vals = r.rows.map(x => x.net);
+  const max = Math.max(0, ...vals), min = Math.min(0, ...vals);
+  const span = (max - min) || 1, ih = H - padT - padB;
+  const y = v => padT + (max - v) / span * ih;
+  const n = vals.length, bw = (W - padX * 2) / n;
+  let s = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Tajawal,Tahoma,sans-serif">`;
+  s += `<line x1="0" x2="${W}" y1="${y(0)}" y2="${y(0)}" stroke="#c9d8b7" stroke-width="1"/>`;
+  vals.forEach((v, i) => {
+    const x = W - padX - (i + 1) * bw + bw * 0.18, w = bw * 0.64, top = Math.min(y(v), y(0)), h = Math.max(1.5, Math.abs(y(v) - y(0)));
+    s += `<rect x="${x.toFixed(1)}" y="${top.toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="${v < 0 ? '#d98b7a' : '#79A508'}"/>`;
+    if (n <= 15 && v !== 0) {
+      const lbl = Math.abs(v) >= 1e6 ? (v / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'M' : Math.round(v / 1000) + 'K';
+      const ly = v < 0 ? top + h + 11 : top - 4;
+      s += `<text x="${(x + w / 2).toFixed(1)}" y="${ly.toFixed(1)}" font-size="9.5" text-anchor="middle" fill="${v < 0 ? '#b3412d' : '#3d5c06'}" direction="ltr">${lbl}</text>`;
+    }
+    s += `<text x="${(x + w / 2).toFixed(1)}" y="${H - 9}" font-size="10" text-anchor="middle" fill="#5b6c4d">${i + 1}</text>`;
+  });
+  return s + `</svg>`;
+}
+
+function sheets(r, client) {
+  const p = r.p, v = r.v, Y = p.years;
+  const split = r.totals.companyCare > 0 && r.totals.clientCare > 0;
+  const careHead = r.totals.clientCare === 0 && r.totals.companyCare > 0 ? 'الرعاية السنوية (على الشركة)' : 'الرعاية السنوية';
+  const showOff = r.rows.some(x => x.offs > 0);
+  const titleSys = E.systemTitle(p);
+  const ref = refNo(p);
+  const S = [];
+  const longTables = Y > 12;
+  const total = longTables ? 4 : 3;
+
+  /* ---------- صفحة 1: الغلاف والملخص ---------- */
+  S.push(`<div class="sheet">
+    <div class="hd"><div>
+      <div class="k">دراسة جدوى استرشادية</div>
+      <h2>مزرعة ${E.areaWord(p.area)} نخيل ${v.short}</h2>
+      <div class="sub">عدد ${fnum(p.area)} فدان × ${p.palms} فسيلة للفدان = <b>${fnum(r.palms)} نخلة</b> · مدة الدراسة ${E.yearsN(Y)}</div>
+    </div><img src="/assets/logo-green.png" alt="ثمرات"></div>
+    <div class="meta">
+      <div><span>مقدمة إلى</span><b>${client ? esc(client) : '—'}</b></div>
+      <div><span>التاريخ</span><b>${today()}</b></div>
+      <div><span>رقم الدراسة</span><b class="num">${ref}</b></div>
+      <div><span>الموقع</span><b>غرب المنيا</b></div>
+    </div>
+    <div class="sysbox"><b>نظام الاستثمار: ${esc(titleSys)}</b><p>${esc(E.describeSystem(p))}.</p></div>
+    <div class="kpis">
+      <div class="kpi hero"><span>معدل العائد الإجمالي خلال ${E.yearsN(Y)}</span><b class="num">${pct(r.roi)}</b></div>
+      <div class="kpi"><span>إجمالي التكلفة على العميل حتى التبشير</span><b>${N(r.cost)} <small>ج</small></b></div>
+      <div class="kpi"><span>صافي أرباح التمور والفسائل للعميل</span><b>${N(r.netSum)} <small>ج</small></b></div>
+      <div class="kpi"><span>قيمة الأرض المتوقعة بعد ${E.yearsN(Y)}</span><b>${N(r.landAfter)} <small>ج</small></b></div>
+      <div class="kpi"><span>أول إيراد</span><b>${r.firstYear !== null ? 'السنة ' + E.ORD[r.firstYear] : '—'}</b></div>
+      <div class="kpi"><span>استرداد التكلفة</span><b>${r.payback !== null ? 'السنة ' + E.ORD[r.payback] : 'بعد مدة الدراسة'}</b></div>
+    </div>
+    <h3>صافي العميل في كل سنة</h3>
+    <div class="chart"><div class="legend"><span><i style="background:#79A508"></i>ربح بعد نسبة الشركة</span><span><i style="background:#d98b7a"></i>مصروفات (قبل التبشير)</span><span style="margin-inline-start:auto">رقم السنة ←</span></div>${chartSVG(r)}</div>
+    <h3>الافتراضات</h3>
+    <table class="kv">
+      <tr><td>سعر الفدان</td><td>${N(r.landF)} ج</td></tr>
+      <tr><td>سعر كيلو تمر ${v.short}</td><td>${N(r.price)} ج</td></tr>
+      <tr><td>سعر الفسيلة</td><td>${N(r.offPrice)} ج</td></tr>
+      <tr><td>نسبة الشركة</td><td>${E.fmtPct(p.share)} من ${p.base === 'profit' ? 'صافي الربح السنوي' : (p.shareOffshoots ? 'الإنتاج (تمور + فسائل)' : 'إيراد التمور')}</td></tr>
+      <tr><td>زيادة قيمة الأرض سنويًا</td><td>${E.fmtPct(p.growth)}</td></tr>
+    </table>
+    ${footer(1, total)}</div>`);
+
+  const notesBlock = `<h3>ملاحظات</h3>
+    <ul class="notes-doc">
+      <li>الدراسة استرشادية، والأرقام مبنية على متوسطات الإنتاج والأسعار الحالية وليست التزامًا بعائد محدد.</li>
+      <li>الإنتاج والأسعار بتختلف حسب السوق والموسم وجودة الخدمة.</li>
+      <li>الأرض تمليك مباشر عن طريق شركة الريف المصري ضمن مبادرة استصلاح وزراعة مليون ونصف مليون فدان.</li>
+      <li>ضمان الشركة على المزرعة بالكامل 5 سنين.</li>
+    </ul>
+    <div class="contact"><div><b>للاستفسار والحجز</b><p>واتساب وتليفون: <span class="num">01274577688</span> · الموقع: <span class="num">www.thamaratmisr.com</span></p><p>المقر: 41 ش بهاء الدين الغتوري - سموحة - الإسكندرية (أمام محطة سيدي جابر)</p></div></div>`;
+  /* ---------- صفحة 2: الأرباح السنوية ---------- */
+  const longest = Math.max(...r.rows.map(x => Math.max(money(Math.abs(x.cum)).length, money(x.rev).length)), money(r.totals.rev).length);
+  const cols = 9 + (split ? 2 : 0) + (showOff ? 2 : 0);
+  const tight = (Y > 14 ? ' compact' : '') + (cols >= 12 && longest >= 10 ? ' tiny' : cols >= 12 && longest >= 9 ? ' small' : '');
+  let th = `<th>السنة</th><th>${careHead}</th>${split ? '<th>على العميل</th><th>على الشركة</th>' : ''}<th>إنتاج النخلة (كجم)</th><th>إيراد التمور</th>${showOff ? '<th>فسائل لكل نخلة</th><th>إيراد الفسائل</th>' : ''}<th>إجمالي الإيرادات</th><th>نصيب الشركة</th><th>صافي العميل</th><th>التراكمي</th>`;
+  const cell = (n, cls = '') => n === 0 ? `<td class="dim">—</td>` : `<td class="${n < 0 ? 'neg' : cls}">${N(n)}</td>`;
+  let rows = r.rows.map(x => `<tr><td>${E.ORD[x.i] || x.i + 1}</td>${cell(x.care)}${split ? cell(x.clientCare) + cell(x.companyCare) : ''}<td>${x.kg ? x.kg : '<span class="dim">—</span>'}</td>${cell(x.dates)}${showOff ? `<td>${x.off ? x.off : '<span class="dim">—</span>'}</td>${cell(x.offs)}` : ''}${cell(x.rev)}${cell(x.companyShare)}${x.net === 0 ? '<td class="dim">—</td>' : `<td class="${x.net < 0 ? 'neg' : 'pos'}">${N(x.net)}</td>`}<td class="${x.cum < 0 ? 'neg' : ''}">${N(x.cum)}</td></tr>`).join('');
+  const T = r.totals;
+  rows += `<tr class="tot"><td>الإجمالي</td>${cell(T.care)}${split ? cell(T.clientCare) + cell(T.companyCare) : ''}<td></td>${cell(T.dates)}${showOff ? `<td></td>${cell(T.offs)}` : ''}${cell(T.rev)}${cell(T.companyShare)}<td class="pos">${N(r.netSum)}</td><td></td></tr>`;
+  S.push(`<div class="sheet">${miniHead(r, 'الأرباح السنوية')}
+    <h3>الأرباح السنوية خلال ${E.yearsN(Y)}</h3>
+    <table class="t${tight}"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table>
+    <div class="split">
+      <div><span>إجمالي الإيرادات</span><b>${N(T.rev)}</b></div>
+      <div><span>مصروفات تحملها العميل</span><b>${N(T.clientCare)}</b></div>
+      <div><span>مصروفات تحملتها الشركة</span><b>${N(T.companyCare)}</b></div>
+      <div><span>نصيب الشركة</span><b>${N(T.companyShare)}</b></div>
+      <div style="background:#f2f8e6"><span>صافي العميل</span><b style="color:#3d5c06">${N(r.netSum)}</b></div>
+    </div>
+    <p class="disc">${p.base === 'profit' ? `نسبة الشركة (${E.fmtPct(p.share)}) بتتحسب من صافي الربح السنوي الموجب بس (الإيرادات ناقص الرعاية اللي على العميل) — السنين اللي فيها مصروفات من غير إيراد ما فيهاش نسبة.` : `نسبة الشركة (${E.fmtPct(p.share)}) بتتحسب من ${p.shareOffshoots ? 'إجمالي الإنتاج (إيراد التمور + إيراد الفسائل)' : 'إيراد التمور بس، والفسائل بالكامل للعميل'} في كل سنة فيها إنتاج.`} الأرقام بالجنيه المصري.</p>
+    ${longTables ? '' : notesBlock}
+    ${footer(2, total)}</div>`);
+
+  /* ---------- زيادة قيمة الأرض + معدل العائد ---------- */
+  const landRows = r.land.map(x => `<tr><td>${E.ORD[x.i] || x.i + 1}</td><td>${N(x.val)}</td><td>${E.fmtPct(p.growth)}</td><td>${N(x.inc)}</td><td class="pos">${N(x.tot)}</td></tr>`).join('');
+  const landTable = `<h3>زيادة قيمة الأرض بمعدل ${E.fmtPct(p.growth)} سنويًا</h3>
+    <table class="t${tight}"><thead><tr><th>السنة</th><th>قيمة الـ ${E.areaWord(p.area)} أول السنة</th><th>نسبة الزيادة</th><th>الزيادة</th><th>القيمة آخر السنة</th></tr></thead><tbody>${landRows}</tbody></table>`;
+  const roiTable = `<h3>معدل العائد على الاستثمار خلال ${E.yearsN(Y)}</h3>
+    <table class="kv">
+      <tr><td>ثمن شراء الـ ${E.areaWord(p.area)}</td><td>${N(r.landCost)} ج</td></tr>
+      <tr><td>مصروفات وتكاليف على العميل حتى التبشير</td><td>${N(r.pre)} ج</td></tr>
+      <tr class="em"><td>إجمالي التكلفة حتى التبشير</td><td>${N(r.cost)} ج</td></tr>
+      <tr><td>صافي ربح التمور والفسائل بعد ${E.yearsN(Y)}</td><td>${N(r.netSum)} ج</td></tr>
+      <tr><td>معدل العائد على الاستثمار (تمور وفسائل)</td><td><span class="num">${pct(r.roiDates)}</span></td></tr>
+      <tr><td>قيمة الأرض بعد ${E.yearsN(Y)}</td><td>${N(r.landAfter)} ج</td></tr>
+      <tr><td>معدل العائد على الاستثمار (أرض)</td><td><span class="num">${pct(r.roiLand)}</span></td></tr>
+      <tr class="em"><td>صافي الربح الإجمالي (تمور + فسائل + أرض − التكلفة)</td><td>${N(r.gain)} ج</td></tr>
+      <tr class="big"><td>معدل العائد الإجمالي</td><td><span class="num">${pct(r.roi)}</span></td></tr>
+    </table>
+    <p class="formula">طريقة الحساب: ${r.v.roiOnLand ? '(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض) ÷ ثمن شراء الأرض' : '(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة'}، زي دراسات الشركة المعتمدة.</p>`;
+  if (!longTables) {
+    S.push(`<div class="sheet">${miniHead(r, 'قيمة الأرض والعائد')}${landTable}${roiTable}${footer(3, total)}</div>`);
+  } else {
+    S.push(`<div class="sheet">${miniHead(r, 'قيمة الأرض')}${landTable}${footer(3, total)}</div>`);
+    S.push(`<div class="sheet">${miniHead(r, 'العائد على الاستثمار')}${roiTable}${notesBlock}${footer(4, total)}</div>`);
+  }
+  return S;
+}
+
+function fitPages() {
+  const avail = Math.min(document.documentElement.clientWidth - 24, 794);
+  const k = avail / 794;
+  $$('.pgbox').forEach(b => { b.style.width = 794 * k + 'px'; b.style.height = 1123 * k + 'px'; b.firstElementChild.style.transform = k < 1 ? `scale(${k})` : 'none'; });
+}
+addEventListener('resize', fitPages);
+
+/* ---------------- رسم كل حاجة ---------------- */
+function render(fresh, keepAdv) {
+  R = E.study(P);
+  renderUnd();
+  renderLib();
+  $('#doc').innerHTML = sheets(R, $('#client').value.trim()).map(s => `<div class="pgbox"><div class="pg">${s}</div></div>`).join('');
+  fitPages();
+  try { history.replaceState(null, '', '#' + encodeURIComponent(JSON.stringify({ p: P, c: $('#client').value.trim() || undefined }))); } catch (e) {}
+  if (fresh) $('#bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+$('#client').addEventListener('input', () => { clearTimeout(window._ct); window._ct = setTimeout(() => render(false), 250); });
+
+/* ---------------- آخر دراسات ---------------- */
+function remember(q) {
+  try {
+    const L = JSON.parse(localStorage.getItem('thm-study-recent') || '[]').filter(x => x !== q);
+    L.unshift(q); localStorage.setItem('thm-study-recent', JSON.stringify(L.slice(0, 8)));
+  } catch (e) {}
+  showRecent();
+}
+function showRecent() {
+  let L = []; try { L = JSON.parse(localStorage.getItem('thm-study-recent') || '[]'); } catch (e) {}
+  $('#recentSec').hidden = !L.length;
+  $('#recent').innerHTML = L.map(q => `<button type="button" title="${esc(q)}">${esc(q)}</button>`).join('');
+  $$('#recent button').forEach((b, i) => b.onclick = () => { $('#q').value = L[i]; ask(); });
+}
+
+/* ---------------- PDF + واتساب ---------------- */
+const toast = (t, ms = 3800) => { const el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('on'), ms); };
+const fileName = () => `دراسة جدوى - ${E.areaWord(P.area)} ${E.VARIETIES[P.variety].short}${$('#client').value.trim() ? ' - ' + $('#client').value.trim() : ''}.pdf`.replace(/[\\/:*?"<>|]/g, '');
+function loadScript(srcs) {
+  return new Promise((res, rej) => {
+    const tryOne = i => {
+      if (i >= srcs.length) return rej(new Error('load'));
+      const s = document.createElement('script'); s.src = srcs[i]; s.crossOrigin = 'anonymous';
+      s.onload = res; s.onerror = () => { s.remove(); tryOne(i + 1); };
+      document.head.appendChild(s);
+    };
+    tryOne(0);
+  });
+}
+let libs = null, fontCSS = null;
+async function ensureLibs() {
+  if (!libs) libs = Promise.all([
+    window.PDFLib ? 1 : loadScript(['https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js', 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js']),
+    window.htmlToImage ? 1 : loadScript(['https://cdn.jsdelivr.net/npm/html-to-image@1.11.13/dist/html-to-image.js', 'https://unpkg.com/html-to-image@1.11.13/dist/html-to-image.js'])
+  ]).catch(e => { libs = null; throw e; });
+  return libs;
+}
+/* كل صفحة بتتصور بدقة عالية (الخط العربي بيترسم من المتصفح نفسه فبيطلع مظبوط)، وبعدين بتتجمع في ملف PDF مقاس A4 */
+async function makePDF() {
+  await ensureLibs();
+  await document.fonts.ready;
+  const nodes = $$('#doc .sheet');
+  if (fontCSS === null) { try { fontCSS = await htmlToImage.getFontEmbedCSS(nodes[0]); } catch (e) { fontCSS = ''; } }
+  const pdf = await PDFLib.PDFDocument.create();
+  for (const node of nodes) {
+    const url = await htmlToImage.toJpeg(node, { quality: 0.92, pixelRatio: 2, backgroundColor: '#ffffff', width: 794, height: 1123, fontEmbedCSS: fontCSS || undefined });
+    const img = await pdf.embedJpg(await (await fetch(url)).arrayBuffer());
+    const pg = pdf.addPage([595.28, 841.89]);
+    pg.drawImage(img, { x: 0, y: 0, width: 595.28, height: 841.89 });
+  }
+  pdf.setTitle(fileName().replace(/\.pdf$/, '')); pdf.setAuthor('ثمرات للاستثمار والتنمية الزراعية'); pdf.setCreator('thamaratmisr.com');
+  return new File([await pdf.save()], fileName(), { type: 'application/pdf' });
+}
+function download(file) {
+  const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = file.name;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+}
+async function busy(btn, fn) {
+  const t = btn.innerHTML; btn.disabled = true; btn.lastChild.textContent = ' بيتجهز…';
+  try { await fn(); } finally { btn.disabled = false; btn.innerHTML = t; }
+}
+$('#pdf').onclick = () => busy($('#pdf'), async () => {
+  try { download(await makePDF()); toast('اتحمّل ملف الدراسة PDF'); }
+  catch (e) { toast('هنفتح الطباعة — اختار «حفظ كـ PDF»'); setTimeout(() => print(), 400); }
+});
+function waPhone() {
+  let d = $('#phone').value.replace(/[٠-٩]/g, c => '٠١٢٣٤٥٦٧٨٩'.indexOf(c)).replace(/\D/g, '');
+  if (!d) return '';
+  if (d.startsWith('00')) d = d.slice(2);
+  if (d.startsWith('0')) d = '20' + d.slice(1);
+  else if (d.length === 10 && d.startsWith('1')) d = '20' + d;
+  return d;
+}
+const summary = () => E.summaryText(R, $('#client').value.trim() ? `مقدمة إلى: ${$('#client').value.trim()}` : '');
+$('#wa').onclick = () => busy($('#wa'), async () => {
+  let file = null;
+  try { file = await makePDF(); } catch (e) {}
+  const text = summary();
+  const phone = waPhone();
+  if (file && navigator.canShare && navigator.canShare({ files: [file] }) && !phone) {
+    try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === 'AbortError') return; }
+  }
+  if (file && navigator.canShare && navigator.canShare({ files: [file] }) && phone) {
+    /* على الموبايل: نفتح المشاركة بالملف (اختار واتساب)، والنص بيروح لرقم العميل */
+    try { await navigator.share({ files: [file], text }); return; } catch (e) { if (e.name === 'AbortError') return; }
+  }
+  if (file) download(file);
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  toast(file ? 'اتحمّل ملف الـ PDF — ارفقه في محادثة واتساب مع الملخص' : 'اتفتح واتساب بالملخص — حمّل الـ PDF من الطباعة لو محتاجه', 6000);
+});
+$('#copy').onclick = async () => { try { await navigator.clipboard.writeText(summary()); toast('اتنسخ ملخص الدراسة'); } catch (e) { toast('ما قدرناش ننسخ — جرّب تاني'); } };
+$('#link').onclick = async () => { try { await navigator.clipboard.writeText(location.href); toast('اتنسخ لينك الدراسة (بيفتح لفريق المبيعات بس)'); } catch (e) { toast('ما قدرناش ننسخ'); } };
+
+/* ---------------- البداية ---------------- */
+try {
+  if (location.hash.length > 2) {
+    const st = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+    if (st.p) P = E.normalize(st.p);
+    if (st.c) $('#client').value = st.c;
+  }
+} catch (e) {}
+showRecent();
+render(false);
+</script>
+</body>
+</html>
