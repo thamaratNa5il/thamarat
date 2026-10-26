@@ -41,6 +41,16 @@ const NURSERY = [ // [ملف, نوع: p طولي / l عرضي / v فيديو, ت
   ['n-12','p','جاهزة تتنقل للأرض'],
   ['n-13','p','']
 ];
+const GROW = [ // «الفسائل في الأرض» — فيديوهات طولية [ملف, تعليق]
+  ['v-g1','فسيلة متزرعة جديد ومتحزّمة'],
+  ['v-g2',''],['v-g3',''],['v-g4',''],['v-g5',''],
+  ['v-g6','كل فسيلة على خط ري بالتنقيط'],
+  ['v-g7',''],['v-g8',''],
+  ['v-g9','الفسائل بعد ما كبرت'],
+  ['v-g10',''],['v-g11',''],
+  ['v-g12','وقت الري'],
+  ['v-g13',''],['v-g14',''],['v-g15',''],['v-g16',''],['v-g17',''],['v-g18','']
+];
 const FARMS = [ // معرض «مزارعنا»
   ['p-1','p','نخلة محمّلة بالسباطات'],
   ['p-3','p','السباطة جوه كيس شبكي يحميها'],
@@ -101,6 +111,22 @@ if (extras.length && matchMedia('(max-width:700px)').matches) {
   extras.forEach(e => e.hidden = true);
   moreBtn.hidden = false;
   moreBtn.querySelector('button').onclick = () => { extras.forEach(e => e.hidden = false); moreBtn.hidden = true; };
+}
+
+/* الفسائل في الأرض */
+const grow = page.querySelector('#fx-grow');
+if (grow) {
+  GROW.forEach(([f, c], i) => {
+    const el = h(`<figure class="fx-gv" data-video="${D}${f}.mp4" data-cap="${c}" tabindex="0" role="button" aria-label="شغّل الفيديو${c ? ': ' + c : ''}">${vidTag(f)}<span class="play">${PLAY}</span>${c ? `<figcaption>${c}</figcaption>` : ''}</figure>`);
+    if (i >= 8) el.dataset.extra = '';
+    grow.append(el);
+  });
+  const gx = [...grow.querySelectorAll('[data-extra]')], gm = page.querySelector('#fx-grow-more');
+  if (gx.length && matchMedia('(max-width:700px)').matches) {
+    gx.forEach(e => e.hidden = true);
+    gm.hidden = false;
+    gm.querySelector('button').onclick = () => { gx.forEach(e => e.hidden = false); gm.hidden = true; };
+  }
 }
 
 /* ---------- قبل / بعد ---------- */
@@ -202,7 +228,7 @@ function show(i) {
   const nxt = set[(idx + 1) % set.length]; if (nxt.dataset.full) new Image().src = nxt.dataset.full;
 }
 function open(el) {
-  const group = el.closest('#fx-steps, #fx-track, #fx-mason');
+  const group = el.closest('#fx-steps, #fx-track, #fx-mason, #fx-grow');
   set = [...group.querySelectorAll('[data-full],[data-video]')].filter(x => !x.hidden);
   lastFocus = document.activeElement;
   vids.forEach(v => v.pause());
