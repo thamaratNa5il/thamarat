@@ -254,7 +254,7 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>'
 const N = n => `<span class="num">${n < 0 ? '-' + money(-n) : money(n)}</span>`;
 const pct = x => Math.round(x * 100).toLocaleString('en-US') + '%';
 
-let P = E.normalize({ variety: 'siwi', area: 2.5 });
+let P = E.normalize({ variety: 'siwi', area: 1 });
 let lastQuery = '', understood = null, R = null;
 
 /* ---------------- أمثلة ---------------- */
@@ -373,15 +373,12 @@ function renderUnd() {
 const BASE = [
   { t: 'فدان مجدول', p: { variety: 'majdoul', area: 1 } },
   { t: 'فدان برحي', p: { variety: 'barhi', area: 1 } },
-  { t: 'فدان سيوي', p: { variety: 'siwi', area: 1 } },
-  { t: '2.5 فدان سيوي', p: { variety: 'siwi', area: 2.5 } },
-  { t: '5 فدان سيوي', p: { variety: 'siwi', area: 5 } }
+  { t: 'فدان سيوي', p: { variety: 'siwi', area: 1 } }
 ];
 const sysList = () => [
   { t: E.SYSTEMS.standard.name, p: { system: 'standard' } },
   { t: E.SYSTEMS.mgmt10.name, p: { system: 'mgmt10' } },
-  { t: E.SYSTEMS.full25.name, p: { system: 'full25' } },
-  { t: 'الشركة من السنة الرابعة · 25% من الإنتاج', p: { clientCareYears: 3, share: 0.25, base: 'production' } }
+  { t: E.SYSTEMS.full25.name, p: { system: 'full25' } }
 ];
 function card(item, params, desc) {
   const r = E.study(params);
@@ -510,7 +507,7 @@ function sheets(r, client) {
       <div><span>نصيب الشركة</span><b>${N(T.companyShare)}</b></div>
       <div style="background:#f2f8e6"><span>صافي العميل</span><b style="color:#3d5c06">${N(r.netSum)}</b></div>
     </div>
-    <p class="disc">${p.base === 'profit' ? `نسبة الشركة (${E.fmtPct(p.share)}) بتتحسب من صافي الربح السنوي الموجب بس (الإيرادات ناقص الرعاية اللي على العميل) — السنين اللي فيها مصروفات من غير إيراد ما فيهاش نسبة.` : `نسبة الشركة (${E.fmtPct(p.share)}) بتتحسب من ${p.shareOffshoots ? 'إجمالي الإنتاج (إيراد التمور + إيراد الفسائل)' : 'إيراد التمور بس، والفسائل بالكامل للعميل'} في كل سنة فيها إنتاج.`} الأرقام بالجنيه المصري.</p>
+    <p class="disc">${p.base === 'profit' ? `نسبة الشركة (${E.fmtPct(p.share)}) بتتحسب من صافي الربح السنوي الموجب بس (الإيرادات ناقص الرعاية اللي على العميل) — السنين اللي فيها مصروفات من غير إيراد ما فيهاش نسبة.` : `نسبة الشركة (${E.fmtPct(p.share)}) بتتحسب من ${p.shareOffshoots ? 'إجمالي الإنتاج (إيراد التمور + إيراد الفسائل)' : 'إيراد التمور بس، والفسائل بالكامل للعميل'} في كل سنة فيها إنتاج${p.clientCareYears > 0 ? '، ولو العميل لسه بيدفع الرعاية في سنة فيها إنتاج النسبة بتتحسب بعد خصم الرعاية' : ''}.`} مصروفات السنين اللي قبل أول إنتاج داخلة في إجمالي التكلفة (رأس المال)، علشان كده صافي العميل محسوب من أول سنة إنتاج. الأرقام بالجنيه المصري.</p>
     ${longTables ? '' : notesBlock}
     ${footer(2, total)}</div>`);
 
@@ -530,7 +527,7 @@ function sheets(r, client) {
       <tr class="em"><td>صافي الربح الإجمالي (تمور + فسائل + أرض − التكلفة)</td><td>${N(r.gain)} ج</td></tr>
       <tr class="big"><td>معدل العائد الإجمالي</td><td><span class="num">${pct(r.roi)}</span></td></tr>
     </table>
-    <p class="formula">طريقة الحساب: ${r.v.roiOnLand ? '(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض) ÷ ثمن شراء الأرض' : '(إيراد التمور + إيراد الفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة'}، زي دراسات الشركة المعتمدة.</p>`;
+    <p class="formula">طريقة الحساب: (صافي أرباح التمور والفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة، زي دراسات الشركة المعتمدة.</p>`;
   if (!longTables) {
     S.push(`<div class="sheet">${miniHead(r, 'قيمة الأرض والعائد')}${landTable}${roiTable}${footer(3, total)}</div>`);
   } else {

@@ -6,33 +6,33 @@
 export const VARIETIES = {
   majdoul: {
     name: 'المجدول', short: 'مجدول', land: 600000, price: 180, offPrice: 3000,
-    care: [25000, 25000, 25000, 35000, 35000, 50000, 65000, 65000, 65000, 65000],
+    care: [30000, 30000, 30000, 35000, 65000, 75000, 75000, 85000, 95000, 100000],
     kg:   [0, 0, 0, 5, 15, 30, 50, 60, 70, 70],
     off:  [0, 0, 0, 1, 3, 3, 3, 2, 0, 0]
   },
   barhi: {
     name: 'البرحي', short: 'برحي', land: 600000, price: 40, offPrice: 2500,
-    care: [25000, 25000, 25000, 35000, 35000, 50000, 65000, 65000, 65000, 65000],
+    care: [30000, 30000, 30000, 40000, 50000, 60000, 65000, 70000, 70000, 70000],
     kg:   [0, 0, 15, 35, 50, 80, 120, 160, 210, 250],
     off:  [0, 0, 0, 1, 3, 3, 3, 2, 0, 0]
   },
   siwi: {
-    name: 'السيوي', short: 'سيوي', roiOnLand: true, land: 350000, price: 35, offPrice: 300,
-    care: [25000, 25000, 25000, 27000, 27000, 27000, 29000, 29000, 29000, 29000],
+    name: 'السيوي', short: 'سيوي', land: 350000, price: 35, offPrice: 300,
+    care: [25000, 25000, 25000, 27000, 30000, 35000, 40000, 45000, 45000, 50000],
     kg:   [0, 0, 0, 15, 60, 120, 150, 150, 150, 150],
     off:  [0, 0, 0, 2, 2, 2, 2, 2, 2, 2]
   }
 };
 
 export const SYSTEMS = {
-  standard: { name: 'النظام الأساسي', desc: 'العميل يتحمل مصروفات الرعاية، والشركة تاخد 25% من صافي الربح السنوي مقابل الإدارة', clientCareYears: 99, share: 0.25, base: 'profit' },
+  standard: { name: 'النظام الأساسي (25%)', desc: 'العميل يتحمل مصروفات الرعاية أول 3 سنين، والشركة تتحمل المصروفات من السنة الرابعة وتاخد 25% من الإيرادات', clientCareYears: 3, share: 0.25, base: 'production' },
   mgmt10:   { name: 'نظام الإدارة 10%', desc: 'العميل يتحمل مصروفات الرعاية، والشركة تاخد 10% من صافي الربح مقابل الإدارة', clientCareYears: 99, share: 0.10, base: 'profit' },
   full25:   { name: 'الشركة تتحمل كل شيء', desc: 'الشركة تتحمل كل مصروفات الرعاية من أول سنة، وتاخد 25% من الإنتاج', clientCareYears: 0, share: 0.25, base: 'production' }
 };
 
 export const DEFAULTS = {
   variety: 'siwi', area: 1, years: 10, system: 'standard',
-  clientCareYears: 99, share: 0.25, base: 'profit', shareOffshoots: true,
+  clientCareYears: 3, share: 0.25, base: 'production', shareOffshoots: true,
   palms: 60, growth: 0.20, landPrice: null, kgPrice: null, offPrice: null
 };
 
@@ -59,7 +59,7 @@ export function normalize(p = {}) {
 
 const clamp = (n, a, b) => Math.min(b, Math.max(a, isFinite(n) ? n : a));
 
-/** يحسب الدراسة كاملة */
+/** يحسب الدراسة كاملة — مطابقة لدراسات الشركة المعتمدة (أكتوبر 2026): الفدان الواحد هو الأساس وكل حاجة بتتضرب في المساحة */
 export function study(params) {
   const p = normalize(params);
   const v = VARIETIES[p.variety];
@@ -76,10 +76,11 @@ export function study(params) {
     const dates = kg * palms * price, offs = off * palms * offPrice, rev = dates + offs;
     let companyShare;
     if (p.base === 'profit') companyShare = Math.max(0, rev - clientCare) * p.share;
-    else companyShare = (p.shareOffshoots ? rev : dates) * p.share;
+    /* سنة فيها إنتاج والعميل لسه بيدفع الرعاية (السنة التالتة في البرحي): النسبة من الإيراد بعد خصم الرعاية — زي دراسات الشركة */
+    else companyShare = Math.max(0, (p.shareOffshoots ? rev : dates) - clientCare) * p.share;
     const net = rev - clientCare - companyShare;
-    if (rev === 0) pre += clientCare; else if (firstYear === null) firstYear = i;
-    cum += net;
+    /* مصروفات سنين ما قبل الإنتاج محسوبة في رأس المال، وصافي الأرباح من أول سنة إنتاج */
+    if (rev === 0) pre += clientCare; else { if (firstYear === null) firstYear = i; cum += net; }
     rows.push({ i, care, clientCare, companyCare, kg, price, dates, off, offPrice, offs, rev, companyShare, net, cum });
   }
   const landCost = landF * p.area, cost = landCost + pre;
@@ -87,7 +88,7 @@ export function study(params) {
   const land = []; let val = landCost;
   for (let i = 0; i < p.years; i++) { const inc = val * p.growth; land.push({ i, val, inc, tot: val + inc }); val += inc; }
   const landAfter = val, gain = netSum + landAfter - cost;
-  const roi = v.roiOnLand ? (netSum + landAfter) / landCost : gain / cost;
+  const roi = gain / cost;
   let payback = null; rows.forEach(r => { if (payback === null && r.cum >= cost) payback = r.i; });
   const sum = k => rows.reduce((s, r) => s + r[k], 0);
   return {
