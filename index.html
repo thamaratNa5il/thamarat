@@ -1511,7 +1511,7 @@ function render(){
     <div><span>سعر كيلو ${v.name}</span><b>${v.price} ج</b></div>
     <div><span>سعر الفسيلة</span><b>${money(v.offPrice)} ج</b></div>
     <div><span>عدد الفسائل للفدان</span><b>${PALMS}</b></div>
-    <div><span>الرعاية على المستثمر</span><b>أول 3 سنين</b></div>
+    <div><span>الرعاية على المستثمر</span><b>${key==='barhi'?'أول سنتين':'أول 3 سنين'}</b></div>
     <div><span>نسبة الشركة من الإيرادات (والمصروفات عليها من السنة الرابعة)</span><b>25%</b></div>
     <div><span>زيادة قيمة الأرض سنويًا</span><b>20%</b></div>`;
   $('#k-eq').textContent='(صافي أرباح التمور والفسائل + القيمة السوقية للأرض − إجمالي التكلفة) ÷ إجمالي التكلفة';
@@ -1529,7 +1529,7 @@ function render(){
     if(i===0)h+=`<tr class="phase"><td colspan="9">مرحلة النمو (قبل التبشير)</td></tr>`;
     if(i===m.firstYear)h+=`<tr class="phase"><td colspan="9">مرحلة الإنتاج</td></tr>`;
     const grow=r.rev===0;
-    h+=`<tr><td>${ORD[i]}</td><td>${r.onClient?`<small class="who">على المستثمر</small> ${money(r.care)}`:'<small class="who co">على الشركة</small>'}</td>`+
+    h+=`<tr><td>${ORD[i]}</td><td>${money(r.care)}</td>`+
       (grow?`<td>-</td>${na}${na}${na}${na}${na}`:`<td>${r.kg}</td><td>${v.price}</td><td>${money(r.dates)}</td><td>${r.off||'-'}</td><td>${money(v.offPrice)}</td><td>${money(r.offs)}</td>`)+
       `<td class="net">${money(r.rev)}</td></tr>`;
   });
@@ -1544,7 +1544,7 @@ function render(){
   $('#sum-sub').textContent=`${F} فدان ${v.name}`;
   $('#sumlist').innerHTML=`
     <div><span>ثمن شراء ${F} فدان</span><b>${money(m.landCost)}</b></div>
-    <div><span>مصروفات الرعاية على المستثمر حتى الإثمار</span><b>${money(m.pre)}</b></div>
+    <div><span>مصروفات الرعاية والإشراف على المستثمر ${key==='barhi'?'أول سنتين':'أول 3 سنوات'} حتى الإنتاجية</span><b>${money(m.pre)}</b></div>
     <div><span>إجمالي رأس المال المستثمر</span><b>${money(m.cost)}</b></div>
     <div><span>صافي أرباح التمور والفسائل خلال 10 سنوات</span><b>${money(m.netSum)}</b></div>
     <div><span>قيمة الأرض بعد 10 سنوات</span><b>${money(m.landAfter)}</b></div>

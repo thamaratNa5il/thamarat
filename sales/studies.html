@@ -437,8 +437,8 @@ function chartSVG(r) {
 
 function sheets(r, client) {
   const p = r.p, v = r.v, Y = p.years;
-  const split = r.totals.companyCare > 0 && r.totals.clientCare > 0;
-  const careHead = r.totals.clientCare === 0 && r.totals.companyCare > 0 ? 'الرعاية السنوية (على الشركة)' : 'الرعاية السنوية';
+  const split = false;
+  const careHead = 'الرعاية السنوية';
   const showOff = r.rows.some(x => x.offs > 0);
   const titleSys = E.systemTitle(p);
   const ref = refNo(p);
@@ -501,8 +501,6 @@ function sheets(r, client) {
     <table class="t${tight}"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table>
     <div class="split">
       <div><span>إجمالي الإيرادات</span><b>${N(T.rev)}</b></div>
-      <div><span>مصروفات تحملها العميل</span><b>${N(T.clientCare)}</b></div>
-      <div><span>مصروفات تحملتها الشركة</span><b>${N(T.companyCare)}</b></div>
       <div><span>نصيب الشركة</span><b>${N(T.companyShare)}</b></div>
       <div style="background:#f2f8e6"><span>صافي العميل</span><b style="color:#3d5c06">${N(r.netSum)}</b></div>
     </div>
