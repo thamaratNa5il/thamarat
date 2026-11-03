@@ -451,7 +451,7 @@ function sheets(r, client) {
     <div class="hd"><div>
       <div class="k">دراسة جدوى استرشادية</div>
       <h2>مزرعة ${E.areaWord(p.area)} نخيل ${v.short}</h2>
-      <div class="sub">عدد ${fnum(p.area)} فدان × ${p.palms} فسيلة للفدان = <b>${fnum(r.palms)} نخلة</b> · مدة الدراسة ${E.yearsN(Y)}</div>
+      <div class="sub">عدد ${fnum(p.area)} فدان × متوسط ${p.palms} فسيلة للفدان = متوسط <b>${fnum(r.palms)} فسيلة</b> · مدة الدراسة ${E.yearsN(Y)}</div>
     </div><img src="/assets/logo-green.png" alt="ثمرات"></div>
     <div class="meta">
       <div><span>مقدمة إلى</span><b>${client ? esc(client) : '—'}</b></div>
@@ -459,7 +459,6 @@ function sheets(r, client) {
       <div><span>رقم الدراسة</span><b class="num">${ref}</b></div>
       <div><span>الموقع</span><b>غرب المنيا</b></div>
     </div>
-    <div class="sysbox"><b>نظام الاستثمار: ${esc(titleSys)}</b><p>${esc(E.describeSystem(p))}.</p></div>
     <div class="kpis">
       <div class="kpi hero"><span>معدل العائد الإجمالي خلال ${E.yearsN(Y)}</span><b class="num">${pct(r.roi)}</b></div>
       <div class="kpi"><span>إجمالي التكلفة على العميل حتى التبشير</span><b>${N(r.cost)} <small>ج</small></b></div>
