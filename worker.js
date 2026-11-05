@@ -197,9 +197,84 @@ async function studyParse(req, env) {
   try { return json({ params: JSON.parse(m[0]) }); } catch { return json({ error: 'parse' }, 502); }
 }
 
+/* ---------- صفحة إعلانات فيسبوك (invest.thamaratmisr.com) ----------
+   الصفحة نفسها في landing/index.html. الفورم بيبعت على /api/lead، والـ worker بيحوّل الطلب لنظام الـ CRM
+   (POST /api/intake) عن طريق Service Binding اسمه CRM — فمفتاح INTAKE_API_KEY عمره ما بيظهر في الصفحة.
+   الإعداد في Cloudflare (Workers & Pages ← thamarat ← Settings):
+   - Domains & Routes ← Add ← Custom domain: invest.thamaratmisr.com
+   - Variables and Secrets ← Secret: INTAKE_API_KEY (نفس قيمة المفتاح في thamarat-crm)
+   - (اختياري) Variable: FB_PIXEL_ID = رقم بيكسل فيسبوك */
+const LANDING_HOST = /^invest\./;
+const WISHES = { main: 'سجّل من الفورم الرئيسي', contract: 'استفسر عن المساحات ونظم التعاقد', details: 'عايز تفاصيل أكتر', study: 'طلب دراسة جدوى' };
+
+async function landing(req, env) {
+  const res = await env.ASSETS.fetch(new Request(new URL('/landing/', req.url), req));
+  if (!res.ok) return res;
+  const cc = String(req.cf?.country || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2);
+  const pixel = String(env.FB_PIXEL_ID || '').replace(/\D/g, '');
+  const out = new HTMLRewriter()
+    .on('meta[name="visitor-cc"]', { element(e) { e.setAttribute('content', cc); } })
+    .on('meta[name="fb-pixel"]', { element(e) { e.setAttribute('content', pixel); } })
+    .transform(res);
+  const h = new Headers(out.headers);
+  h.set('cache-control', 'no-store');
+  return new Response(out.body, { status: 200, headers: h });
+}
+
+function leadOriginOk(req) {
+  const o = req.headers.get('origin');
+  if (!o) return false;
+  try { const h = new URL(o).hostname; return h === 'thamaratmisr.com' || h.endsWith('.thamaratmisr.com') || h === 'localhost' || h.endsWith('.workers.dev'); } catch { return false; }
+}
+
+async function lead(req, env) {
+  if (req.method !== 'POST') return json({ ok: false, error: 'method' }, 405);
+  if (!leadOriginOk(req)) return json({ ok: false, error: 'origin' }, 403);
+  if (env.LEAD_LIMIT) {
+    const { success } = await env.LEAD_LIMIT.limit({ key: req.headers.get('cf-connecting-ip') || 'x' });
+    if (!success) return json({ ok: false, error: 'rate' }, 429);
+  }
+  let b; try { b = await req.json(); } catch { return json({ ok: false, error: 'bad' }, 400); }
+  const s = (v, n) => (typeof v === 'string' ? v.trim().slice(0, n) : '');
+  if (s(b.website, 200)) return json({ ok: true }); // honeypot
+  const phone = s(b.phone, 30);
+  if (!/^\+\d{8,15}$/.test(phone)) return json({ ok: false, error: 'invalid_phone' }, 422);
+  const wish = Object.hasOwn(WISHES, b.wish) ? b.wish : 'main';
+  const budget = s(b.budget, 60);
+  const utm = b.utm && typeof b.utm === 'object' ? b.utm : {};
+  const body = {
+    name: s(b.name, 120),
+    phone,
+    message: ['فورم صفحة الإعلانات (invest.thamaratmisr.com)', 'الطلب: ' + WISHES[wish], budget && 'الميزانية: ' + budget].filter(Boolean).join('\n'),
+    feedback: s(b.note, 600) || ('الطلب: ' + WISHES[wish] + (budget ? '\nالميزانية: ' + budget : '')),
+    session: s(b.session, 100),
+    page: 'invest',
+  };
+  for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) if (s(utm[k], 200)) body[k] = s(utm[k], 200);
+  if (!body.utm_source && s(utm.fbclid, 10)) body.utm_source = 'facebook';
+
+  if (!env.INTAKE_API_KEY || !(env.CRM || env.CRM_URL)) return json({ ok: false, error: 'unavailable' }, 503);
+  const init = { method: 'POST', headers: { 'content-type': 'application/json', 'x-intake-key': env.INTAKE_API_KEY }, body: JSON.stringify(body) };
+  const r = env.CRM ? await env.CRM.fetch(new Request('https://crm.internal/api/intake', init))
+                    : await fetch(String(env.CRM_URL).replace(/\/$/, '') + '/api/intake', init);
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 422) return json({ ok: false, error: 'invalid_phone' }, 422);
+  if (!r.ok || !j.ok) return json({ ok: false, error: 'crm', status: r.status }, 502);
+  return json({ ok: true });
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
+    if (url.pathname === '/api/lead') {
+      try { return await lead(req, env); } catch (e) { return json({ ok: false, error: 'server' }, 500); }
+    }
+    if (LANDING_HOST.test(url.hostname) && (url.pathname === '/' || url.pathname === '/index.html')) {
+      try { return await landing(req, env); } catch (e) { return env.ASSETS.fetch(new Request(new URL('/landing/', req.url), req)); }
+    }
+    if (url.pathname === '/landing' || url.pathname === '/landing/') {
+      try { return await landing(req, env); } catch (e) { return env.ASSETS.fetch(req); }
+    }
     if (url.pathname === '/studies' || url.pathname.startsWith('/studies/')) {
       try { return await studies(req, env, url); } catch (e) { return html('حصلت مشكلة، جرّب تاني.', 500); }
     }

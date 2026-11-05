@@ -51,3 +51,17 @@
 - `worker.js` — الدخول بالباسورد و`/api/study-parse` (فهم الطلب بـ Claude لو `ANTHROPIC_API_KEY` موجود؛ من غيره الصفحة بتفهم الطلب لوحدها).
 
 تغيير الباسورد: في Cloudflare ← Workers & Pages ← thamarat ← Settings ← Variables and Secrets ← Add ← Secret باسم `STUDIES_PASS` (الباسورد القديم بيبطل تلقائيًا).
+
+## صفحة إعلانات فيسبوك (`invest.thamaratmisr.com`)
+لاندينج بيج للإعلانات، هدفها الوحيد إن الزائر يسجّل اسمه ورقمه (من أي دولة) والميزانية (اختياري)، فيظهر له «سيتم التواصل معك في أقرب وقت»، والعميل يدخل نظام الـ CRM فورًا عند الأدمن.
+- `landing/index.html` — الصفحة كلها (لوجو 3D، الفورم، المقارنة، الفيديو). الصور والفيديو في `landing/`.
+- `worker.js` — على الدومين `invest.` بيخدم الصفحة، و`/api/lead` بيحوّل الطلب لـ `thamarat-crm` (`/api/intake`) عن طريق Service Binding اسمه `CRM` (المفتاح عمره ما بيظهر في الصفحة). نفس الصفحة متاحة كمان على `thamaratmisr.com/landing/`.
+- كل زرار في الصفحة («عايز تفاصيل أكتر»، «اطلب دراسة الجدوى»…): لو الزائر سجّل قبل كده بيتبعت الطلب على طول من غير ما يكتب تاني، ويتسجل في الـ CRM كفيدباك على نفس العميل (من غير ما يتكرر).
+- كود الدولة بيتختار تلقائي من بلد الزائر (الافتراضي الإمارات).
+
+**الإعداد مرة واحدة في Cloudflare** (Workers & Pages ← thamarat ← Settings):
+1. Domains & Routes ← Add ← Custom domain ← `invest.thamaratmisr.com`
+2. Variables and Secrets ← Add ← Secret باسم `INTAKE_API_KEY` = نفس قيمة `INTAKE_API_KEY` في `thamarat-crm` (لو مش موجود هناك، اعمل مفتاح جديد وحطه في الاتنين).
+3. (اختياري) Variable باسم `FB_PIXEL_ID` = رقم بيكسل فيسبوك، علشان حدث `Lead` يتسجل لكل تسجيل.
+
+لينك الإعلان: `https://invest.thamaratmisr.com/?utm_source=facebook&utm_campaign=<اسم الحملة>` (اسم الحملة لو متسجل في «الحملات» في الـ CRM العميل بيترِبط بيها تلقائي).
