@@ -361,17 +361,6 @@ dialog.sheet .x svg{width:18px;height:18px}
 .badges .marquee.rev li{background:var(--palm);color:#fff;border-color:var(--palm)}
 @keyframes slide{to{transform:translateX(-50%)}}
 
-/* قبل وبعد */
-.ba{padding-top:40px}
-.baframe{position:relative;margin-top:22px;border-radius:22px;overflow:hidden;aspect-ratio:4/3;max-height:70svh;width:100%;user-select:none;-webkit-user-select:none;box-shadow:0 30px 60px -36px rgba(60,45,20,.8);direction:ltr}
-.baframe>img,.baframe .before img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.baframe .before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
-.baframe .handle{position:absolute;top:0;bottom:0;left:var(--x);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.4);pointer-events:none}
-.baframe .handle b{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:#fff;color:var(--palm);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35)}
-.baframe .handle svg{width:24px;height:24px}
-.baframe .lbl{position:absolute;bottom:12px;font:700 14px var(--body);color:#fff;background:rgba(19,38,26,.7);padding:4px 12px;border-radius:99px}
-.baframe .l1{left:12px}.baframe .l2{right:12px;background:var(--leaf);color:var(--ink)}
-.baframe input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;touch-action:pan-y}
 
 /* شريط الصور */
 .reel{margin-top:22px;display:grid;gap:10px;overflow:hidden;direction:ltr}
@@ -494,20 +483,6 @@ dialog.sheet .x svg{width:18px;height:18px}
   <div class="marquee rev" aria-hidden="true"><ul><li><i aria-hidden="true">🌴</i>تملك حر وموثق</li><li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li><li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li><li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li><li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li><li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li><li><i aria-hidden="true">🌴</i>تملك حر وموثق</li><li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li><li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li><li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li><li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li><li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li></ul></div>
 </section>
 
-<!-- ===================== قبل وبعد ===================== -->
-<section class="ba">
-  <div class="wrap">
-    <h2 class="h2 rv">قبل وبعد.. بإيدينا</h2>
-    <p class="lead-in rv">اسحب الخط وشوف الأرض قبل وبعد الاستصلاح: تسوية وتخطيط خطوط الزراعة بمعدات الشركة.</p>
-    <div class="baframe" id="ba" style="--x:50%">
-      <img src="/assets/field/r-after.webp" alt="الأرض بعد الاستصلاح: خطوط زراعة مستقيمة" loading="lazy">
-      <div class="before"><img src="/assets/field/r-before.webp" alt="الأرض قبل الاستصلاح: صحراء مفتوحة" loading="lazy"></div>
-      <span class="lbl l1">قبل</span><span class="lbl l2">بعد</span>
-      <div class="handle" aria-hidden="true"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></b></div>
-      <input type="range" min="0" max="100" value="50" aria-label="قارن قبل وبعد الاستصلاح">
-    </div>
-  </div>
-</section>
 
 <!-- ===================== من أرض الواقع ===================== -->
 <section class="field">
@@ -523,7 +498,7 @@ dialog.sheet .x svg{width:18px;height:18px}
   </div>
   <div class="reel" aria-label="صور من مزارع ومشاتل ثمرات">
     <div class="track"><img src="/assets/field/p-1-s.webp" alt="" loading="lazy"><img src="/assets/field/p-4-s.webp" alt="" loading="lazy"><img src="/assets/field/p-10-s.webp" alt="" loading="lazy"><img src="/assets/field/p-3-s.webp" alt="" loading="lazy"><img src="/assets/field/p-6-s.webp" alt="" loading="lazy"><img src="/assets/field/p-12-s.webp" alt="" loading="lazy"><img src="/assets/field/p-5-s.webp" alt="" loading="lazy"><img src="/assets/field/p-15-s.webp" alt="" loading="lazy"><img src="/assets/field/p-1-s.webp" alt="" loading="lazy"><img src="/assets/field/p-4-s.webp" alt="" loading="lazy"><img src="/assets/field/p-10-s.webp" alt="" loading="lazy"><img src="/assets/field/p-3-s.webp" alt="" loading="lazy"><img src="/assets/field/p-6-s.webp" alt="" loading="lazy"><img src="/assets/field/p-12-s.webp" alt="" loading="lazy"><img src="/assets/field/p-5-s.webp" alt="" loading="lazy"><img src="/assets/field/p-15-s.webp" alt="" loading="lazy"></div>
-    <div class="track rev"><img src="/assets/field/n-1-s.webp" alt="" loading="lazy"><img src="/assets/field/n-8-s.webp" alt="" loading="lazy"><img src="/assets/field/n-10-s.webp" alt="" loading="lazy"><img src="/assets/field/n-12-s.webp" alt="" loading="lazy"><img src="/assets/field/n-9-s.webp" alt="" loading="lazy"><img src="/assets/field/n-4-s.webp" alt="" loading="lazy"><img src="/assets/field/r-solar-s.webp" alt="" loading="lazy"><img src="/assets/field/r-rows-s.webp" alt="" loading="lazy"><img src="/assets/field/n-1-s.webp" alt="" loading="lazy"><img src="/assets/field/n-8-s.webp" alt="" loading="lazy"><img src="/assets/field/n-10-s.webp" alt="" loading="lazy"><img src="/assets/field/n-12-s.webp" alt="" loading="lazy"><img src="/assets/field/n-9-s.webp" alt="" loading="lazy"><img src="/assets/field/n-4-s.webp" alt="" loading="lazy"><img src="/assets/field/r-solar-s.webp" alt="" loading="lazy"><img src="/assets/field/r-rows-s.webp" alt="" loading="lazy"></div>
+    <div class="track rev"><img src="/assets/field/n-1-s.webp" alt="" loading="lazy"><img src="/assets/field/n-8-s.webp" alt="" loading="lazy"><img src="/assets/field/n-10-s.webp" alt="" loading="lazy"><img src="/assets/field/n-12-s.webp" alt="" loading="lazy"><img src="/assets/field/n-9-s.webp" alt="" loading="lazy"><img src="/assets/field/n-4-s.webp" alt="" loading="lazy"><img src="/assets/field/r-solar-s.webp" alt="" loading="lazy"><img src="/assets/field/n-1-s.webp" alt="" loading="lazy"><img src="/assets/field/n-8-s.webp" alt="" loading="lazy"><img src="/assets/field/n-10-s.webp" alt="" loading="lazy"><img src="/assets/field/n-12-s.webp" alt="" loading="lazy"><img src="/assets/field/n-9-s.webp" alt="" loading="lazy"><img src="/assets/field/n-4-s.webp" alt="" loading="lazy"><img src="/assets/field/r-solar-s.webp" alt="" loading="lazy"></div>
   </div>
   <div class="wrap">
     <div class="after">
@@ -909,14 +884,6 @@ $$('.count').forEach(function(el){var to=+el.dataset.to,done=false;
   imgs.forEach(function(m){m.loading='eager'});
 })();
 
-/* قبل وبعد: سحب + حركة تعريفية أول ما يظهر */
-(function(){var f=$('#ba');if(!f)return;var r=f.querySelector('input'),touched=false;
-  function put(v){f.style.setProperty('--x',v+'%')}
-  r.addEventListener('input',function(){touched=true;put(r.value)});
-  if(reduce)return;
-  new IntersectionObserver(function(es,o){if(!es[0].isIntersecting)return;o.disconnect();var t0=performance.now();
-    (function step(t){if(touched)return;var k=(t-t0)/2600;if(k>1){put(50);r.value=50;return}var v=50+Math.sin(k*Math.PI*2)*32;put(v);r.value=v;requestAnimationFrame(step)})(t0)},{threshold:.55}).observe(f);
-})();
 })();
 </script>
 </body>
