@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#cfe6ee">
+<title>ثمرات · استثمر في نخيل المجدول بأرضك في مصر</title>
+<meta name="description" content="إلى كل مغترب يفكر في خطوته القادمة: ملكية رسمية لأرض نخيل مجدول في مصر، زراعة وإدارة وتسويق كامل من ثمرات. سجّل بياناتك ومستشار الاستثمار يتواصل معك.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:site_name" content="ثمرات للاستثمار والتنمية الزراعية">
+<meta property="og:title" content="تأمين مستقبل أسرتك يبدأ من أرضك.. استثمر بثقة في وطنك">
+<meta property="og:description" content="فرصة استثمارية متكاملة في زراعة نخيل المجدول: ملكية رسمية، زراعة، إدارة، وحصاد وتسويق للمحصول.">
+<meta property="og:image" content="https://invest.thamaratmisr.com/landing/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="fb-pixel" content="">
+<meta name="visitor-cc" content="">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap">
+<style>
+:root{
+  --leaf:#79A508;      /* لون ثمرات الأساسي: الأزرار */
+  --leaf-hi:#8cbd0c;
+  --palm:#1F4A2C;      /* أخضر النخلة الغامق: العناوين والأقسام الداكنة */
+  --palm-2:#2a5e39;
+  --ink:#13261A;
+  --muted:#4f6553;
+  --mist:#F4F7EC;      /* أرضية الصفحة */
+  --paper:#ffffff;
+  --sand:#EDE3CF;      /* رمل الصحراء: أقسام الأرض */
+  --sand-2:#e2d3b5;
+  --dune:#A8723A;      /* لون التمر/الرمل الغامق: الأرقام والتمييز */
+  --line:#d9e3cf;
+  --err:#b23b2a;
+  --sky-a:#bcdcec;
+  --sky-b:#e7f1ec;
+  --display:"Alexandria","Tajawal",Tahoma,sans-serif;
+  --body:"Tajawal",Tahoma,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.85;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);line-height:1.35;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:3px;border-radius:8px}
+.wrap{width:100%;max-width:1120px;margin-inline:auto;padding-inline:16px}
+@media (min-width:700px){.wrap{padding-inline:32px}}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+/* ---------- الأزرار ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border:0;border-radius:16px;
+  background:var(--leaf);color:var(--ink);font:800 17px var(--body);text-decoration:none;cursor:pointer;
+  box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 10px 24px -12px rgba(76,108,5,.9);transition:background .2s,transform .15s}
+.btn:hover{background:var(--leaf-hi)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.quiet{background:transparent;color:var(--palm);box-shadow:inset 0 0 0 2px var(--palm)}
+.btn.quiet:hover{background:rgba(31,74,44,.07)}
+.btn.on-dark{box-shadow:0 10px 30px -12px rgba(0,0,0,.6)}
+.btn.wide{width:100%}
+.btn[disabled]{opacity:.7;cursor:progress}
+
+/* ---------- الشريط العلوي ---------- */
+.top{position:absolute;inset-inline:0;top:0;z-index:5;padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.top img{height:34px;width:auto}
+.top a.ask{font:700 14.5px var(--body);color:var(--palm);text-decoration:none;padding:8px 14px;border-radius:12px;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* ---------- الهيرو: سما فوق رمل، وخط نخيل على الأفق ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;
+  background:linear-gradient(180deg,var(--sky-a) 0%,var(--sky-b) 34%,#efe9d9 58%,var(--sand) 76%,var(--sand-2) 100%);
+  padding:84px 0 36px}
+.hero .horizon{position:absolute;inset-inline:0;top:184px;height:62px;z-index:-1;opacity:.9}
+.hero .grid{display:grid;gap:22px;align-items:start}
+.hero .intro{text-align:center}
+.stage{perspective:1100px;display:grid;place-items:center;height:168px;margin-bottom:10px}
+.coin{--rx:0deg;--ry:0deg;position:relative;width:150px;aspect-ratio:1;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));animation:bob 6.5s ease-in-out infinite}
+@keyframes bob{50%{translate:0 -10px}}
+.coin .layer{position:absolute;inset:0;border-radius:50%;background:linear-gradient(145deg,#cfc6a5,#8f8663)}
+.coin .face{position:absolute;inset:0;border-radius:50%;transform:translateZ(13px);display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 32% 26%,#fffdf4 0,#f4efdd 38%,#e3dcc2 75%,#cfc6a5 100%);
+  box-shadow:inset 0 0 0 7px #efe8d2,inset 0 0 0 9px #c9bf9c,inset 0 -14px 30px -10px rgba(80,70,30,.35),inset 0 10px 24px -8px #fff}
+.coin .face img{width:72%;filter:drop-shadow(0 2px 0 rgba(255,255,255,.7)) drop-shadow(0 -1px 0 rgba(0,40,20,.25))}
+.coin .face::after{content:"";position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.6) 50%,transparent 58%);transform:translateX(var(--shine,-60%));pointer-events:none}
+.coin .back{position:absolute;inset:0;border-radius:50%;transform:rotateY(180deg) translateZ(0);backface-visibility:hidden;display:grid;place-items:center;background:radial-gradient(circle at 60% 30%,#f4efdd,#d8cfb0 80%);box-shadow:inset 0 0 0 7px #e9e1c8,inset 0 0 0 9px #c2b792}
+.coin .back img{width:64%;opacity:.85}
+.coin .face{backface-visibility:hidden}
+.coin .ring{position:absolute;inset:7%;border-radius:50%;border:1px dashed rgba(22,74,46,.28);transform:translateZ(14px)}
+.hero .to{font:700 15.5px var(--body);color:var(--palm-2)}
+.hero h1{font-size:clamp(29px,7.6vw,52px);font-weight:800;color:var(--palm);margin:6px auto 12px;max-width:20ch;letter-spacing:-.01em}
+.hero .lede{color:#3b4f3f;font-size:17px;max-width:46ch;margin-inline:auto}
+
+/* ---------- كارت التسجيل ---------- */
+.card{position:relative;background:var(--paper);border-radius:24px;padding:22px 18px 20px;
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 30px 60px -36px rgba(31,74,44,.55),0 0 0 1px rgba(31,74,44,.08)}
+.card h2{font-size:21px;color:var(--palm);font-weight:700}
+.card .sub{color:var(--muted);font-size:15px;margin-top:4px}
+.f{display:grid;gap:14px;margin-top:16px}
+.fld{display:grid;gap:6px}
+.fld label,.fld .lbl{font:700 15px var(--body);color:var(--ink)}
+.fld label small,.fld .lbl small{font-weight:500;color:var(--muted)}
+.in{width:100%;min-height:54px;border:1.5px solid var(--line);border-radius:14px;background:#fbfcf8;padding:0 14px;font:500 17px var(--body);color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.in:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 4px rgba(121,165,8,.18);background:#fff}
+.in::placeholder{color:#93a294}
+.phone{display:flex;gap:8px;direction:ltr}
+.phone .cc{flex:0 0 auto;width:118px;padding:0 8px;appearance:none;-webkit-appearance:none;cursor:pointer;
+  background:#fbfcf8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231F4A2C' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 10px center;padding-right:28px;font-size:16px}
+.phone .num{flex:1;min-width:0;text-align:left;letter-spacing:.02em}
+.phone .code{width:84px;flex:0 0 auto;text-align:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:#fbfcf8;border-radius:99px;padding:7px 13px;font:600 14px var(--body);cursor:pointer;color:var(--palm)}
+.chip[aria-pressed="true"]{background:var(--palm);border-color:var(--palm);color:#fff}
+.err{color:var(--err);font-size:14px;font-weight:600;min-height:0}
+.err:empty{display:none}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.trust{display:flex;gap:8px;align-items:center;justify-content:center;color:var(--muted);font-size:13.5px;margin-top:2px}
+.trust svg{width:16px;height:16px;flex:none}
+.done{text-align:center;padding:10px 4px 4px}
+.done .tick{width:66px;height:66px;margin:4px auto 12px;border-radius:50%;background:var(--leaf);display:grid;place-items:center;animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
+.done .tick svg{width:34px;height:34px}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.done h3{font-size:22px;color:var(--palm)}
+.done p{color:var(--muted);margin-top:6px}
+.done .again{margin-top:14px;background:none;border:0;color:var(--muted);text-decoration:underline;font-size:14px;cursor:pointer}
+
+@media (min-width:900px){
+  .hero{padding:100px 0 70px}
+  .hero .grid{grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .hero .intro{text-align:right}
+  .hero h1,.hero .lede{margin-inline:0}
+  .stage{justify-content:start;height:230px}
+  .coin{width:210px}
+  .hero .horizon{top:auto;bottom:4%}
+  .card{padding:30px 28px 26px}
+}
+
+/* ---------- أقسام عامة ---------- */
+section{padding:56px 0}
+.h2{font-size:clamp(25px,5.6vw,38px);font-weight:700;color:var(--palm)}
+.lead-in{color:var(--muted);margin-top:10px;max-width:60ch}
+
+/* القصة */
+.story .grid{display:grid;gap:26px}
+.story p{font-size:18px;max-width:58ch}
+.story p+p{margin-top:16px}
+.story figure{margin:0;position:relative;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -40px rgba(60,45,20,.7)}
+.story figure img{width:100%;aspect-ratio:1024/1200;object-fit:cover}
+.pull{margin-top:24px;padding:18px 20px;border-inline-start:5px solid var(--leaf);background:#fff;border-radius:6px 16px 16px 6px;font:600 19px/1.7 var(--display);color:var(--palm)}
+@media (min-width:900px){.story .grid{grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}}
+
+/* الفرصة المتكاملة: رحلة من 4 مراحل */
+.offer{background:var(--palm);color:#eef5e6}
+.offer .h2{color:#fff}
+.offer .lead-in{color:#c9dbc6}
+.offer .gold{color:#e9c27f}
+.path{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:0;counter-reset:s}
+.path li{position:relative;display:grid;grid-template-columns:48px 1fr;gap:14px;padding-bottom:22px}
+.path li::before{counter-increment:s;content:counter(s);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--leaf);color:var(--ink);font:800 19px var(--display)}
+.path li:not(:last-child)::after{content:"";position:absolute;top:50px;bottom:2px;right:23px;width:2px;background:repeating-linear-gradient(to bottom,rgba(201,219,198,.55) 0 5px,transparent 5px 10px)}
+.path b{display:block;font:700 18px var(--display);color:#fff;padding-top:9px}
+.path span{color:#c9dbc6;font-size:15.5px}
+.offer .promise{margin-top:8px;display:grid;gap:12px}
+.offer .promise p{font:600 18px/1.7 var(--display);color:#fff}
+.offer .promise p.soft{font:500 16px/1.8 var(--body);color:#c9dbc6}
+@media (min-width:900px){
+  .offer .cols{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .path{margin-top:0}
+}
+
+/* الشارات */
+.badges{padding:40px 0 8px}
+.badges ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.badges li{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;font:700 15px/1.45 var(--body);color:var(--palm)}
+.badges li i{font-style:normal;font-size:22px;flex:none}
+@media (min-width:900px){.badges ul{grid-template-columns:repeat(3,1fr)}.badges li{padding:16px 18px;font-size:16.5px}}
+
+/* الفيديو */
+.field .frame{position:relative;margin-top:22px;max-width:880px;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 60px -40px rgba(31,74,44,.8)}
+.field video{width:100%;aspect-ratio:832/464;object-fit:cover;background:#000}
+.field .sound{position:absolute;bottom:12px;left:12px;display:flex;align-items:center;gap:6px;border:0;border-radius:99px;padding:8px 14px;background:rgba(19,38,26,.72);color:#fff;font:600 14px var(--body);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.field .sound svg{width:18px;height:18px}
+.field .after{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+.field .after p{font:600 18px/1.7 var(--display);color:var(--palm)}
+@media (min-width:700px){.field .after{flex-direction:row;align-items:center;justify-content:space-between}}
+
+/* العائد */
+.money{background:var(--sand)}
+.money .big{font:800 clamp(30px,8vw,54px)/1.25 var(--display);color:var(--palm);margin-top:14px;max-width:18ch}
+.money .big .ltr{color:var(--dune)}
+.money .note{font-size:14px;color:#6b5b45;margin-top:8px}
+.money .hooks{display:grid;gap:12px;margin:26px 0}
+.money .hooks p{background:rgba(255,255,255,.62);border-radius:16px;padding:16px 18px;font:600 17px/1.7 var(--display);color:var(--palm)}
+@media (min-width:900px){.money .hooks{grid-template-columns:repeat(3,1fr)}}
+
+/* المقارنة */
+.cmp .head{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:26px;position:sticky;top:0;z-index:2;background:var(--mist);padding:10px 0}
+.cmp .head div{text-align:center;font:700 15px var(--display);padding:10px 4px;border-radius:14px;background:#fff;border:1px solid var(--line);color:var(--muted)}
+.cmp .head div.win{background:var(--palm);color:#fff;border-color:var(--palm)}
+.cmp .head span{display:block;font-size:22px;line-height:1.2}
+.cmp .row{padding:14px 0;border-bottom:1px solid var(--line)}
+.cmp .row h3{font:700 16px var(--body);color:var(--ink);margin-bottom:8px}
+.cmp .cells{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.cmp .c{font-size:13.5px;line-height:1.5;padding:10px 8px;border-radius:12px;background:#fff;color:var(--muted);display:flex;gap:6px;align-items:flex-start}
+.cmp .c::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;margin-top:4px;border:2px solid #b9c4b5}
+.cmp .c.mid::before{background:linear-gradient(90deg,#b9c4b5 50%,transparent 50%)}
+.cmp .c.good::before{background:var(--leaf);border-color:var(--leaf)}
+.cmp .c.win{background:#eaf3d5;color:var(--palm);font-weight:700}
+.cmp .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:13px;color:var(--muted)}
+.cmp .legend span{display:inline-flex;align-items:center;gap:6px}
+.cmp .legend i{width:10px;height:10px;border-radius:50%;border:2px solid #b9c4b5}
+.cmp .legend i.g{background:var(--leaf);border-color:var(--leaf)}
+.cmp .legend i.m{background:linear-gradient(90deg,#b9c4b5 50%,transparent 50%)}
+.cmp .verdict{margin-top:26px;background:var(--palm);color:#fff;border-radius:22px;padding:22px 20px;display:grid;gap:14px}
+.cmp .verdict p{font:600 18px/1.7 var(--display)}
+@media (min-width:900px){
+  .cmp .table{display:grid;grid-template-columns:1fr;max-width:960px}
+  .cmp .row{display:grid;grid-template-columns:220px 1fr;gap:16px;align-items:center}
+  .cmp .row h3{margin:0}
+  .cmp .head{grid-template-columns:220px repeat(3,1fr)}
+  .cmp .head::before{content:""}
+  .cmp .c{font-size:15px;padding:12px}
+  .cmp .verdict{grid-template-columns:1fr auto;align-items:center;padding:28px 32px}
+}
+
+/* الاستعجال */
+.now{background:linear-gradient(180deg,var(--mist),#e3edd2)}
+.now ul{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px}
+.now li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:17px}
+.now li svg{width:24px;height:24px;margin-top:4px;color:var(--leaf)}
+.now li b{color:var(--palm)}
+.final{margin-top:34px;text-align:center;display:grid;gap:12px;justify-items:center}
+.final h2{font-size:clamp(24px,6vw,36px);color:var(--palm)}
+.final p{color:var(--muted);max-width:52ch}
+.final .btn{margin-top:6px;min-width:min(100%,340px)}
+@media (min-width:900px){.now ul{grid-template-columns:1fr 1fr;gap:16px 40px}}
+
+/* الفوتر */
+footer{background:#173a24;color:#d7e6d3;padding:34px 0 calc(110px + env(safe-area-inset-bottom,0px));font-size:14.5px}
+footer .wrap{display:grid;gap:14px}
+footer img{height:38px;width:auto}
+footer a{color:#eef6ea}
+footer .fine{color:#9fb8a2;font-size:13px;line-height:1.7}
+@media (min-width:900px){footer{padding-bottom:40px}}
+
+/* ---------- الشريط الثابت تحت (موبايل) ---------- */
+.dock{position:fixed;inset-inline:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));
+  background:rgba(244,247,236,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .35s ease}
+.dock.show{transform:none}
+.dock .btn{width:100%}
+@media (min-width:900px){.dock{display:none}}
+
+/* ---------- نافذة التسجيل (Bottom sheet) ---------- */
+dialog.sheet{border:0;padding:0;margin:0;width:100%;max-width:100%;max-height:92svh;inset:auto 0 0 0;border-radius:26px 26px 0 0;background:var(--paper);color:var(--ink);overflow:auto;
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+dialog.sheet[open]{animation:up .32s cubic-bezier(.2,.9,.3,1)}
+@keyframes up{from{transform:translateY(100%)}}
+dialog.sheet::backdrop{background:rgba(19,38,26,.5);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+dialog.sheet .card{box-shadow:none;border-radius:0;background:transparent}
+dialog.sheet .grab{width:44px;height:5px;border-radius:9px;background:#d4dccc;margin:10px auto 0}
+dialog.sheet .x{position:absolute;top:12px;left:12px;width:40px;height:40px;border-radius:12px;border:0;background:#eef2e7;cursor:pointer;display:grid;place-items:center;z-index:2}
+dialog.sheet .x svg{width:18px;height:18px}
+.wish{display:inline-flex;align-items:center;gap:6px;background:#eaf3d5;color:var(--palm);border-radius:99px;padding:4px 12px;font:700 13.5px var(--body);margin-bottom:8px}
+@media (min-width:700px){dialog.sheet{max-width:480px;inset:0;margin:auto;border-radius:26px;max-height:90svh}dialog.sheet .grab{display:none}}
+
+/* إشعار صغير */
+.toast{position:fixed;z-index:60;inset-inline:12px;bottom:calc(84px + env(safe-area-inset-bottom,0px));margin:auto;max-width:460px;background:var(--palm);color:#fff;border-radius:18px;padding:14px 16px;
+  display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;font-size:15.5px;line-height:1.6;box-shadow:0 20px 40px -20px rgba(0,0,0,.6);
+  opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s}
+.toast.on{opacity:1;transform:none}
+.toast i{width:34px;height:34px;border-radius:50%;background:var(--leaf);display:grid;place-items:center}
+.toast i svg{width:18px;height:18px}
+@media (min-width:900px){.toast{bottom:24px}}
+
+/* حركة واحدة بس: دخول الهيرو */
+@media (prefers-reduced-motion:no-preference){
+  .hero .intro>*,.hero .card{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+  .hero .intro>*:nth-child(2){animation-delay:.08s}
+  .hero .intro>*:nth-child(3){animation-delay:.16s}
+  .hero .intro>*:nth-child(4){animation-delay:.24s}
+  .hero .card{animation-delay:.32s}
+}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+@media (prefers-reduced-motion:reduce){.coin{animation:none}dialog.sheet[open]{animation:none}*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img src="/assets/logo-green.png" alt="ثمرات Thamarat" width="89" height="34">
+    <a class="ask" href="#lead" data-cta="contract">استفسر الآن</a>
+  </div>
+</header>
+
+<main>
+<!-- ===================== الهيرو + فورم التسجيل ===================== -->
+<section class="hero" id="top">
+  <svg class="horizon" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <g id="p"><path d="M0 70 C1 48 2 36 1 22" stroke="#4f7a1a" stroke-width="2.2" fill="none"/><path d="M1 22 q-9 -2 -15 6 M1 22 q10 -3 15 5 M1 22 q-6 -8 -14 -8 M1 22 q7 -8 14 -7 M1 22 q0 -9 -3 -12" stroke="#5f8f1b" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+    </defs>
+    <g opacity=".55">
+      <use href="#p" x="40"/><use href="#p" x="95" transform="translate(0 6) scale(1 .92)"/><use href="#p" x="150"/><use href="#p" x="205" transform="translate(0 5)"/>
+      <use href="#p" x="330"/><use href="#p" x="385" transform="translate(0 6)"/><use href="#p" x="440"/>
+      <use href="#p" x="760"/><use href="#p" x="815" transform="translate(0 5)"/><use href="#p" x="870"/><use href="#p" x="925" transform="translate(0 6)"/>
+      <use href="#p" x="1050"/><use href="#p" x="1105" transform="translate(0 5)"/><use href="#p" x="1160"/>
+    </g>
+    <path d="M0 68 Q300 60 600 66 T1200 64 V70 H0Z" fill="#e6d7b9" opacity=".8"/>
+  </svg>
+
+  <div class="wrap grid">
+    <div class="intro">
+      <div class="stage" id="stage"><div class="coin" id="coin" aria-hidden="true"></div></div>
+      <p class="to">إلى كل مغترب يفكر في خطوته القادمة..</p>
+      <h1>تأمين مستقبل أسرتك يبدأ من أرضك.. استثمر بثقة في وطنك</h1>
+      <p class="lede">حوّل جهد الغربة إلى أصل ثابت لا يفقد قيمته: أرض باسمك ونخيل مجدول نزرعه وندير مزرعتك ونسوّق محصولك.</p>
+    </div>
+
+    <div class="card" id="lead">
+      <div data-form="hero"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== المنشور الرئيسي ===================== -->
+<section class="story">
+  <div class="wrap grid">
+    <div>
+      <h2 class="h2">من الغربة إلى الاستقرار</h2>
+      <div style="margin-top:18px">
+        <p>رحلة العمل في الخارج فرصة لبناء المستقبل، لكن الاستقرار الحقيقي يبدأ عندما تحول جهد الغربة إلى أصل ثابت لا يفقد قيمته.</p>
+        <p>الاستثمار في الأرض الزراعية في مصر هو الملاذ الآمن لحماية رأس مالك من التضخم، وضمان عائد استثماري متنامٍ على المدى الطويل.</p>
+      </div>
+      <p class="pull">"من الغربة إلى الاستقرار.. استثمارك في وطنك ينشر جذوره بثبات."</p>
+    </div>
+    <figure>
+      <img src="/landing/fasila-s.webp" srcset="/landing/fasila-s.webp 600w, /landing/fasila.webp 1024w" sizes="(min-width:900px) 420px, 100vw"
+           alt="فسيلة نخيل مجدول جديدة بجوار نخلة أم في مزرعة ثمرات، وشبكة الري بالتنقيط حولها" width="600" height="703" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== الفرصة المتكاملة ===================== -->
+<section class="offer">
+  <div class="wrap cols">
+    <div>
+      <h2 class="h2">تقدم لك "ثمرات" فرصة استثمارية متكاملة في زراعة نخيل المجدول <span class="gold">(الذهب الأسود)</span></h2>
+      <p class="lead-in">مشروعك التجاري في نخيل المجدول.. استثمار يتضاعف نماءً وأرباحًا.</p>
+      <div class="promise" style="margin-top:22px">
+        <p>"تَمَلَّك الأرض، ونحن نتكفل بالزراعة والإدارة وحتى بيع المحصول."</p>
+        <p class="soft">استثمر ببال مريح.. إدارة تنفيذية وتشغيلية شاملة من الألف إلى الياء.</p>
+      </div>
+      <button class="btn on-dark" style="margin-top:24px" data-cta="details">عايز تفاصيل أكتر</button>
+    </div>
+    <ol class="path" aria-label="رحلة استثمارك مع ثمرات">
+      <li><div><b>ملكية رسمية للأرض</b><span>عقد موثق باسمك، وتملك حر للأرض.</span></div></li>
+      <li><div><b>تأسيس وزراعة بأحدث الطرق الحديثة</b><span>تجهيز الأرض والآبار والري بالتنقيط وزراعة الفسائل.</span></div></li>
+      <li><div><b>إدارة تشغيلية وإشراف فني كامل</b><span>فريق زراعي متخصص يتابع مزرعتك وأنت في غربتك.</span></div></li>
+      <li><div><b>حصاد وتسويق للمحصول</b><span>نحصد ونبيع المحصول، ويوصلك عائدك.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== الشارات ===================== -->
+<section class="badges" aria-label="مميزات الاستثمار">
+  <div class="wrap">
+    <ul>
+      <li><i aria-hidden="true">🌴</i>تملك حر وموثق</li>
+      <li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li>
+      <li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li>
+      <li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li>
+      <li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li>
+      <li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== من أرض الواقع ===================== -->
+<section class="field">
+  <div class="wrap">
+    <h2 class="h2">مزارع تم تسليمها بالفعل</h2>
+    <p class="lead-in">ده مش رسم ولا تصميم.. ده نخيل مزروع على الأرض في مزارع سلّمناها لأصحابها.</p>
+    <div class="frame">
+      <video id="farmvid" src="/landing/farms.mp4" poster="/landing/farms-poster.webp" muted loop playsinline preload="none" aria-label="فيديو لمزارع نخيل سلّمتها ثمرات"></video>
+      <button class="sound" id="sound" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg><span>شغّل الصوت</span>
+      </button>
+    </div>
+    <div class="after">
+      <p>"الذهب الأخضر في مصر: كيف تحول رأس مالك إلى عائد تصديري مستدام؟"</p>
+      <button class="btn" data-cta="details">عايز تفاصيل أكتر</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== العائد ===================== -->
+<section class="money">
+  <div class="wrap">
+    <h2 class="h2">طريقك نحو أول مليون: كيف تحقق 5 أفدنة مجدول عائداً تصديرياً استثنائياً؟</h2>
+    <p class="big">استثمر معنا وحقق تفوق <span class="ltr">1,000,000</span> جنيه أرباح</p>
+    <p class="note">اسأل عن دراسة الجدوى. الأرقام استرشادية حسب دراسات الجدوى عند اكتمال نمو النخيل، وليست التزامًا بعائد محدد.</p>
+    <div class="hooks">
+      <p>عائد استثماري لا يتأثر بتقلبات العملة.. استثمر في منتج يُطلب عالمياً.</p>
+      <p>استثمار العمر: تدفقات نقدية تضمن مستقبل أسرتك على المدى الطويل.</p>
+      <p>احمِ مدخراتك من التضخم بأصل زراعي يزداد قيمة كل عام.</p>
+    </div>
+    <button class="btn" data-cta="study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+      اطلب دراسة الجدوى
+    </button>
+  </div>
+</section>
+
+<!-- ===================== المقارنة ===================== -->
+<section class="cmp">
+  <div class="wrap">
+    <h2 class="h2">ذهب؟ عقار؟ ولا نخيل مجدول؟</h2>
+    <p class="lead-in">ثلاث طرق شائعة يحفظ بها المغترب مدخراته. قارن بنفسك أين تعمل فلوسك لك فعلًا.</p>
+
+    <div class="table" role="table" aria-label="مقارنة بين الاستثمار في الذهب والعقارات ونخيل المجدول">
+      <div class="head" role="row">
+        <div role="columnheader"><span aria-hidden="true">🪙</span>الذهب</div>
+        <div role="columnheader"><span aria-hidden="true">🏢</span>العقارات</div>
+        <div role="columnheader" class="win"><span aria-hidden="true">🌴</span>نخيل المجدول</div>
+      </div>
+
+      <div class="row" role="row"><h3 role="rowheader">دخل سنوي متكرر</h3><div class="cells">
+        <div class="c" role="cell">لا يوجد، قيمة محفوظة فقط</div>
+        <div class="c mid" role="cell">إيجار، ونسبته محدودة</div>
+        <div class="c good win" role="cell">محصول تمر وفسائل كل موسم</div></div></div>
+
+      <div class="row" role="row"><h3 role="rowheader">نمو قيمة الأصل</h3><div class="cells">
+        <div class="c mid" role="cell">يتحرك مع البورصة والدولار</div>
+        <div class="c mid" role="cell">المبنى يستهلك مع السنين</div>
+        <div class="c good win" role="cell">الأرض والنخلة تزيد قيمتهما كل سنة</div></div></div>
+
+      <div class="row" role="row"><h3 role="rowheader">الحماية من التضخم وتعويم الجنيه</h3><div class="cells">
+        <div class="c good" role="cell">جيدة</div>
+        <div class="c mid" role="cell">متوسطة</div>
+        <div class="c good win" role="cell">منتج غذائي سعره يرتفع مع التضخم</div></div></div>
+
+      <div class="row" role="row"><h3 role="rowheader">منتج يُطلب للتصدير</h3><div class="cells">
+        <div class="c" role="cell">لا</div>
+        <div class="c" role="cell">لا</div>
+        <div class="c good win" role="cell">المجدول مطلوب عالميًا</div></div></div>
+
+      <div class="row" role="row"><h3 role="rowheader">تكاليف الاحتفاظ</h3><div class="cells">
+        <div class="c mid" role="cell">مصنعية وفرق بيع وشراء</div>
+        <div class="c" role="cell">صيانة وتشطيب وضرائب</div>
+        <div class="c good win" role="cell">مصاريف رعاية واضحة في دراسة الجدوى</div></div></div>
+
+      <div class="row" role="row"><h3 role="rowheader">الإدارة وأنت مسافر</h3><div class="cells">
+        <div class="c good" role="cell">لا يحتاج إدارة</div>
+        <div class="c" role="cell">مستأجرين ومتابعة مستمرة</div>
+        <div class="c good win" role="cell">ثمرات تدير وتحصد وتسوّق</div></div></div>
+
+      <div class="row" role="row"><h3 role="rowheader">إرث لأولادك</h3><div class="cells">
+        <div class="c good" role="cell">يُورث</div>
+        <div class="c good" role="cell">يُورث</div>
+        <div class="c good win" role="cell">يُورث ويدر دخلًا لعشرات السنين</div></div></div>
+    </div>
+
+    <div class="legend" aria-hidden="true"><span><i class="g"></i>قوي</span><span><i class="m"></i>متوسط</span><span><i></i>ضعيف أو غير موجود</span></div>
+
+    <div class="verdict">
+      <p>الذهب يحفظ قيمة فلوسك، والعقار يعطيك إيجارًا محدودًا.. أما نخيل المجدول فيجمع الاثنين: أصل يزيد قيمته، ودخل يتجدد كل موسم.</p>
+      <button class="btn on-dark" data-cta="details">عايز تفاصيل أكتر</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== الاستعجال + التسجيل الأخير ===================== -->
+<section class="now">
+  <div class="wrap">
+    <h2 class="h2">ابدأ خطوتك اليوم لتأمين غدٍ أكثر استقرارًا</h2>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <p><b>كل موسم تأجيل = حصاد أبعد.</b> النخلة التي تُزرع هذا الموسم تبدأ إنتاجها قبل التي تُزرع العام القادم.</p></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7"/></svg>
+        <p><b>القطع المتاحة محدودة العدد،</b> والأولوية في اختيار القطعة لمن يسجل أولًا.</p></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        <p><b>من يدخل مبكرًا يكسب فرق القيمة:</b> قيمة الأرض ترتفع مع اكتمال الطرق والآبار ومحطات الطاقة الشمسية.</p></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <p><b>المكالمة الأولى مجانية وبدون أي التزام:</b> اعرف المساحات والأسعار ونظم التعاقد، وقرر براحتك.</p></li>
+    </ul>
+
+    <div class="final">
+      <h2>خطط لمستقبلك بثبات معنا</h2>
+      <p>لا تدع حيرتك في اختيار المشروع المناسب تؤجل خطوتك. استثمر في أصل ينمو معك ويعود بالنفع عليك وعلى عائلتك.. تواصل معنا اليوم لمعرفة كافة التفاصيل.</p>
+      <button class="btn" data-cta="contract">استفسر الآن عن المساحات ونظم التعاقد</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="/assets/logo-cream.png" alt="ثمرات Thamarat" width="99" height="38" loading="lazy">
+    <p>ثمرات للاستثمار والتنمية الزراعية</p>
+    <p>41 ش بهاء الدين الغتوري - سموحة - الإسكندرية (أمام محطة سيدي جابر)</p>
+    <p><a href="https://thamaratmisr.com" rel="noopener">www.thamaratmisr.com</a></p>
+    <p class="fine">الأرقام الواردة في الصفحة استرشادية حسب دراسات الجدوى عند اكتمال نمو النخيل، وتخضع لظروف الإنتاج والسوق، وليست التزامًا بعائد محدد. بياناتك تُستخدم فقط للتواصل معك بخصوص طلبك.</p>
+  </div>
+</footer>
+
+<div class="dock" id="dock"><button class="btn" data-cta="contract">سجّل بياناتك واستلم التفاصيل</button></div>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+  <div class="grab" aria-hidden="true"></div>
+  <button class="x" type="button" id="sheetx" aria-label="إغلاق">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <div class="card"><div data-form="sheet"></div></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><i><svg viewBox="0 0 24 24" fill="none" stroke="#13261A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i><span></span></div>
+
+<template id="tpl-form">
+  <form class="f" novalidate>
+    <div>
+      <span class="wish" hidden></span>
+      <h2 class="t">استفسر الآن عن تفاصيل المساحات ونظم التعاقد</h2>
+      <p class="sub">اكتب اسمك ورقمك، ومستشار الاستثمار هيتواصل معاك.</p>
+    </div>
+    <div class="fld">
+      <label>الاسم</label>
+      <input class="in" name="name" autocomplete="name" placeholder="اسمك بالكامل" required maxlength="80">
+    </div>
+    <div class="fld">
+      <label>رقم الموبايل <small>(واتساب لو أمكن)</small></label>
+      <div class="phone">
+        <select class="in cc" name="cc" aria-label="كود الدولة"></select>
+        <input class="in code" name="code" inputmode="tel" placeholder="+" aria-label="كود الدولة" hidden maxlength="5">
+        <input class="in num" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="50 123 4567" required maxlength="20" aria-label="رقم الموبايل">
+      </div>
+    </div>
+    <div class="fld">
+      <label>الميزانية التقريبية <small>(اختياري)</small></label>
+      <input class="in" name="budget" placeholder="مثلًا: 2 مليون جنيه" maxlength="60">
+      <div class="chips" role="group" aria-label="اختيار سريع للميزانية"></div>
+    </div>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="err" role="alert"></p>
+    <button class="btn wide" type="submit">اطلب التواصل معي</button>
+    <p class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>بياناتك عندنا بأمان، وتُستخدم للتواصل معك فقط.</p>
+  </form>
+</template>
+
+<script>
+(function(){
+'use strict';
+var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var store={get:function(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* ---------- 3D لوجو ثمرات (نفس ميدالية الموقع) ---------- */
+var coin=$('#coin');
+for(var i=0;i<12;i++){var l=document.createElement('div');l.className='layer';l.style.transform='translateZ('+i+'px)';l.style.filter='brightness('+(.62+i*.02)+')';coin.appendChild(l)}
+coin.insertAdjacentHTML('beforeend','<div class="back"><img src="/assets/logo-green.png" alt=""></div><div class="face"><img src="/assets/logo-green.png" alt=""></div><div class="ring"></div>');
+var face=coin.querySelector('.face'),tx=0,ty=0,cx=0,cy=0,stage=$('#stage');
+addEventListener('pointermove',function(e){var r=stage.getBoundingClientRect();tx=((e.clientX-(r.left+r.width/2))/innerWidth)*60;ty=-((e.clientY-(r.top+r.height/2))/innerHeight)*40},{passive:true});
+addEventListener('deviceorientation',function(e){if(e.gamma==null)return;tx=Math.max(-35,Math.min(35,e.gamma));ty=Math.max(-25,Math.min(25,(e.beta||45)-45))},{passive:true});
+function tick(t){
+  var idleY=reduce?0:Math.sin(t/2400)*22, idleX=reduce?0:Math.cos(t/3100)*7, sp=Math.min(1,scrollY/(innerHeight*.8));
+  cx+=(tx+idleY-cx)*.06;cy+=(ty+idleX-cy)*.06;
+  coin.style.setProperty('--ry',(cx+sp*160)+'deg');coin.style.setProperty('--rx',(cy+sp*14)+'deg');
+  face.style.setProperty('--shine',(-60+(cx+sp*160)*2.2)+'%');
+  if(scrollY<innerHeight*1.2)requestAnimationFrame(tick);else{ticking=false}
+}
+var ticking=true;requestAnimationFrame(tick);
+addEventListener('scroll',function(){if(!ticking&&scrollY<innerHeight*1.2){ticking=true;requestAnimationFrame(tick)}},{passive:true});
+
+/* ---------- الدول ---------- */
+var COUNTRIES=[
+  ['AE','971','🇦🇪','الإمارات',[9]],['SA','966','🇸🇦','السعودية',[9]],['KW','965','🇰🇼','الكويت',[8]],['QA','974','🇶🇦','قطر',[8]],
+  ['OM','968','🇴🇲','عُمان',[8]],['BH','973','🇧🇭','البحرين',[8]],['EG','20','🇪🇬','مصر',[10]],['JO','962','🇯🇴','الأردن',[9]],
+  ['IQ','964','🇮🇶','العراق',[10]],['LY','218','🇱🇾','ليبيا',[9]],['LB','961','🇱🇧','لبنان',[7,8]],['US','1','🇺🇸','أمريكا',[10]],
+  ['CA','1','🇨🇦','كندا',[10]],['GB','44','🇬🇧','بريطانيا',[10]],['DE','49','🇩🇪','ألمانيا',[10,11]],['IT','39','🇮🇹','إيطاليا',[9,10]],
+  ['FR','33','🇫🇷','فرنسا',[9]],['AU','61','🇦🇺','أستراليا',[9]],['XX','','🌍','دولة أخرى',null]
+];
+var BY={};COUNTRIES.forEach(function(c){BY[c[0]]=c});
+var cc=(($('meta[name="visitor-cc"]')||{}).content||'').toUpperCase();
+var DEFAULT_CC=BY[cc]&&cc!=='XX'?cc:'AE';
+var PH={AE:'50 123 4567',SA:'51 234 5678',KW:'6000 1234',QA:'3312 3456',OM:'9123 4567',BH:'3612 3456',EG:'10 1234 5678'};
+var BUDGETS=['أقل من مليون جنيه','من 1 لـ 3 مليون جنيه','من 3 لـ 5 مليون جنيه','أكثر من 5 مليون جنيه'];
+
+/* ---------- نوع الطلب (بيوصل للـ CRM كفيدباك) ---------- */
+var WISH={
+  main:{t:'استفسر الآن عن تفاصيل المساحات ونظم التعاقد',crm:'سجّل من الفورم الرئيسي واستفسر عن المساحات ونظم التعاقد'},
+  contract:{t:'استفسر الآن عن تفاصيل المساحات ونظم التعاقد',chip:'المساحات ونظم التعاقد',crm:'استفسر عن المساحات ونظم التعاقد'},
+  details:{t:'سجّل بياناتك ونبعتلك التفاصيل كاملة',chip:'عايز تفاصيل أكتر',crm:'عايز تفاصيل أكتر'},
+  study:{t:'اطلب دراسة الجدوى',chip:'دراسة جدوى',crm:'طلب دراسة جدوى'}
+};
+
+/* ---------- الجلسة والتسجيل ---------- */
+var sid=store.get('thm_lp_sid');
+if(!sid){sid=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(16).slice(2));store.set('thm_lp_sid',sid)}
+var reg=store.get('thm_lp_reg'); // {name, phone, sent:[...]}
+var q=new URLSearchParams(location.search), UTM={};
+['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){var v=q.get(k);if(v)UTM[k]=v.slice(0,200)});
+if(Object.keys(UTM).length)store.set('thm_lp_utm',UTM);else UTM=store.get('thm_lp_utm')||{};
+
+var LIVE=/(^|\.)thamaratmisr\.com$/.test(location.hostname)||/\.workers\.dev$/.test(location.hostname)||location.hostname==='localhost';
+function send(payload){
+  if(!LIVE)return new Promise(function(ok){setTimeout(function(){ok({ok:true,demo:true})},700)}); // معاينة: من غير إرسال
+  return fetch('/api/lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){return r.json().catch(function(){return {ok:false}}).then(function(j){j.http=r.status;return j})});
+}
+
+/* ---------- Facebook Pixel (لو الرقم متضبط) ---------- */
+var PIXEL=(($('meta[name="fb-pixel"]')||{}).content||'').trim();
+if(/^\d{6,20}$/.test(PIXEL)){
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init',PIXEL);fbq('track','PageView');
+}
+function track(ev,data){try{if(window.fbq)fbq('track',ev,data||{})}catch(e){}}
+
+/* ---------- بناء الفورم ---------- */
+var forms={};
+function digits(s){return String(s||'').replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).replace(/\D/g,'')}
+
+function build(slot){
+  var node=$('#tpl-form').content.cloneNode(true), f=node.querySelector('form');
+  var sel=f.querySelector('.cc'), code=f.querySelector('.code'), num=f.querySelector('.num'), chips=f.querySelector('.chips'), budget=f.querySelector('[name=budget]');
+  var id=slot.dataset.form;
+  f.querySelector('[name=name]').id='n-'+id; f.querySelector('label').htmlFor='n-'+id;
+  COUNTRIES.forEach(function(c){var o=document.createElement('option');o.value=c[0];o.textContent=c[2]+' '+(c[1]?'+'+c[1]:'أخرى');o.title=c[3];sel.appendChild(o)});
+  sel.value=DEFAULT_CC;
+  function onCC(){var other=sel.value==='XX';code.hidden=!other;num.placeholder=PH[sel.value]||'رقم الموبايل';if(other)code.focus()}
+  sel.addEventListener('change',onCC);onCC();
+  BUDGETS.forEach(function(b){var c=document.createElement('button');c.type='button';c.className='chip';c.textContent=b;c.setAttribute('aria-pressed','false');
+    c.addEventListener('click',function(){var on=c.getAttribute('aria-pressed')!=='true';$$('.chip',chips).forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed',String(on));budget.value=on?b:''});chips.appendChild(c)});
+  budget.addEventListener('input',function(){$$('.chip',chips).forEach(function(x){x.setAttribute('aria-pressed',String(x.textContent===budget.value))})});
+  f.addEventListener('submit',function(e){e.preventDefault();submit(f,id)});
+  slot.innerHTML='';slot.appendChild(node);
+  forms[id]={slot:slot,form:f,wish:'main'};
+}
+
+function fullPhone(f){
+  var sel=f.querySelector('.cc'), n=digits(f.querySelector('.num').value);
+  if(sel.value==='XX'){var c=digits(f.querySelector('.code').value);if(!c)return {err:'اكتب كود الدولة (مثلًا 44 لبريطانيا).'};
+    n=n.replace(/^0+/,'');if(n.length<6||n.length>13)return {err:'الرقم غير صحيح، راجعه من فضلك.'};return {phone:'+'+c+n}}
+  var c=BY[sel.value]; n=n.replace(/^0+/,'');
+  if(n.indexOf(c[1])===0&&c[4].indexOf(n.length)<0&&c[4].indexOf(n.length-c[1].length)>=0)n=n.slice(c[1].length); // كتب الكود مع الرقم
+  if(c[4].indexOf(n.length)<0)return {err:'رقم '+c[3]+' لازم يكون '+c[4].join(' أو ')+' أرقام من غير صفر البداية.'};
+  if(c[0]==='EG'&&!/^1[0125]/.test(n))return {err:'رقم الموبايل المصري لازم يبدأ بـ 10 أو 11 أو 12 أو 15.'};
+  return {phone:'+'+c[1]+n, country:c[3]};
+}
+
+function feedback(wish,budget,country){
+  var src=(UTM.utm_source||'').toLowerCase().indexOf('facebook')>=0||UTM.fbclid?'من إعلان فيسبوك':'من صفحة الإعلانات';
+  var lines=['📣 جاي '+src+' (صفحة invest)','الطلب: '+WISH[wish].crm];
+  if(budget)lines.push('الميزانية: '+budget);
+  if(country)lines.push('الدولة: '+country);
+  return lines.join('\n');
+}
+
+function submit(f,id){
+  var err=f.querySelector('.err'), btn=f.querySelector('[type=submit]'), wish=forms[id].wish;
+  err.textContent='';
+  if(f.elements.namedItem('website').value)return;
+  var nm=f.elements.namedItem('name'), name=nm.value.trim();
+  if(name.length<2){err.textContent='اكتب اسمك من فضلك.';nm.focus();return}
+  var p=fullPhone(f);
+  if(p.err){err.textContent=p.err;f.elements.namedItem('phone').focus();return}
+  var budget=f.elements.namedItem('budget').value.trim();
+  btn.disabled=true;btn.textContent='جاري الإرسال…';
+  send({name:name,phone:p.phone,budget:budget,wish:wish,note:feedback(wish,budget,p.country),session:sid,utm:UTM,website:''})
+    .then(function(r){
+      if(r&&r.ok){
+        reg={name:name,phone:p.phone,sent:[wish]};store.set('thm_lp_reg',reg);
+        track('Lead',{content_name:WISH[wish].crm});
+        renderAll();
+      }else{
+        btn.disabled=false;btn.textContent='اطلب التواصل معي';
+        err.textContent=r&&r.error==='invalid_phone'?'الرقم غير صحيح، راجعه واكتبه من غير صفر البداية.':'حصلت مشكلة في الإرسال. جرّب تاني بعد لحظات.';
+      }
+    }).catch(function(){btn.disabled=false;btn.textContent='اطلب التواصل معي';err.textContent='تأكد من اتصالك بالإنترنت وجرّب تاني.'});
+}
+
+function first(n){return String(n||'').split(/\s+/)[0]}
+function doneView(id){
+  var w=forms[id].wish, extra=id==='sheet'&&w!=='main'&&w!=='contract'?'<p>سجّلنا إنك '+(w==='study'?'طالب دراسة الجدوى':'عايز تفاصيل أكتر')+'.</p>':'';
+  forms[id].slot.innerHTML='<div class="done" role="status"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#13261A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>'+
+    '<h3>تم استلام طلبك يا '+esc(first(reg.name))+'</h3><p>سيتم التواصل معك في أقرب وقت.</p>'+extra+
+    (id==='hero'?'<button type="button" class="again">مش أنت؟ سجّل برقم تاني</button>':'')+'</div>';
+  var a=forms[id].slot.querySelector('.again');
+  if(a)a.addEventListener('click',function(){reg=null;try{localStorage.removeItem('thm_lp_reg')}catch(e){}renderAll()});
+}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+
+function renderAll(){
+  Object.keys(forms).forEach(function(id){if(reg)doneView(id);else build(forms[id].slot)});
+  dock.classList.toggle('show',!reg&&heroOut);
+}
+
+/* ---------- الأزرار: لو مسجّل يتبعت الطلب على طول، لو لأ تفتح نافذة التسجيل ---------- */
+var sheet=$('#sheet'), toast=$('#toast'), dock=$('#dock'), tt;
+function showToast(msg){toast.querySelector('span').textContent=msg;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},4200)}
+function openSheet(wish){
+  build(forms.sheet.slot);forms.sheet.wish=wish;
+  var f=forms.sheet.form, w=f.querySelector('.wish');
+  f.querySelector('.t').textContent=WISH[wish].t;
+  if(WISH[wish].chip){w.hidden=false;w.textContent='طلبك: '+WISH[wish].chip}
+  if(sheet.showModal){sheet.showModal()}else{sheet.setAttribute('open','')}
+  setTimeout(function(){var n=f.querySelector('[name=name]');if(n&&matchMedia('(min-width:700px)').matches)n.focus()},50);
+}
+function closeSheet(){if(sheet.close)sheet.close();else sheet.removeAttribute('open')}
+$('#sheetx').addEventListener('click',closeSheet);
+sheet.addEventListener('click',function(e){if(e.target===sheet)closeSheet()});
+
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-cta]');if(!b)return;
+  e.preventDefault();
+  var wish=b.dataset.cta;
+  if(!reg){openSheet(wish);return}
+  if(reg.sent.indexOf(wish)>=0){showToast('طلبك وصلنا يا '+first(reg.name)+'، وسيتم التواصل معك في أقرب وقت.');return}
+  b.disabled=true;
+  send({name:reg.name,phone:reg.phone,wish:wish,note:feedback(wish,'',''),session:sid,utm:UTM,website:''}).then(function(r){
+    b.disabled=false;
+    if(r&&r.ok){reg.sent.push(wish);store.set('thm_lp_reg',reg);track('Contact',{content_name:WISH[wish].crm});
+      showToast('تمام يا '+first(reg.name)+'، سجّلنا '+(wish==='study'?'طلب دراسة الجدوى':wish==='details'?'إنك عايز تفاصيل أكتر':'استفسارك')+'. سيتم التواصل معك في أقرب وقت.')}
+    else showToast('حصلت مشكلة في الإرسال. جرّب تاني بعد لحظات.');
+  }).catch(function(){b.disabled=false;showToast('تأكد من اتصالك بالإنترنت وجرّب تاني.')});
+});
+
+/* الشريط الثابت يظهر لما كارت التسجيل يختفي من الشاشة */
+var heroOut=false;
+new IntersectionObserver(function(es){heroOut=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;dock.classList.toggle('show',!reg&&heroOut)}).observe($('#lead'));
+
+forms.hero={slot:$('[data-form="hero"]'),wish:'main'};
+forms.sheet={slot:$('[data-form="sheet"]'),wish:'main'};
+if(reg)doneView('hero');else build(forms.hero.slot);
+build(forms.sheet.slot);
+$('.top .ask').addEventListener('click',function(e){if(!reg){e.preventDefault();e.stopPropagation();$('#lead').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});setTimeout(function(){var n=$('#lead [name=name]');if(n)n.focus({preventScroll:true})},500)}},true);
+
+/* ---------- الفيديو: يشتغل صامت لما يظهر، وزرار للصوت ---------- */
+var vid=$('#farmvid'), snd=$('#sound');
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!reduce){vid.preload='auto';vid.play().catch(function(){})}}else vid.pause()})},{threshold:.4}).observe(vid)}
+snd.addEventListener('click',function(){vid.muted=!vid.muted;if(!vid.muted)vid.play().catch(function(){});snd.setAttribute('aria-pressed',String(!vid.muted));snd.querySelector('span').textContent=vid.muted?'شغّل الصوت':'اكتم الصوت'});
+vid.addEventListener('click',function(){if(vid.paused)vid.play().catch(function(){});else vid.pause()});
+})();
+</script>
+</body>
+</html>

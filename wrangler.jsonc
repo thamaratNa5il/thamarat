@@ -10,10 +10,16 @@
     "directory": "./",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
-    "run_worker_first": ["/api/*", "/about", "/about/", "/works", "/works/", "/minya", "/minya/", "/palms", "/palms/", "/field", "/field/", "/calc", "/calc/", "/faq", "/faq/", "/order", "/order/", "/privacy", "/privacy/", "/studies", "/studies/*"]
+    "run_worker_first": ["/", "/index.html", "/landing", "/landing/", "/api/*", "/about", "/about/", "/works", "/works/", "/minya", "/minya/", "/palms", "/palms/", "/field", "/field/", "/calc", "/calc/", "/faq", "/faq/", "/order", "/order/", "/privacy", "/privacy/", "/studies", "/studies/*"]
   },
   // حد أقصى 12 رسالة في الدقيقة لكل زائر علشان نحمي رصيد الـ API
   "ratelimits": [
-    { "name": "CHAT_LIMIT", "namespace_id": "4521", "simple": { "limit": 12, "period": 60 } }
+    { "name": "CHAT_LIMIT", "namespace_id": "4521", "simple": { "limit": 12, "period": 60 } },
+    // فورم صفحة الإعلانات: حد أقصى 8 طلبات في الدقيقة لكل زائر
+    { "name": "LEAD_LIMIT", "namespace_id": "4522", "simple": { "limit": 8, "period": 60 } }
+  ],
+  // صفحة الإعلانات (invest.thamaratmisr.com) بتبعت العملاء لنظام الـ CRM من جوه Cloudflare مباشرة
+  "services": [
+    { "binding": "CRM", "service": "thamarat-crm" }
   ]
 }
