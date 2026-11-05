@@ -254,7 +254,7 @@ async function lead(req, env) {
   if (!body.utm_source && s(utm.fbclid, 10)) body.utm_source = 'facebook';
 
   if (!env.INTAKE_API_KEY || !(env.CRM || env.CRM_URL)) return json({ ok: false, error: 'unavailable' }, 503);
-  const init = { method: 'POST', headers: { 'content-type': 'application/json', 'x-intake-key': env.INTAKE_API_KEY }, body: JSON.stringify(body) };
+  const init = { method: 'POST', headers: { 'content-type': 'application/json', 'x-intake-key': String(env.INTAKE_API_KEY).trim() }, body: JSON.stringify(body) };
   const r = env.CRM ? await env.CRM.fetch(new Request('https://crm.internal/api/intake', init))
                     : await fetch(String(env.CRM_URL).replace(/\/$/, '') + '/api/intake', init);
   const j = await r.json().catch(() => ({}));
