@@ -291,6 +291,109 @@ dialog.sheet .x svg{width:18px;height:18px}
 }
 @keyframes rise{from{opacity:0;transform:translateY(14px)}}
 @media (prefers-reduced-motion:reduce){.coin{animation:none}dialog.sheet[open]{animation:none}*{scroll-behavior:auto}}
+
+/* =================== الحركة =================== */
+/* السما: شمس وسحاب بيتحرك ونقط نور */
+.sky{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.sky .sun{position:absolute;top:-60px;left:8%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,244,214,.95) 0,rgba(255,236,190,.55) 35%,transparent 70%);animation:glow 6s ease-in-out infinite alternate}
+@keyframes glow{to{transform:scale(1.15);opacity:.8}}
+.sky .cloud{position:absolute;height:34px;border-radius:40px;background:rgba(255,255,255,.75);filter:blur(1px);box-shadow:30px -14px 0 6px rgba(255,255,255,.7),70px 0 0 2px rgba(255,255,255,.7)}
+.sky .c1{top:90px;width:120px;animation:drift 48s linear infinite}
+.sky .c2{top:150px;width:90px;opacity:.7;animation:drift 66s linear infinite -20s}
+.sky .c3{top:60px;width:150px;opacity:.55;animation:drift 80s linear infinite -50s}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
+#motes{position:absolute;inset:0;width:100%;height:100%}
+.horizon use{transform-box:fill-box;transform-origin:50% 100%;animation:sway 4.6s ease-in-out infinite alternate}
+.horizon use:nth-child(3n){animation-duration:5.4s;animation-delay:-1.2s}
+.horizon use:nth-child(3n+1){animation-duration:3.9s;animation-delay:-2.1s}
+@keyframes sway{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
+
+/* العنوان كلمة كلمة */
+.hero h1 .w{display:inline-block;animation:wordIn .7s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:calc(.25s + var(--i)*.07s)}
+@keyframes wordIn{from{opacity:0;transform:translateY(.55em) rotate(4deg);filter:blur(4px)}}
+.hero .intro>h1{animation:none}
+
+/* لمعة على الأزرار */
+.btn:not(.quiet){position:relative;overflow:hidden;isolation:isolate}
+.btn:not(.quiet)::after{content:"";position:absolute;inset:-20% auto -20% -60%;width:40%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,55%{left:-60%}85%,100%{left:130%}}
+.dock .btn{animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 0 0 8px rgba(121,165,8,.18),0 10px 24px -12px rgba(76,108,5,.9)}}
+
+/* ظهور العناصر مع النزول */
+.rv{transition:opacity .75s cubic-bezier(.2,.8,.2,1),transform .75s cubic-bezier(.2,.8,.2,1)}
+.rv.pre{opacity:0;transform:translateY(26px)}
+.stag>*{transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.stag.pre>*{opacity:0;transform:translateY(24px) scale(.97)}
+.stag>*:nth-child(2){transition-delay:.12s}.stag>*:nth-child(3){transition-delay:.24s}
+.kb{overflow:hidden}
+.kb img{animation:kb 16s ease-in-out infinite alternate;transform-origin:60% 40%}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.12) translate(-2%,1%)}}
+
+/* رحلة الاستثمار: صورة بتتغير مع كل مرحلة */
+.offer .cols{display:block;max-width:760px}
+.journey{display:grid;gap:22px;margin-top:34px}
+.jframe{position:sticky;top:calc(10px + env(safe-area-inset-top,0px));z-index:3;aspect-ratio:16/10;max-height:44svh;width:100%;border-radius:20px;overflow:hidden;background:#173a24;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.jframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.12);transition:opacity .9s ease,transform 7s ease-out}
+.jframe img.on{opacity:1;transform:scale(1)}
+.jtag{position:absolute;top:12px;right:12px;background:rgba(19,38,26,.72);color:#fff;font:700 13.5px var(--body);padding:5px 12px;border-radius:99px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.jbar{position:absolute;inset:auto 0 0 0;height:5px;background:rgba(255,255,255,.25)}
+.jbar i{display:block;height:100%;width:var(--p,25%);background:var(--leaf);margin-inline-start:0;transition:width .6s ease}
+.journey .path{margin:0}
+.journey .path li{min-height:30svh;opacity:.38;transition:opacity .5s}
+.journey .path li:last-child{min-height:0}
+.journey .path li.on{opacity:1}
+.journey .path li::before{transition:transform .5s cubic-bezier(.2,1.6,.4,1),box-shadow .5s}
+.journey .path li.on::before{transform:scale(1.15);box-shadow:0 0 0 8px rgba(121,165,8,.25)}
+@media (min-width:900px){
+  .journey{grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .jframe{top:90px;aspect-ratio:4/3;max-height:none}
+  .journey .path li{min-height:42vh}
+}
+
+/* الشارات: شريط ماشي */
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.badges{padding:40px 0 10px;overflow:hidden;display:grid;gap:12px;direction:ltr}
+.badges .marquee{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.badges .marquee ul{display:flex;width:max-content;gap:12px;animation:slide 38s linear infinite}
+.badges .marquee.rev ul{animation-direction:reverse;animation-duration:46s}
+.badges .marquee li{direction:rtl;white-space:nowrap;padding:12px 18px;border-radius:99px}
+.badges .marquee.rev li{background:var(--palm);color:#fff;border-color:var(--palm)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* قبل وبعد */
+.ba{padding-top:40px}
+.baframe{position:relative;margin-top:22px;border-radius:22px;overflow:hidden;aspect-ratio:4/3;max-height:70svh;width:100%;user-select:none;-webkit-user-select:none;box-shadow:0 30px 60px -36px rgba(60,45,20,.8);direction:ltr}
+.baframe>img,.baframe .before img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.baframe .before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--x)) 0 0)}
+.baframe .handle{position:absolute;top:0;bottom:0;left:var(--x);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.4);pointer-events:none}
+.baframe .handle b{position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:#fff;color:var(--palm);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.baframe .handle svg{width:24px;height:24px}
+.baframe .lbl{position:absolute;bottom:12px;font:700 14px var(--body);color:#fff;background:rgba(19,38,26,.7);padding:4px 12px;border-radius:99px}
+.baframe .l1{left:12px}.baframe .l2{right:12px;background:var(--leaf);color:var(--ink)}
+.baframe input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;touch-action:pan-y}
+
+/* شريط الصور */
+.reel{margin-top:22px;display:grid;gap:10px;overflow:hidden;direction:ltr}
+.reel .track{display:flex;gap:10px;width:max-content;animation:slide 70s linear infinite}
+.reel .track.rev{animation-direction:reverse;animation-duration:84s}
+.reel img{height:clamp(130px,30vw,210px);width:auto;border-radius:14px;flex:none}
+.reel:hover .track{animation-play-state:paused}
+
+/* الرقم */
+.money .count{background:linear-gradient(100deg,var(--dune) 30%,#e9b86a 50%,var(--dune) 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gold 3.5s linear infinite}
+@keyframes gold{from{background-position:100% 0}to{background-position:-150% 0}}
+
+/* المقارنة: عمود النخيل بينوّر */
+.cmp .row.shown .c.win{animation:winIn .9s cubic-bezier(.2,1.4,.4,1) both .25s}
+@keyframes winIn{from{transform:scale(.9);box-shadow:0 0 0 0 rgba(121,165,8,.6)}60%{box-shadow:0 0 0 10px rgba(121,165,8,0)}}
+.now li.shown svg{animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+
+@media (prefers-reduced-motion:reduce){
+  .sky .cloud,.sky .sun,.horizon use,.btn::after,.dock .btn,.kb img,.badges .marquee ul,.reel .track,.money .count,.hero h1 .w{animation:none!important}
+  .rv.pre,.stag.pre>*{opacity:1;transform:none}
+  .badges .marquee ul,.reel .track{flex-wrap:wrap;width:auto}
+}
 </style>
 </head>
 <body>
@@ -305,15 +408,16 @@ dialog.sheet .x svg{width:18px;height:18px}
 <main>
 <!-- ===================== الهيرو + فورم التسجيل ===================== -->
 <section class="hero" id="top">
+  <div class="sky" aria-hidden="true"><i class="sun"></i><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i><canvas id="motes"></canvas></div>
   <svg class="horizon" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
     <defs>
       <g id="p"><path d="M0 70 C1 48 2 36 1 22" stroke="#4f7a1a" stroke-width="2.2" fill="none"/><path d="M1 22 q-9 -2 -15 6 M1 22 q10 -3 15 5 M1 22 q-6 -8 -14 -8 M1 22 q7 -8 14 -7 M1 22 q0 -9 -3 -12" stroke="#5f8f1b" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
     </defs>
     <g opacity=".55">
-      <use href="#p" x="40"/><use href="#p" x="95" transform="translate(0 6) scale(1 .92)"/><use href="#p" x="150"/><use href="#p" x="205" transform="translate(0 5)"/>
-      <use href="#p" x="330"/><use href="#p" x="385" transform="translate(0 6)"/><use href="#p" x="440"/>
-      <use href="#p" x="760"/><use href="#p" x="815" transform="translate(0 5)"/><use href="#p" x="870"/><use href="#p" x="925" transform="translate(0 6)"/>
-      <use href="#p" x="1050"/><use href="#p" x="1105" transform="translate(0 5)"/><use href="#p" x="1160"/>
+      <use href="#p" x="40"/><use href="#p" x="95" y="6"/><use href="#p" x="150"/><use href="#p" x="205" y="5"/>
+      <use href="#p" x="330"/><use href="#p" x="385" y="6"/><use href="#p" x="440"/>
+      <use href="#p" x="760"/><use href="#p" x="815" y="5"/><use href="#p" x="870"/><use href="#p" x="925" y="6"/>
+      <use href="#p" x="1050"/><use href="#p" x="1105" y="5"/><use href="#p" x="1160"/>
     </g>
     <path d="M0 68 Q300 60 600 66 T1200 64 V70 H0Z" fill="#e6d7b9" opacity=".8"/>
   </svg>
@@ -336,14 +440,14 @@ dialog.sheet .x svg{width:18px;height:18px}
 <section class="story">
   <div class="wrap grid">
     <div>
-      <h2 class="h2">من الغربة إلى الاستقرار</h2>
+      <h2 class="h2 rv">من الغربة إلى الاستقرار</h2>
       <div style="margin-top:18px">
         <p>رحلة العمل في الخارج فرصة لبناء المستقبل، لكن الاستقرار الحقيقي يبدأ عندما تحول جهد الغربة إلى أصل ثابت لا يفقد قيمته.</p>
         <p>الاستثمار في الأرض الزراعية في مصر هو الملاذ الآمن لحماية رأس مالك من التضخم، وضمان عائد استثماري متنامٍ على المدى الطويل.</p>
       </div>
-      <p class="pull">"من الغربة إلى الاستقرار.. استثمارك في وطنك ينشر جذوره بثبات."</p>
+      <p class="pull rv">"من الغربة إلى الاستقرار.. استثمارك في وطنك ينشر جذوره بثبات."</p>
     </div>
-    <figure>
+    <figure class="kb">
       <img src="/landing/fasila-s.webp" srcset="/landing/fasila-s.webp 600w, /landing/fasila.webp 1024w" sizes="(min-width:900px) 420px, 100vw"
            alt="فسيلة نخيل مجدول جديدة بجوار نخلة أم في مزرعة ثمرات، وشبكة الري بالتنقيط حولها" width="600" height="703" loading="lazy">
     </figure>
@@ -352,50 +456,76 @@ dialog.sheet .x svg{width:18px;height:18px}
 
 <!-- ===================== الفرصة المتكاملة ===================== -->
 <section class="offer">
-  <div class="wrap cols">
+  <div class="wrap">
+  <div class="cols">
     <div>
-      <h2 class="h2">تقدم لك "ثمرات" فرصة استثمارية متكاملة في زراعة نخيل المجدول <span class="gold">(الذهب الأسود)</span></h2>
-      <p class="lead-in">مشروعك التجاري في نخيل المجدول.. استثمار يتضاعف نماءً وأرباحًا.</p>
+      <h2 class="h2 rv">تقدم لك "ثمرات" فرصة استثمارية متكاملة في زراعة نخيل المجدول <span class="gold">(الذهب الأسود)</span></h2>
+      <p class="lead-in rv">مشروعك التجاري في نخيل المجدول.. استثمار يتضاعف نماءً وأرباحًا.</p>
       <div class="promise" style="margin-top:22px">
         <p>"تَمَلَّك الأرض، ونحن نتكفل بالزراعة والإدارة وحتى بيع المحصول."</p>
         <p class="soft">استثمر ببال مريح.. إدارة تنفيذية وتشغيلية شاملة من الألف إلى الياء.</p>
       </div>
       <button class="btn on-dark" style="margin-top:24px" data-cta="details">عايز تفاصيل أكتر</button>
     </div>
+  </div>
+  <div class="journey">
+    <div class="jframe" aria-hidden="true">
+      <img src="/assets/field/r-raw.webp" alt="" class="on" loading="lazy">
+      <img src="/assets/field/r-solar.webp" alt="" loading="lazy">
+      <img src="/assets/field/n-8.webp" alt="" loading="lazy">
+      <img src="/assets/field/p-4.webp" alt="" loading="lazy">
+      <span class="jtag">من الصحرا للتمر</span>
+      <span class="jbar"><i></i></span>
+    </div>
     <ol class="path" aria-label="رحلة استثمارك مع ثمرات">
-      <li><div><b>ملكية رسمية للأرض</b><span>عقد موثق باسمك، وتملك حر للأرض.</span></div></li>
-      <li><div><b>تأسيس وزراعة بأحدث الطرق الحديثة</b><span>تجهيز الأرض والآبار والري بالتنقيط وزراعة الفسائل.</span></div></li>
+      <li class="on"><div><b>ملكية رسمية للأرض</b><span>عقد موثق باسمك، وتملك حر للأرض.</span></div></li>
+      <li><div><b>تأسيس وزراعة بأحدث الطرق الحديثة</b><span>تجهيز الأرض والآبار والطاقة الشمسية والري بالتنقيط وزراعة الفسائل.</span></div></li>
       <li><div><b>إدارة تشغيلية وإشراف فني كامل</b><span>فريق زراعي متخصص يتابع مزرعتك وأنت في غربتك.</span></div></li>
       <li><div><b>حصاد وتسويق للمحصول</b><span>نحصد ونبيع المحصول، ويوصلك عائدك.</span></div></li>
     </ol>
+  </div>
   </div>
 </section>
 
 <!-- ===================== الشارات ===================== -->
 <section class="badges" aria-label="مميزات الاستثمار">
+  <ul class="sr"><li><i aria-hidden="true">🌴</i>تملك حر وموثق</li><li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li><li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li><li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li><li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li><li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li></ul>
+  <div class="marquee" aria-hidden="true"><ul><li><i aria-hidden="true">🌴</i>تملك حر وموثق</li><li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li><li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li><li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li><li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li><li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li><li><i aria-hidden="true">🌴</i>تملك حر وموثق</li><li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li><li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li><li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li><li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li><li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li></ul></div>
+  <div class="marquee rev" aria-hidden="true"><ul><li><i aria-hidden="true">🌴</i>تملك حر وموثق</li><li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li><li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li><li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li><li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li><li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li><li><i aria-hidden="true">🌴</i>تملك حر وموثق</li><li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li><li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li><li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li><li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li><li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li></ul></div>
+</section>
+
+<!-- ===================== قبل وبعد ===================== -->
+<section class="ba">
   <div class="wrap">
-    <ul>
-      <li><i aria-hidden="true">🌴</i>تملك حر وموثق</li>
-      <li><i aria-hidden="true">🌍</i>محصول تصديري مطلوب عالمياً</li>
-      <li><i aria-hidden="true">🛡️</i>أصل ثابت مقاوم للتضخم</li>
-      <li><i aria-hidden="true">⚙️</i>إدارة زراعية وإشراف متخصص</li>
-      <li><i aria-hidden="true">📈</i>نمو متزايد للقيمة السوقية للأرض</li>
-      <li><i aria-hidden="true">🤝</i>شراكة استثمارية شفافة</li>
-    </ul>
+    <h2 class="h2 rv">قبل وبعد.. بإيدينا</h2>
+    <p class="lead-in rv">اسحب الخط وشوف الأرض قبل وبعد الاستصلاح: تسوية وتخطيط خطوط الزراعة بمعدات الشركة.</p>
+    <div class="baframe" id="ba" style="--x:50%">
+      <img src="/assets/field/r-after.webp" alt="الأرض بعد الاستصلاح: خطوط زراعة مستقيمة" loading="lazy">
+      <div class="before"><img src="/assets/field/r-before.webp" alt="الأرض قبل الاستصلاح: صحراء مفتوحة" loading="lazy"></div>
+      <span class="lbl l1">قبل</span><span class="lbl l2">بعد</span>
+      <div class="handle" aria-hidden="true"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></b></div>
+      <input type="range" min="0" max="100" value="50" aria-label="قارن قبل وبعد الاستصلاح">
+    </div>
   </div>
 </section>
 
 <!-- ===================== من أرض الواقع ===================== -->
 <section class="field">
   <div class="wrap">
-    <h2 class="h2">مزارع تم تسليمها بالفعل</h2>
-    <p class="lead-in">ده مش رسم ولا تصميم.. ده نخيل مزروع على الأرض في مزارع سلّمناها لأصحابها.</p>
+    <h2 class="h2 rv">مزارع تم تسليمها بالفعل</h2>
+    <p class="lead-in rv">ده مش رسم ولا تصميم.. ده نخيل مزروع على الأرض في مزارع سلّمناها لأصحابها.</p>
     <div class="frame">
       <video id="farmvid" src="/landing/farms.mp4" poster="/landing/farms-poster.webp" muted loop playsinline preload="none" aria-label="فيديو لمزارع نخيل سلّمتها ثمرات"></video>
       <button class="sound" id="sound" type="button" aria-pressed="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="m23 9-6 6M17 9l6 6"/></svg><span>شغّل الصوت</span>
       </button>
     </div>
+  </div>
+  <div class="reel" aria-label="صور من مزارع ومشاتل ثمرات">
+    <div class="track"><img src="/assets/field/p-1-s.webp" alt="" loading="lazy"><img src="/assets/field/p-4-s.webp" alt="" loading="lazy"><img src="/assets/field/p-10-s.webp" alt="" loading="lazy"><img src="/assets/field/p-3-s.webp" alt="" loading="lazy"><img src="/assets/field/p-6-s.webp" alt="" loading="lazy"><img src="/assets/field/p-12-s.webp" alt="" loading="lazy"><img src="/assets/field/p-5-s.webp" alt="" loading="lazy"><img src="/assets/field/p-15-s.webp" alt="" loading="lazy"><img src="/assets/field/p-1-s.webp" alt="" loading="lazy"><img src="/assets/field/p-4-s.webp" alt="" loading="lazy"><img src="/assets/field/p-10-s.webp" alt="" loading="lazy"><img src="/assets/field/p-3-s.webp" alt="" loading="lazy"><img src="/assets/field/p-6-s.webp" alt="" loading="lazy"><img src="/assets/field/p-12-s.webp" alt="" loading="lazy"><img src="/assets/field/p-5-s.webp" alt="" loading="lazy"><img src="/assets/field/p-15-s.webp" alt="" loading="lazy"></div>
+    <div class="track rev"><img src="/assets/field/n-1-s.webp" alt="" loading="lazy"><img src="/assets/field/n-8-s.webp" alt="" loading="lazy"><img src="/assets/field/n-10-s.webp" alt="" loading="lazy"><img src="/assets/field/n-12-s.webp" alt="" loading="lazy"><img src="/assets/field/n-9-s.webp" alt="" loading="lazy"><img src="/assets/field/n-4-s.webp" alt="" loading="lazy"><img src="/assets/field/r-solar-s.webp" alt="" loading="lazy"><img src="/assets/field/r-rows-s.webp" alt="" loading="lazy"><img src="/assets/field/n-1-s.webp" alt="" loading="lazy"><img src="/assets/field/n-8-s.webp" alt="" loading="lazy"><img src="/assets/field/n-10-s.webp" alt="" loading="lazy"><img src="/assets/field/n-12-s.webp" alt="" loading="lazy"><img src="/assets/field/n-9-s.webp" alt="" loading="lazy"><img src="/assets/field/n-4-s.webp" alt="" loading="lazy"><img src="/assets/field/r-solar-s.webp" alt="" loading="lazy"><img src="/assets/field/r-rows-s.webp" alt="" loading="lazy"></div>
+  </div>
+  <div class="wrap">
     <div class="after">
       <p>"الذهب الأخضر في مصر: كيف تحول رأس مالك إلى عائد تصديري مستدام؟"</p>
       <button class="btn" data-cta="details">عايز تفاصيل أكتر</button>
@@ -406,10 +536,10 @@ dialog.sheet .x svg{width:18px;height:18px}
 <!-- ===================== العائد ===================== -->
 <section class="money">
   <div class="wrap">
-    <h2 class="h2">طريقك نحو أول مليون: كيف تحقق 5 أفدنة مجدول عائداً تصديرياً استثنائياً؟</h2>
-    <p class="big">استثمر معنا وحقق تفوق <span class="ltr">1,000,000</span> جنيه أرباح</p>
+    <h2 class="h2 rv">طريقك نحو أول مليون: كيف تحقق 5 أفدنة مجدول عائداً تصديرياً استثنائياً؟</h2>
+    <p class="big">استثمر معنا وحقق تفوق <span class="ltr count" data-to="1000000">1,000,000</span> جنيه أرباح</p>
     <p class="note">اسأل عن دراسة الجدوى. الأرقام استرشادية حسب دراسات الجدوى عند اكتمال نمو النخيل، وليست التزامًا بعائد محدد.</p>
-    <div class="hooks">
+    <div class="hooks stag">
       <p>عائد استثماري لا يتأثر بتقلبات العملة.. استثمر في منتج يُطلب عالمياً.</p>
       <p>استثمار العمر: تدفقات نقدية تضمن مستقبل أسرتك على المدى الطويل.</p>
       <p>احمِ مدخراتك من التضخم بأصل زراعي يزداد قيمة كل عام.</p>
@@ -424,8 +554,8 @@ dialog.sheet .x svg{width:18px;height:18px}
 <!-- ===================== المقارنة ===================== -->
 <section class="cmp">
   <div class="wrap">
-    <h2 class="h2">ذهب؟ عقار؟ ولا نخيل مجدول؟</h2>
-    <p class="lead-in">ثلاث طرق شائعة يحفظ بها المغترب مدخراته. قارن بنفسك أين تعمل فلوسك لك فعلًا.</p>
+    <h2 class="h2 rv">ذهب؟ عقار؟ ولا نخيل مجدول؟</h2>
+    <p class="lead-in rv">ثلاث طرق شائعة يحفظ بها المغترب مدخراته. قارن بنفسك أين تعمل فلوسك لك فعلًا.</p>
 
     <div class="table" role="table" aria-label="مقارنة بين الاستثمار في الذهب والعقارات ونخيل المجدول">
       <div class="head" role="row">
@@ -434,37 +564,37 @@ dialog.sheet .x svg{width:18px;height:18px}
         <div role="columnheader" class="win"><span aria-hidden="true">🌴</span>نخيل المجدول</div>
       </div>
 
-      <div class="row" role="row"><h3 role="rowheader">دخل سنوي متكرر</h3><div class="cells">
+      <div class="row rv" role="row"><h3 role="rowheader">دخل سنوي متكرر</h3><div class="cells">
         <div class="c" role="cell">لا يوجد، قيمة محفوظة فقط</div>
         <div class="c mid" role="cell">إيجار، ونسبته محدودة</div>
         <div class="c good win" role="cell">محصول تمر وفسائل كل موسم</div></div></div>
 
-      <div class="row" role="row"><h3 role="rowheader">نمو قيمة الأصل</h3><div class="cells">
+      <div class="row rv" role="row"><h3 role="rowheader">نمو قيمة الأصل</h3><div class="cells">
         <div class="c mid" role="cell">يتحرك مع البورصة والدولار</div>
         <div class="c mid" role="cell">المبنى يستهلك مع السنين</div>
         <div class="c good win" role="cell">الأرض والنخلة تزيد قيمتهما كل سنة</div></div></div>
 
-      <div class="row" role="row"><h3 role="rowheader">الحماية من التضخم وتعويم الجنيه</h3><div class="cells">
+      <div class="row rv" role="row"><h3 role="rowheader">الحماية من التضخم وتعويم الجنيه</h3><div class="cells">
         <div class="c good" role="cell">جيدة</div>
         <div class="c mid" role="cell">متوسطة</div>
         <div class="c good win" role="cell">منتج غذائي سعره يرتفع مع التضخم</div></div></div>
 
-      <div class="row" role="row"><h3 role="rowheader">منتج يُطلب للتصدير</h3><div class="cells">
+      <div class="row rv" role="row"><h3 role="rowheader">منتج يُطلب للتصدير</h3><div class="cells">
         <div class="c" role="cell">لا</div>
         <div class="c" role="cell">لا</div>
         <div class="c good win" role="cell">المجدول مطلوب عالميًا</div></div></div>
 
-      <div class="row" role="row"><h3 role="rowheader">تكاليف الاحتفاظ</h3><div class="cells">
+      <div class="row rv" role="row"><h3 role="rowheader">تكاليف الاحتفاظ</h3><div class="cells">
         <div class="c mid" role="cell">مصنعية وفرق بيع وشراء</div>
         <div class="c" role="cell">صيانة وتشطيب وضرائب</div>
         <div class="c good win" role="cell">مصاريف رعاية واضحة في دراسة الجدوى</div></div></div>
 
-      <div class="row" role="row"><h3 role="rowheader">الإدارة وأنت مسافر</h3><div class="cells">
+      <div class="row rv" role="row"><h3 role="rowheader">الإدارة وأنت مسافر</h3><div class="cells">
         <div class="c good" role="cell">لا يحتاج إدارة</div>
         <div class="c" role="cell">مستأجرين ومتابعة مستمرة</div>
         <div class="c good win" role="cell">ثمرات تدير وتحصد وتسوّق</div></div></div>
 
-      <div class="row" role="row"><h3 role="rowheader">إرث لأولادك</h3><div class="cells">
+      <div class="row rv" role="row"><h3 role="rowheader">إرث لأولادك</h3><div class="cells">
         <div class="c good" role="cell">يُورث</div>
         <div class="c good" role="cell">يُورث</div>
         <div class="c good win" role="cell">يُورث ويدر دخلًا لعشرات السنين</div></div></div>
@@ -472,7 +602,7 @@ dialog.sheet .x svg{width:18px;height:18px}
 
     <div class="legend" aria-hidden="true"><span><i class="g"></i>قوي</span><span><i class="m"></i>متوسط</span><span><i></i>ضعيف أو غير موجود</span></div>
 
-    <div class="verdict">
+    <div class="verdict rv">
       <p>الذهب يحفظ قيمة فلوسك، والعقار يعطيك إيجارًا محدودًا.. أما نخيل المجدول فيجمع الاثنين: أصل يزيد قيمته، ودخل يتجدد كل موسم.</p>
       <button class="btn on-dark" data-cta="details">عايز تفاصيل أكتر</button>
     </div>
@@ -482,19 +612,19 @@ dialog.sheet .x svg{width:18px;height:18px}
 <!-- ===================== الاستعجال + التسجيل الأخير ===================== -->
 <section class="now">
   <div class="wrap">
-    <h2 class="h2">ابدأ خطوتك اليوم لتأمين غدٍ أكثر استقرارًا</h2>
+    <h2 class="h2 rv">ابدأ خطوتك اليوم لتأمين غدٍ أكثر استقرارًا</h2>
     <ul>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
         <p><b>كل موسم تأجيل = حصاد أبعد.</b> النخلة التي تُزرع هذا الموسم تبدأ إنتاجها قبل التي تُزرع العام القادم.</p></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7"/></svg>
+      <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7"/></svg>
         <p><b>القطع المتاحة محدودة العدد،</b> والأولوية في اختيار القطعة لمن يسجل أولًا.</p></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+      <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
         <p><b>من يدخل مبكرًا يكسب فرق القيمة:</b> قيمة الأرض ترتفع مع اكتمال الطرق والآبار ومحطات الطاقة الشمسية.</p></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      <li class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
         <p><b>المكالمة الأولى مجانية وبدون أي التزام:</b> اعرف المساحات والأسعار ونظم التعاقد، وقرر براحتك.</p></li>
     </ul>
 
-    <div class="final">
+    <div class="final rv">
       <h2>خطط لمستقبلك بثبات معنا</h2>
       <p>لا تدع حيرتك في اختيار المشروع المناسب تؤجل خطوتك. استثمر في أصل ينمو معك ويعود بالنفع عليك وعلى عائلتك.. تواصل معنا اليوم لمعرفة كافة التفاصيل.</p>
       <button class="btn" data-cta="contract">استفسر الآن عن المساحات ونظم التعاقد</button>
@@ -749,6 +879,44 @@ var vid=$('#farmvid'), snd=$('#sound');
 if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!reduce){vid.preload='auto';vid.play().catch(function(){})}}else vid.pause()})},{threshold:.4}).observe(vid)}
 snd.addEventListener('click',function(){vid.muted=!vid.muted;if(!vid.muted)vid.play().catch(function(){});snd.setAttribute('aria-pressed',String(!vid.muted));snd.querySelector('span').textContent=vid.muted?'شغّل الصوت':'اكتم الصوت'});
 vid.addEventListener('click',function(){if(vid.paused)vid.play().catch(function(){});else vid.pause()});
+
+/* =================== الحركة =================== */
+/* العنوان كلمة كلمة */
+if(!reduce){var h1=$('.hero h1'),i2=0;h1.innerHTML=h1.textContent.trim().split(/\s+/).map(function(w){return '<span class="w" style="--i:'+(i2++)+'">'+w+'</span>'}).join(' ')}
+
+/* نقط نور في السما */
+(function(){var cv=$('#motes');if(!cv||reduce)return;var cx=cv.getContext('2d'),W,H,ms=[],run=true;
+  function size(){var d=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);ms=Array.from({length:Math.round(W/16)},function(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.7+.4,v:Math.random()*.25+.06,p:Math.random()*6}})}
+  function draw(t){if(!run)return;cx.clearRect(0,0,W,H);ms.forEach(function(m){m.y-=m.v;m.x+=Math.sin(t/2200+m.p)*.15;if(m.y<-4){m.y=H+4;m.x=Math.random()*W}cx.beginPath();cx.arc(m.x,m.y,m.r,0,7);cx.fillStyle='rgba(255,255,255,'+(.35+.45*Math.pow(Math.sin(t/900+m.p),2))+')';cx.fill()});requestAnimationFrame(draw)}
+  size();addEventListener('resize',size);requestAnimationFrame(draw);
+  new IntersectionObserver(function(e){var was=run;run=e[0].isIntersecting;if(run&&!was)requestAnimationFrame(draw)}).observe(cv);
+})();
+
+/* ظهور العناصر */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.remove('pre');e.target.classList.add('shown');io.unobserve(e.target)})},{rootMargin:'0px 0px -10% 0px'});
+$$('.rv,.stag').forEach(function(el,k){if(reduce){el.classList.add('shown');return}if(el.getBoundingClientRect().top>innerHeight*.9){el.classList.add('pre');if(el.classList.contains('row'))el.style.transitionDelay=((k%3)*80)+'ms'}else el.classList.add('shown');io.observe(el)});
+
+/* عدّاد المليون */
+$$('.count').forEach(function(el){var to=+el.dataset.to,done=false;
+  new IntersectionObserver(function(es,o){if(!es[0].isIntersecting||done)return;done=true;o.disconnect();if(reduce)return;var t0=performance.now(),D=1800;
+    (function step(t){var k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);el.textContent=Math.round(to*e).toLocaleString('en-US');if(k<1)requestAnimationFrame(step)})(t0)},{threshold:.6}).observe(el)});
+
+/* رحلة الاستثمار: الصورة بتتغير مع المرحلة */
+(function(){var lis=$$('.journey .path li'),imgs=$$('.jframe img'),bar=$('.jframe .jbar i');if(!lis.length)return;
+  function set(k){lis.forEach(function(l,j){l.classList.toggle('on',j<=k)});imgs.forEach(function(m,j){m.classList.toggle('on',j===k)});bar.style.setProperty('--p',((k+1)/lis.length*100)+'%')}
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)set(lis.indexOf(e.target))})},{rootMargin:'-55% 0px -40% 0px'});
+  lis.forEach(function(l){obs.observe(l)});
+  imgs.forEach(function(m){m.loading='eager'});
+})();
+
+/* قبل وبعد: سحب + حركة تعريفية أول ما يظهر */
+(function(){var f=$('#ba');if(!f)return;var r=f.querySelector('input'),touched=false;
+  function put(v){f.style.setProperty('--x',v+'%')}
+  r.addEventListener('input',function(){touched=true;put(r.value)});
+  if(reduce)return;
+  new IntersectionObserver(function(es,o){if(!es[0].isIntersecting)return;o.disconnect();var t0=performance.now();
+    (function step(t){if(touched)return;var k=(t-t0)/2600;if(k>1){put(50);r.value=50;return}var v=50+Math.sin(k*Math.PI*2)*32;put(v);r.value=v;requestAnimationFrame(step)})(t0)},{threshold:.55}).observe(f);
+})();
 })();
 </script>
 </body>
