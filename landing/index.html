@@ -192,6 +192,13 @@ section{padding:56px 0}
 .field .after p{font:600 18px/1.7 var(--display);color:var(--palm)}
 @media (min-width:700px){.field .after{flex-direction:row;align-items:center;justify-content:space-between}}
 
+/* فيديو ليه غرب المنيا */
+.minya{padding:56px 0 8px}
+.minya .frame{position:relative;margin-top:22px;max-width:880px;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 30px 60px -40px rgba(31,74,44,.8)}
+.minya video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;cursor:pointer}
+.minya .replay{position:absolute;bottom:12px;left:12px;display:flex;align-items:center;gap:6px;border:0;border-radius:99px;padding:8px 14px;background:rgba(19,38,26,.72);color:#fff;font:600 14px var(--body);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.minya .replay svg{width:18px;height:18px}
+
 /* العائد */
 .money{background:var(--sand)}
 .money .big{font:800 clamp(30px,8vw,54px)/1.25 var(--display);color:var(--palm);margin-top:14px;max-width:18ch}
@@ -504,6 +511,20 @@ dialog.sheet .x svg{width:18px;height:18px}
     <div class="after">
       <p>"الذهب الأخضر في مصر: كيف تحول رأس مالك إلى عائد تصديري مستدام؟"</p>
       <button class="btn" data-cta="details">عايز تفاصيل أكتر</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ليه غرب المنيا ===================== -->
+<section class="minya">
+  <div class="wrap">
+    <h2 class="h2 rv">ليه غرب المنيا.. مش مكان تاني؟</h2>
+    <p class="lead-in rv">10 معايير علمية ورا اختيارنا للأرض، في دقيقة واحدة.</p>
+    <div class="frame">
+      <video id="minyavid" src="/landing/minya.mp4" poster="/landing/minya-poster.webp" muted playsinline preload="none" aria-label="فيديو: ليه غرب المنيا؟ 10 معايير وراء اختيار أرض ثمرات"></video>
+      <button class="replay" id="minyare" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>من الأول</span>
+      </button>
     </div>
   </div>
 </section>
@@ -854,6 +875,13 @@ var vid=$('#farmvid'), snd=$('#sound');
 if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!reduce){vid.preload='auto';vid.play().catch(function(){})}}else vid.pause()})},{threshold:.4}).observe(vid)}
 snd.addEventListener('click',function(){vid.muted=!vid.muted;if(!vid.muted)vid.play().catch(function(){});snd.setAttribute('aria-pressed',String(!vid.muted));snd.querySelector('span').textContent=vid.muted?'شغّل الصوت':'اكتم الصوت'});
 vid.addEventListener('click',function(){if(vid.paused)vid.play().catch(function(){});else vid.pause()});
+/* فيديو ليه غرب المنيا: يشتغل صامت لما يظهر */
+var mv=$('#minyavid');
+if(mv){
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!reduce&&!mv.ended){mv.preload='auto';mv.play().catch(function(){})}}else mv.pause()})},{threshold:.4}).observe(mv)}
+  mv.addEventListener('click',function(){if(mv.paused)mv.play().catch(function(){});else mv.pause()});
+  $('#minyare').addEventListener('click',function(){mv.currentTime=0;mv.play().catch(function(){})});
+}
 
 /* =================== الحركة =================== */
 /* العنوان كلمة كلمة */
