@@ -199,14 +199,47 @@ section{padding:56px 0}
 .minya .replay{position:absolute;bottom:12px;left:12px;display:flex;align-items:center;gap:6px;border:0;border-radius:99px;padding:8px 14px;background:rgba(19,38,26,.72);color:#fff;font:600 14px var(--body);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .minya .replay svg{width:18px;height:18px}
 
-/* العائد */
+/* ليه المجدول */
+.wcards{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.wcards li{display:grid;grid-template-columns:44px 1fr;column-gap:12px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}
+.wcards svg{grid-row:span 2;width:44px;height:44px;padding:10px;border-radius:12px;background:#eaf3d5;color:var(--palm)}
+.wcards b{font:700 18px/1.5 var(--display);color:var(--palm)}
+.wcards span{color:var(--muted);font-size:16px;line-height:1.7}
+@media (min-width:700px){.wcards{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.wcards{grid-template-columns:repeat(3,1fr)}}
+
+/* العائد بالأرقام */
 .money{background:var(--sand)}
-.money .big{font:800 clamp(30px,8vw,54px)/1.25 var(--display);color:var(--palm);margin-top:14px;max-width:18ch}
-.money .big .ltr{color:var(--dune)}
-.money .note{font-size:14px;color:#6b5b45;margin-top:8px}
-.money .hooks{display:grid;gap:12px;margin:26px 0}
-.money .hooks p{background:rgba(255,255,255,.62);border-radius:16px;padding:16px 18px;font:600 17px/1.7 var(--display);color:var(--palm)}
-@media (min-width:900px){.money .hooks{grid-template-columns:repeat(3,1fr)}}
+.money .mgrid{display:grid;gap:22px;margin-top:22px}
+.money .calc{background:#fff;border-radius:20px;padding:6px 18px;box-shadow:0 20px 40px -32px rgba(60,45,20,.6)}
+.money .calc .r{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-bottom:1px dashed #e2d3b5;align-items:center}
+.money .calc .r:last-child{border-bottom:0}
+.money .calc .r>span:first-child{font:700 16.5px var(--display);color:var(--palm)}
+.money .calc .how{grid-row:2;font-size:14px;color:#6b5b45}
+.money .calc b{grid-row:span 2;font:800 18px var(--display);color:var(--ink)}
+.money .calc .tot>span:first-child{font-size:18px}
+.money .calc .tot b{color:var(--dune);font-size:21px}
+.money .big{font:800 clamp(34px,9vw,58px)/1.2 var(--display);color:var(--palm)}
+.money .big small{display:block;font:600 16px/1.6 var(--body);color:#6b5b45;margin-top:4px}
+.money .note{font-size:14px;color:#6b5b45;margin-top:14px}
+.money .grow{margin-top:20px;background:rgba(255,255,255,.62);border-radius:20px;padding:16px 16px 12px}
+.money .gt{font:700 16px var(--display);color:var(--palm)}
+.money .bars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-items:end;height:190px;margin-top:10px}
+.money .bars div{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:6px}
+.money .bars i{display:block;width:100%;max-width:64px;height:var(--h);border-radius:10px 10px 4px 4px;background:var(--leaf);opacity:.55;transform-origin:bottom;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.money .bars .peak i{opacity:1;background:linear-gradient(180deg,#e9b86a,var(--dune))}
+.money .bars b{font:700 12.5px var(--display);color:var(--palm)}
+.money .bars span{font-size:13px;color:#6b5b45}
+.money .rv.pre .bars i{transform:scaleY(0)}
+.money .gn{font-size:13.5px;color:#6b5b45;margin-top:8px}
+.money .us{list-style:none;padding:0;margin:20px 0 26px;display:grid;gap:12px}
+.money .us li{background:rgba(255,255,255,.62);border-radius:16px;padding:14px 18px;border-inline-start:5px solid var(--leaf)}
+.money .us b{display:block;font:700 17.5px/1.6 var(--display);color:var(--palm)}
+.money .us span{font-size:16px;color:var(--ink)}
+@media (min-width:900px){
+  .money .mgrid{grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .money .us{grid-template-columns:1fr 1fr}
+}
 
 /* المقارنة */
 .cmp .head{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:26px;position:sticky;top:0;z-index:2;background:var(--mist);padding:10px 0}
@@ -529,20 +562,65 @@ dialog.sheet .x svg{width:18px;height:18px}
   </div>
 </section>
 
-<!-- ===================== العائد ===================== -->
+<!-- ===================== ليه المجدول ===================== -->
+<section class="why">
+  <div class="wrap">
+    <h2 class="h2 rv">ليه نخيل المجدول تحديدًا؟</h2>
+    <p class="lead-in rv">مش كل زراعة استثمار.. المجدول من أغلى أصناف التمور في العالم، والنخلة الواحدة بتشتغل لك سنين طويلة.</p>
+    <ul class="wcards stag">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l4 10h12l4-10-6 4-4-7-4 7z"/><path d="M6 21h12"/></svg>
+        <b>ملك التمور</b><span>المجدول من أغلى أصناف التمر وأكترها طلبًا في الأسواق العالمية.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="5"/><circle cx="16" cy="9" r="5"/></svg>
+        <b>دخلين مش دخل واحد</b><span>النخلة بتطلّع تمر كل موسم، وكمان بتطلّع فسائل بتتباع.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V10"/><path d="M12 10c-2-4-6-5-9-4 3 0 6 2 9 4zM12 10c2-4 6-5 9-4-3 0-6 2-9 4zM12 10c-1-4 0-7 2-8-1 3-1 5-2 8z"/></svg>
+        <b>أصل بيعيش عشرات السنين</b><span>بعد سنين التأسيس، النخلة بتفضل تنتج عشرات السنين، وإنتاجها بيزيد كل سنة لحد ما يستقر.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        <b>الأرض نفسها بتكسب</b><span>قيمة الأرض بتزيد مع اكتمال المنطقة من طرق وآبار وطاقة شمسية.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+        <b>محصول بيتصدّر</b><span>منتج مطلوب برّه مصر، فعائده مش مربوط بتقلبات الجنيه.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== العائد بالأرقام ===================== -->
 <section class="money">
   <div class="wrap">
-    <h2 class="h2 rv">طريقك نحو أول مليون: كيف تحقق 5 أفدنة مجدول عائداً تصديرياً استثنائياً؟</h2>
-    <p class="big">استثمر معنا وحقق تفوق <span class="ltr count" data-to="1000000">1,000,000</span> جنيه أرباح</p>
-    <p class="note">اسأل عن دراسة الجدوى. الأرقام استرشادية حسب دراسات الجدوى عند اكتمال نمو النخيل، وليست التزامًا بعائد محدد.</p>
-    <div class="hooks stag">
-      <p>عائد استثماري لا يتأثر بتقلبات العملة.. استثمر في منتج يُطلب عالمياً.</p>
-      <p>استثمار العمر: تدفقات نقدية تضمن مستقبل أسرتك على المدى الطويل.</p>
-      <p>احمِ مدخراتك من التضخم بأصل زراعي يزداد قيمة كل عام.</p>
+    <h2 class="h2 rv">فدان مجدول واحد.. في السنة السابعة</h2>
+    <p class="lead-in rv">من دراسة الجدوى الاسترشادية لفدان المجدول (60 نخلة):</p>
+    <div class="mgrid">
+      <div class="calc rv" role="table" aria-label="عائد فدان المجدول في السنة السابعة">
+        <div class="r" role="row"><span role="cell">إنتاج التمر</span><span role="cell" class="how">60 نخلة × 50 كجم</span><b role="cell"><span class="ltr">3,000</span> كجم</b></div>
+        <div class="r" role="row"><span role="cell">إيراد التمر</span><span role="cell" class="how">3,000 كجم × 180 جنيه</span><b role="cell" class="ltr">540,000</b></div>
+        <div class="r" role="row"><span role="cell">إيراد الفسائل</span><span role="cell" class="how">180 فسيلة × 3,000 جنيه</span><b role="cell" class="ltr">540,000</b></div>
+        <div class="r tot" role="row"><span role="cell">إجمالي العائد</span><span role="cell" class="how"></span><b role="cell"><span class="ltr">1,080,000</span> جنيه</b></div>
+      </div>
+      <div class="rv">
+        <p class="big"><span class="ltr count" data-to="1080000">1,080,000</span> جنيه<small>عائد فدان مجدول واحد في السنة السابعة</small></p>
+        <div class="grow" aria-label="العائد بيكبر كل سنة">
+          <p class="gt">والعائد بيكبر كل سنة</p>
+          <div class="bars">
+            <div style="--h:21.7%"><b class="ltr">234,000</b><i></i><span>الرابعة</span></div>
+            <div style="--h:65%"><b class="ltr">702,000</b><i></i><span>الخامسة</span></div>
+            <div style="--h:80%"><b class="ltr">864,000</b><i></i><span>السادسة</span></div>
+            <div class="peak" style="--h:100%"><b class="ltr">1,080,000</b><i></i><span>السابعة</span></div>
+          </div>
+          <p class="gn">أول 3 سنين تأسيس وزراعة، والإنتاج بيبدأ من السنة الرابعة.</p>
+        </div>
+      </div>
     </div>
+    <p class="note">الأرقام استرشادية حسب دراسة الجدوى، وليست التزامًا بعائد محدد.</p>
+
+    <h2 class="h2 rv" style="margin-top:44px">وليه تستثمر مع ثمرات بالذات؟</h2>
+    <ul class="us stag">
+      <li><b>مش وعود على ورق</b><span>مزارع مزروعة فعلًا وسلّمناها لأصحابها، وتقدر تشوفها بعينك في الفيديو فوق.</span></li>
+      <li><b>مش محتاج تنزل مصر</b><span>إحنا بنزرع ونرعى ونحصد ونسوّق، وإنت متابع من مكانك.</span></li>
+      <li><b>مصروفات معروفة من الأول</b><span>إنت بتتحمل مصروفات الرعاية أول 3 سنين بس، وبعدها ثمرات بتدير كل حاجة.</span></li>
+      <li><b>نظام سداد مرن</b><span>المقدم وعدد الشهور بيتحددوا معاك.</span></li>
+      <li><b>موقع قريب من كل حاجة</b><span>20 دقيقة من الصحراوي الغربي، و20 دقيقة من محطة القطار السريع، و30 دقيقة من مدينة المنيا.</span></li>
+    </ul>
     <button class="btn" data-cta="study">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
-      اطلب دراسة الجدوى
+      احسب عائد فدانك.. اطلب دراسة الجدوى
     </button>
   </div>
 </section>
@@ -899,7 +977,7 @@ if(!reduce){var h1=$('.hero h1'),i2=0;h1.innerHTML=h1.textContent.trim().split(/
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.remove('pre');e.target.classList.add('shown');io.unobserve(e.target)})},{rootMargin:'0px 0px -10% 0px'});
 $$('.rv,.stag').forEach(function(el,k){if(reduce){el.classList.add('shown');return}if(el.getBoundingClientRect().top>innerHeight*.9){el.classList.add('pre');if(el.classList.contains('row'))el.style.transitionDelay=((k%3)*80)+'ms'}else el.classList.add('shown');io.observe(el)});
 
-/* عدّاد المليون */
+/* عدّاد العائد */
 $$('.count').forEach(function(el){var to=+el.dataset.to,done=false;
   new IntersectionObserver(function(es,o){if(!es[0].isIntersecting||done)return;done=true;o.disconnect();if(reduce)return;var t0=performance.now(),D=1800;
     (function step(t){var k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);el.textContent=Math.round(to*e).toLocaleString('en-US');if(k<1)requestAnimationFrame(step)})(t0)},{threshold:.6}).observe(el)});
