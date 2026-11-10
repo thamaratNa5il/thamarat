@@ -748,11 +748,6 @@ dialog.sheet .x svg{width:18px;height:18px}
         <input class="in num" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="50 123 4567" required maxlength="20" aria-label="رقم الموبايل">
       </div>
     </div>
-    <div class="fld">
-      <label>الميزانية التقريبية <small>(اختياري)</small></label>
-      <input class="in" name="budget" placeholder="مثلًا: 2 مليون جنيه" maxlength="60">
-      <div class="chips" role="group" aria-label="اختيار سريع للميزانية"></div>
-    </div>
     <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <p class="err" role="alert"></p>
     <button class="btn wide" type="submit">اطلب التواصل معي</button>
@@ -796,7 +791,6 @@ var BY={};COUNTRIES.forEach(function(c){BY[c[0]]=c});
 var cc=(($('meta[name="visitor-cc"]')||{}).content||'').toUpperCase();
 var DEFAULT_CC=BY[cc]&&cc!=='XX'?cc:'AE';
 var PH={AE:'50 123 4567',SA:'51 234 5678',KW:'6000 1234',QA:'3312 3456',OM:'9123 4567',BH:'3612 3456',EG:'10 1234 5678'};
-var BUDGETS=['أقل من مليون جنيه','من 1 لـ 3 مليون جنيه','من 3 لـ 5 مليون جنيه','أكثر من 5 مليون جنيه'];
 
 /* ---------- نوع الطلب (بيوصل للـ CRM كفيدباك) ---------- */
 var WISH={
@@ -835,16 +829,13 @@ function digits(s){return String(s||'').replace(/[٠-٩]/g,function(d){return '�
 
 function build(slot){
   var node=$('#tpl-form').content.cloneNode(true), f=node.querySelector('form');
-  var sel=f.querySelector('.cc'), code=f.querySelector('.code'), num=f.querySelector('.num'), chips=f.querySelector('.chips'), budget=f.querySelector('[name=budget]');
+  var sel=f.querySelector('.cc'), code=f.querySelector('.code'), num=f.querySelector('.num');
   var id=slot.dataset.form;
   f.querySelector('[name=name]').id='n-'+id; f.querySelector('label').htmlFor='n-'+id;
   COUNTRIES.forEach(function(c){var o=document.createElement('option');o.value=c[0];o.textContent=c[2]+' '+(c[1]?'+'+c[1]:'أخرى');o.title=c[3];sel.appendChild(o)});
   sel.value=DEFAULT_CC;
   function onCC(){var other=sel.value==='XX';code.hidden=!other;num.placeholder=PH[sel.value]||'رقم الموبايل';if(other)code.focus()}
   sel.addEventListener('change',onCC);onCC();
-  BUDGETS.forEach(function(b){var c=document.createElement('button');c.type='button';c.className='chip';c.textContent=b;c.setAttribute('aria-pressed','false');
-    c.addEventListener('click',function(){var on=c.getAttribute('aria-pressed')!=='true';$$('.chip',chips).forEach(function(x){x.setAttribute('aria-pressed','false')});c.setAttribute('aria-pressed',String(on));budget.value=on?b:''});chips.appendChild(c)});
-  budget.addEventListener('input',function(){$$('.chip',chips).forEach(function(x){x.setAttribute('aria-pressed',String(x.textContent===budget.value))})});
   f.addEventListener('submit',function(e){e.preventDefault();submit(f,id)});
   slot.innerHTML='';slot.appendChild(node);
   forms[id]={slot:slot,form:f,wish:'main'};
@@ -877,7 +868,7 @@ function submit(f,id){
   if(name.length<2){err.textContent='اكتب اسمك من فضلك.';nm.focus();return}
   var p=fullPhone(f);
   if(p.err){err.textContent=p.err;f.elements.namedItem('phone').focus();return}
-  var budget=f.elements.namedItem('budget').value.trim();
+  var budget='';
   btn.disabled=true;btn.textContent='جاري الإرسال…';
   send({name:name,phone:p.phone,budget:budget,wish:wish,note:feedback(wish,budget,p.country),session:sid,utm:UTM,website:''})
     .then(function(r){
