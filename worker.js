@@ -203,7 +203,7 @@ async function studyParse(req, env) {
    الإعداد في Cloudflare (Workers & Pages ← thamarat ← Settings):
    - Domains & Routes ← Add ← Custom domain: invest.thamaratmisr.com
    - Variables and Secrets ← Secret: INTAKE_API_KEY (نفس قيمة المفتاح في thamarat-crm)
-   - (اختياري) Variable: FB_PIXEL_ID = رقم بيكسل فيسبوك */
+   - بيكسل فيسبوك: FB_PIXEL_ID في wrangler.jsonc (vars) */
 const LANDING_HOST = /^invest\./;
 const WISHES = { main: 'سجّل من الفورم الرئيسي', contract: 'استفسر عن المساحات ونظم التعاقد', details: 'عايز تفاصيل أكتر', study: 'طلب دراسة جدوى' };
 
