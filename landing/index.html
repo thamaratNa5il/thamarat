@@ -828,7 +828,7 @@ footer{background:#11301f}
     </div>
     <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <p class="err" role="alert"></p>
-    <button class="btn wide" type="submit">اطلب التواصل معي</button>
+    <button class="btn wide" type="submit">اطلب التفاصيل</button>
     <p class="trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>بياناتك عندنا بأمان، وتُستخدم للتواصل معك فقط.</p>
   </form>
 </template>
@@ -955,10 +955,10 @@ function submit(f,id){
         track('Lead',{content_name:WISH[wish].crm});
         renderAll();
       }else{
-        btn.disabled=false;btn.textContent='اطلب التواصل معي';
+        btn.disabled=false;btn.textContent='اطلب التفاصيل';
         err.textContent=r&&r.error==='invalid_phone'?'الرقم غير صحيح، راجعه واكتبه من غير صفر البداية.':'حصلت مشكلة في الإرسال. جرّب تاني بعد لحظات.';
       }
-    }).catch(function(){btn.disabled=false;btn.textContent='اطلب التواصل معي';err.textContent='تأكد من اتصالك بالإنترنت وجرّب تاني.'});
+    }).catch(function(){btn.disabled=false;btn.textContent='اطلب التفاصيل';err.textContent='تأكد من اتصالك بالإنترنت وجرّب تاني.'});
 }
 
 function first(n){return String(n||'').split(/\s+/)[0]}
