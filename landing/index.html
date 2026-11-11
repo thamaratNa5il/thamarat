@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#cfe6ee">
+<meta name="theme-color" content="#163D27">
 <title>ثمرات · استثمر في نخيل المجدول بأرضك في مصر</title>
-<meta name="description" content="إلى كل مغترب يفكر في خطوته القادمة: ملكية رسمية لأرض نخيل مجدول في مصر، زراعة وإدارة وتسويق كامل من ثمرات. سجّل بياناتك ومستشار الاستثمار يتواصل معك.">
+<meta name="description" content="الغربة بتاخد عمرك.. فكّر تستثمر في بلدك: ملكية رسمية لأرض نخيل مجدول في مصر، زراعة وإدارة وتسويق كامل من ثمرات. سجّل بياناتك ومستشار الاستثمار يتواصل معك.">
 <meta name="robots" content="noindex">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:site_name" content="ثمرات للاستثمار والتنمية الزراعية">
-<meta property="og:title" content="تأمين مستقبل أسرتك يبدأ من أرضك.. استثمر بثقة في وطنك">
+<meta property="og:title" content="أرضك في بلدك تحميك بعد رجوعك">
 <meta property="og:description" content="فرصة استثمارية متكاملة في زراعة نخيل المجدول: ملكية رسمية، زراعة، إدارة، وحصاد وتسويق للمحصول.">
 <meta property="og:image" content="https://invest.thamaratmisr.com/landing/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,6 +38,9 @@
   --err:#b23b2a;
   --sky-a:#bcdcec;
   --sky-b:#e7f1ec;
+  --night:#163D27;     /* خلفية الهيرو */
+  --gold:#EDC36F;      /* الدهبي: عنوان الهيرو والتمييز على الأخضر */
+  --cream:#EEF3E4;     /* الكلام الفاتح على الأخضر الغامق */
   --display:"Alexandria","Tajawal",Tahoma,sans-serif;
   --body:"Tajawal",Tahoma,"Segoe UI",sans-serif;
   color-scheme:light;
@@ -73,13 +76,14 @@ button{font:inherit;color:inherit}
 .top{position:absolute;inset-inline:0;top:0;z-index:5;padding-top:env(safe-area-inset-top,0px)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
 .top img{height:34px;width:auto}
-.top a.ask{font:700 14.5px var(--body);color:var(--palm);text-decoration:none;padding:8px 14px;border-radius:12px;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.top a.ask{font:700 14.5px var(--body);color:var(--cream);text-decoration:none;padding:8px 14px;border-radius:12px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(237,195,111,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 
 /* ---------- الهيرو: سما فوق رمل، وخط نخيل على الأفق ---------- */
 .hero{position:relative;isolation:isolate;overflow:hidden;
-  background:linear-gradient(180deg,var(--sky-a) 0%,var(--sky-b) 34%,#efe9d9 58%,var(--sand) 76%,var(--sand-2) 100%);
+  background:radial-gradient(120% 70% at 50% 0%,rgba(121,165,8,.14) 0%,transparent 60%),radial-gradient(90% 60% at 50% 100%,rgba(0,0,0,.22) 0%,transparent 70%),var(--night);
+  color:var(--cream);
   padding:84px 0 36px}
-.hero .horizon{position:absolute;inset-inline:0;top:184px;height:62px;z-index:-1;opacity:.9}
+.hero .horizon{position:absolute;inset-inline:0;top:184px;height:62px;z-index:-1;opacity:.35}
 .hero .grid{display:grid;gap:22px;align-items:start}
 .hero .intro{text-align:center}
 .stage{perspective:1100px;display:grid;place-items:center;height:168px;margin-bottom:10px}
@@ -95,13 +99,15 @@ button{font:inherit;color:inherit}
 .coin .back img{width:64%;opacity:.85}
 .coin .face{backface-visibility:hidden}
 .coin .ring{position:absolute;inset:7%;border-radius:50%;border:1px dashed rgba(22,74,46,.28);transform:translateZ(14px)}
-.hero .to{font:700 15.5px var(--body);color:var(--palm-2)}
-.hero h1{font-size:clamp(29px,7.6vw,52px);font-weight:800;color:var(--palm);margin:6px auto 12px;max-width:20ch;letter-spacing:-.01em}
-.hero .lede{color:#3b4f3f;font-size:17px;max-width:46ch;margin-inline:auto}
+.hero .to{font:700 clamp(17px,4.4vw,21px) var(--body);color:var(--cream);opacity:.92}
+.hero h1{font-size:clamp(36px,10vw,66px);font-weight:800;color:var(--gold);margin:8px auto 16px;max-width:14ch;line-height:1.3;letter-spacing:-.01em;text-shadow:0 2px 24px rgba(0,0,0,.28)}
+.hero .lede{color:rgba(238,243,228,.86);font-size:18px;max-width:46ch;margin-inline:auto}
+.hero .lede b{color:var(--gold);font-weight:800;white-space:nowrap}
+.hero .lede strong{color:#fff;font-weight:800}
 
 /* ---------- كارت التسجيل ---------- */
 .card{position:relative;background:var(--paper);border-radius:24px;padding:22px 18px 20px;
-  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 30px 60px -36px rgba(31,74,44,.55),0 0 0 1px rgba(31,74,44,.08)}
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 30px 60px -30px rgba(0,0,0,.6),0 0 0 1px rgba(31,74,44,.08)}
 .card h2{font-size:21px;color:var(--palm);font-weight:700}
 .card .sub{color:var(--muted);font-size:15px;margin-top:4px}
 .f{display:grid;gap:14px;margin-top:16px}
@@ -335,7 +341,7 @@ dialog.sheet .x svg{width:18px;height:18px}
 /* =================== الحركة =================== */
 /* السما: شمس وسحاب بيتحرك ونقط نور */
 .sky{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
-.sky .sun{position:absolute;top:-60px;left:8%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,244,214,.95) 0,rgba(255,236,190,.55) 35%,transparent 70%);animation:glow 6s ease-in-out infinite alternate}
+.sky .sun{position:absolute;top:-60px;left:8%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(237,195,111,.32) 0,rgba(237,195,111,.12) 38%,transparent 70%);animation:glow 6s ease-in-out infinite alternate}
 @keyframes glow{to{transform:scale(1.15);opacity:.8}}
 .sky .cloud{position:absolute;height:34px;border-radius:40px;background:rgba(255,255,255,.75);filter:blur(1px);box-shadow:30px -14px 0 6px rgba(255,255,255,.7),70px 0 0 2px rgba(255,255,255,.7)}
 .sky .c1{top:90px;width:120px;animation:drift 48s linear infinite}
@@ -343,6 +349,7 @@ dialog.sheet .x svg{width:18px;height:18px}
 .sky .c3{top:60px;width:150px;opacity:.55;animation:drift 80s linear infinite -50s}
 @keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(130vw)}}
 #motes{position:absolute;inset:0;width:100%;height:100%}
+.hero .sky .cloud{display:none}
 .horizon use{transform-box:fill-box;transform-origin:50% 100%;animation:sway 4.6s ease-in-out infinite alternate}
 .horizon use:nth-child(3n){animation-duration:5.4s;animation-delay:-1.2s}
 .horizon use:nth-child(3n+1){animation-duration:3.9s;animation-delay:-2.1s}
@@ -429,7 +436,7 @@ dialog.sheet .x svg{width:18px;height:18px}
 
 <header class="top">
   <div class="wrap">
-    <img src="/assets/logo-green.png" alt="ثمرات Thamarat" width="89" height="34">
+    <img src="/assets/logo-cream.png" alt="ثمرات Thamarat" width="89" height="34">
     <a class="ask" href="#lead" data-cta="contract">استفسر الآن</a>
   </div>
 </header>
@@ -440,7 +447,7 @@ dialog.sheet .x svg{width:18px;height:18px}
   <div class="sky" aria-hidden="true"><i class="sun"></i><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i><canvas id="motes"></canvas></div>
   <svg class="horizon" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
     <defs>
-      <g id="p"><path d="M0 70 C1 48 2 36 1 22" stroke="#4f7a1a" stroke-width="2.2" fill="none"/><path d="M1 22 q-9 -2 -15 6 M1 22 q10 -3 15 5 M1 22 q-6 -8 -14 -8 M1 22 q7 -8 14 -7 M1 22 q0 -9 -3 -12" stroke="#5f8f1b" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+      <g id="p"><path d="M0 70 C1 48 2 36 1 22" stroke="#9cc23a" stroke-width="2.2" fill="none"/><path d="M1 22 q-9 -2 -15 6 M1 22 q10 -3 15 5 M1 22 q-6 -8 -14 -8 M1 22 q7 -8 14 -7 M1 22 q0 -9 -3 -12" stroke="#a9cf4a" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
     </defs>
     <g opacity=".55">
       <use href="#p" x="40"/><use href="#p" x="95" y="6"/><use href="#p" x="150"/><use href="#p" x="205" y="5"/>
@@ -448,15 +455,15 @@ dialog.sheet .x svg{width:18px;height:18px}
       <use href="#p" x="760"/><use href="#p" x="815" y="5"/><use href="#p" x="870"/><use href="#p" x="925" y="6"/>
       <use href="#p" x="1050"/><use href="#p" x="1105" y="5"/><use href="#p" x="1160"/>
     </g>
-    <path d="M0 68 Q300 60 600 66 T1200 64 V70 H0Z" fill="#e6d7b9" opacity=".8"/>
+    <path d="M0 68 Q300 60 600 66 T1200 64 V70 H0Z" fill="#163D27" opacity=".8"/>
   </svg>
 
   <div class="wrap grid">
     <div class="intro">
       <div class="stage" id="stage"><div class="coin" id="coin" aria-hidden="true"></div></div>
-      <p class="to">إلى كل مغترب يفكر في خطوته القادمة..</p>
-      <h1>تأمين مستقبل أسرتك يبدأ من أرضك.. استثمر بثقة في وطنك</h1>
-      <p class="lede">حوّل جهد الغربة إلى أصل ثابت لا يفقد قيمته: أرض باسمك ونخيل مجدول نزرعه وندير مزرعتك ونسوّق محصولك.</p>
+      <p class="to">الغربة بتاخد عمرك.. فكّر تستثمر في بلدك</p>
+      <h1>أرضك في بلدك تحميك بعد رجوعك</h1>
+      <p class="lede">حوّل جهد الغربة إلى أصل ثابت لا يفقد قيمته، وأرضك باسمك. استثمر في مزرعة نخيل مع <strong>ثمرات</strong>، تجيبلك عائد <b>حتى مليون جنيه سنويًا للفدان</b> طول العمر.</p>
     </div>
 
     <div class="card" id="lead">
@@ -959,7 +966,7 @@ if(!reduce){var h1=$('.hero h1'),i2=0;h1.innerHTML=h1.textContent.trim().split(/
 /* نقط نور في السما */
 (function(){var cv=$('#motes');if(!cv||reduce)return;var cx=cv.getContext('2d'),W,H,ms=[],run=true;
   function size(){var d=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);ms=Array.from({length:Math.round(W/16)},function(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.7+.4,v:Math.random()*.25+.06,p:Math.random()*6}})}
-  function draw(t){if(!run)return;cx.clearRect(0,0,W,H);ms.forEach(function(m){m.y-=m.v;m.x+=Math.sin(t/2200+m.p)*.15;if(m.y<-4){m.y=H+4;m.x=Math.random()*W}cx.beginPath();cx.arc(m.x,m.y,m.r,0,7);cx.fillStyle='rgba(255,255,255,'+(.35+.45*Math.pow(Math.sin(t/900+m.p),2))+')';cx.fill()});requestAnimationFrame(draw)}
+  function draw(t){if(!run)return;cx.clearRect(0,0,W,H);ms.forEach(function(m){m.y-=m.v;m.x+=Math.sin(t/2200+m.p)*.15;if(m.y<-4){m.y=H+4;m.x=Math.random()*W}cx.beginPath();cx.arc(m.x,m.y,m.r,0,7);cx.fillStyle='rgba(245,222,160,'+(.25+.45*Math.pow(Math.sin(t/900+m.p),2))+')';cx.fill()});requestAnimationFrame(draw)}
   size();addEventListener('resize',size);requestAnimationFrame(draw);
   new IntersectionObserver(function(e){var was=run;run=e[0].isIntersecting;if(run&&!was)requestAnimationFrame(draw)}).observe(cv);
 })();
