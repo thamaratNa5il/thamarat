@@ -900,6 +900,11 @@ if(/^\d{6,20}$/.test(PIXEL)){
   fbq('init',PIXEL);fbq('track','PageView');
 }
 function track(ev,data){try{if(window.fbq)fbq('track',ev,data||{})}catch(e){}}
+/* Lead يتبعت مرة واحدة بس لكل تسجيل (الفورم الرئيسي)، وزراير المتابعة بعد كده تبعت FollowUpRequest */
+var BTN={contract:'استفسر عن المساحات ونظم التعاقد',details:'عايز تفاصيل أكتر',study:'طلب دراسة جدوى'};
+function trackLead(phone,wish){var k='thm_lp_lead';try{if(localStorage.getItem(k)===phone)return}catch(e){}
+  track('Lead',{content_name:WISH[wish].crm});try{localStorage.setItem(k,phone)}catch(e){}}
+function trackFollowUp(wish){if(!BTN[wish])return;try{if(window.fbq)fbq('trackCustom','FollowUpRequest',{request:BTN[wish]})}catch(e){}}
 
 /* ---------- بناء الفورم ---------- */
 var forms={};
@@ -952,7 +957,7 @@ function submit(f,id){
     .then(function(r){
       if(r&&r.ok){
         reg={name:name,phone:p.phone,sent:[wish]};store.set('thm_lp_reg',reg);
-        track('Lead',{content_name:WISH[wish].crm});
+        trackLead(p.phone,wish);trackFollowUp(wish);
         renderAll();
       }else{
         btn.disabled=false;btn.textContent='اطلب التفاصيل';
@@ -1001,7 +1006,7 @@ document.addEventListener('click',function(e){
   b.disabled=true;
   send({name:reg.name,phone:reg.phone,wish:wish,note:feedback(wish,'',''),session:sid,utm:UTM,website:''}).then(function(r){
     b.disabled=false;
-    if(r&&r.ok){reg.sent.push(wish);store.set('thm_lp_reg',reg);track('Contact',{content_name:WISH[wish].crm});
+    if(r&&r.ok){reg.sent.push(wish);store.set('thm_lp_reg',reg);trackFollowUp(wish);
       showToast('تمام يا '+first(reg.name)+'، سجّلنا '+(wish==='study'?'طلب دراسة الجدوى':wish==='details'?'إنك عايز تفاصيل أكتر':'استفسارك')+'. سيتم التواصل معك في أقرب وقت.')}
     else showToast('حصلت مشكلة في الإرسال. جرّب تاني بعد لحظات.');
   }).catch(function(){b.disabled=false;showToast('تأكد من اتصالك بالإنترنت وجرّب تاني.')});
