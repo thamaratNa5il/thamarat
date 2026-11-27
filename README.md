@@ -62,6 +62,6 @@
 **الإعداد مرة واحدة في Cloudflare** (Workers & Pages ← thamarat ← Settings):
 1. Domains & Routes ← Add ← Custom domain ← `invest.thamaratmisr.com`
 2. Variables and Secrets ← Add ← Secret باسم `INTAKE_API_KEY` = نفس قيمة `INTAKE_API_KEY` في `thamarat-crm` (لو مش موجود هناك، اعمل مفتاح جديد وحطه في الاتنين).
-3. بيكسل فيسبوك متضبط في `wrangler.jsonc` (`vars.FB_PIXEL_ID`). الأحداث: `PageView` لكل زيارة، `Lead` لكل تسجيل، `Contact` لما حد مسجّل يطلب تفاصيل أو دراسة جدوى.
+3. بيكسل فيسبوك متضبط في `wrangler.jsonc` (`vars.FB_PIXEL_ID`). الأحداث: `PageView` لكل زيارة، `Lead` مرة واحدة بس لما الفورم الرئيسي يتسجّل بنجاح، و`FollowUpRequest` (حدث مخصص `trackCustom` فيه `request` = اسم الزرار) لزراير المتابعة («عايز تفاصيل أكتر»، «استفسر عن المساحات ونظم التعاقد»، «طلب دراسة جدوى»). مفيش Conversions API من السيرفر حاليًا.
 
 لينك الإعلان: `https://invest.thamaratmisr.com/?utm_source=facebook&utm_campaign=<اسم الحملة>` (اسم الحملة لو متسجل في «الحملات» في الـ CRM العميل بيترِبط بيها تلقائي).

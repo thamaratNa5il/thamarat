@@ -19,7 +19,7 @@
     { "name": "LEAD_LIMIT", "namespace_id": "4522", "simple": { "limit": 8, "period": 60 } }
   ],
   // صفحة الإعلانات (invest.thamaratmisr.com) بتبعت العملاء لنظام الـ CRM من جوه Cloudflare مباشرة
-  // بيكسل فيسبوك لصفحة الإعلانات (invest.thamaratmisr.com) — PageView وLead وContact
+  // بيكسل فيسبوك لصفحة الإعلانات (invest.thamaratmisr.com) — PageView وLead (مرة واحدة عند التسجيل) وFollowUpRequest (زراير المتابعة)
   "vars": { "FB_PIXEL_ID": "1463204075914872" },
   // ما نمسحش أي متغيرات اتضافت من لوحة Cloudflare
   "keep_vars": true,
