@@ -1026,7 +1026,7 @@ footer .locs h3{font:600 18px var(--display);color:#eef6ea;margin:0 0 14px}
             <input id="area" type="text" inputmode="decimal" value="5" autocomplete="off">
             <button type="button" id="minus" aria-label="قلّل نص فدان">−</button>
           </div>
-          <input type="range" id="slider" min="0.5" max="100" step="0.5" value="5" aria-label="المساحة بالفدان">
+          <input type="range" id="slider" min="1" max="100" step="0.5" value="5" aria-label="المساحة بالفدان">
           <div class="unit" id="unit"></div>
           <div class="err" id="err" hidden></div>
         </div>
@@ -1115,7 +1115,7 @@ footer .locs h3{font:600 18px var(--display);color:#eef6ea;margin:0 0 14px}
     <div class="rv">
       <h3>المساحة والعائد</h3>
       <div class="qs">
-      <details class="qa"><summary>أقل مساحة أقدر أشتريها كام؟</summary><div class="ans"><p><b>مفيش حد أدنى للمساحة.</b> ما عدا مشروع الماسة، قطعه بتبدأ من 50 فدان لكبار المزارعين والمستثمرين.</p></div></details>
+      <details class="qa"><summary>أقل مساحة أقدر أشتريها كام؟</summary><div class="ans"><p><b>أقل مساحة فدان واحد</b> (مفيش نص فدان)، وبعد كده تختار المساحة اللي تناسبك. ما عدا مشروع الماسة، قطعه بتبدأ من 50 فدان لكبار المزارعين والمستثمرين.</p></div></details>
       <details class="qa"><summary>أختار أنهي صنف: مجدول ولا برحي ولا سيوي؟</summary><div class="ans"><ul><li><b>المجدول</b>: أعلى سعر للكيلو.</li><li><b>البرحي</b>: من أعلى الأصناف إنتاجية، وطلب قوي على البلح الطازج.</li><li><b>السيوي</b>: تمر شبه جاف بيتحمل التخزين، وأقل تكلفة دخول.</li></ul><p>الأنسب ليك بيعتمد على ميزانيتك وهدفك. <a href="/palms">قارن الأصناف</a> أو جرّبهم على نفس المساحة في <a href="/calc">حاسبة الجدوى</a>.</p></div></details>
       <details class="qa"><summary>العائد المتوقع كام؟</summary><div class="ans"><p>تقدر تحسب عائد مزرعتك على أي مساحة وأي صنف في <a href="/calc">حاسبة الجدوى</a>، على مدار 10 سنين.</p><p>الأرقام <b>استرشادية وليست التزامًا بعائد محدد</b>، وبتختلف حسب الأسعار وظروف الإنتاج.</p></div></details>
       <details class="qa"><summary>المحصول بيتباع إزاي؟</summary><div class="ans"><p>من خلال <b>عقد التسويق</b>: الشركة بتتعاقد على المحصول وبتتولى تسويقه وبيعه، فإنت مش محتاج تدوّر على تاجر.</p></div></details>
@@ -1443,13 +1443,13 @@ $$('[data-count]').forEach(el=>{
 const PALMS=60, SHARE=.25, CLIENT_YEARS=3, GROW=.20;
 const ORD=['الأولى','الثانية','الثالثة','الرابعة','الخامسة','السادسة','السابعة','الثامنة','التاسعة','العاشرة'];
 const V={
-  majdoul:{name:'المجدول',land:620000,price:180,offPrice:3000,
+  majdoul:{name:'المجدول',land:700000,price:180,offPrice:3000,
     care:[30000,30000,30000,35000,65000,75000,75000,85000,95000,100000],
     kg:[0,0,0,10,15,30,50,60,70,70], off:[0,0,0,1,1,2,2,2,2,2]},
-  barhi:{name:'البرحي',land:600000,price:50,offPrice:2500,
+  barhi:{name:'البرحي',land:650000,price:50,offPrice:2500,
     care:[30000,30000,30000,40000,50000,60000,65000,70000,70000,70000],
     kg:[0,0,15,35,50,80,120,160,210,250], off:[0,0,0,1,1,2,2,2,2,2]},
-  siwi:{name:'السيوي',land:350000,price:35,offPrice:300,
+  siwi:{name:'السيوي',land:400000,price:35,offPrice:300,
     care:[25000,25000,25000,27000,30000,35000,40000,45000,45000,50000],
     kg:[0,0,0,15,60,120,150,150,150,150], off:[0,0,0,2,2,2,2,2,2,2]}
 };
@@ -1485,6 +1485,7 @@ function parseArea(s){
 }
 function setArea(a,from){
   if(!(a>0)){err.textContent='اكتب مساحة أكبر من صفر — مثلًا 2.5';err.hidden=false;return}
+  if(a<1){err.textContent='أقل مساحة للاستثمار فدان واحد';err.hidden=false;return}
   if(a>100000){err.textContent='المساحة أكبر من المتاح في المشروعات — جرّب رقم أصغر';err.hidden=false;return}
   err.hidden=true;area=Math.round(a*10000)/10000;
   if(from!=='input')areaIn.value=fnum(area);
@@ -1496,7 +1497,7 @@ areaIn.addEventListener('input',()=>setArea(parseArea(areaIn.value),'input'));
 areaIn.addEventListener('blur',()=>{if(!err.hidden)return;areaIn.value=fnum(area)});
 slider.addEventListener('input',()=>setArea(+slider.value,'slider'));
 $('#plus').onclick=()=>setArea(Math.floor(area*2+1e-9)/2+.5);
-$('#minus').onclick=()=>setArea(Math.max(.5,Math.ceil(area*2-1e-9)/2-.5));
+$('#minus').onclick=()=>setArea(Math.max(1,Math.ceil(area*2-1e-9)/2-.5));
 $$('#presets button').forEach(b=>b.onclick=()=>setArea(+b.dataset.a));
 $$('.seg button').forEach(b=>b.onclick=()=>{key=b.dataset.v;$$('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
 /* used by the chat assistant (assets/chatbot.js): same math as the calculator, and opening a study in it */
@@ -1507,7 +1508,6 @@ function render(){
   const m=model(key,area),v=m.v,F=fnum(area);
   $('#unit').innerHTML=`<b>${fnum(m.palms)}</b> نخلة · ${fnum(area*24)} قيراط · ${money(area*4200.83)} م²`;
   $('#assume').innerHTML=`
-    <div><span>سعر الفدان</span><b>${money(v.land)} ج</b></div>
     <div><span>سعر كيلو ${v.name}</span><b>${v.price} ج</b></div>
     <div><span>سعر الفسيلة</span><b>${money(v.offPrice)} ج</b></div>
     <div><span>عدد الفسائل للفدان</span><b>${PALMS}</b></div>
@@ -1536,14 +1536,13 @@ function render(){
   h+=`</tbody><tfoot><tr><td colspan="8">إجمالي صافي أرباح المستثمر من التمور والفسائل خلال 10 سنوات (من سنة الإثمار)</td><td>${money(m.netSum)}</td></tr></tfoot>`;
   $('#yearly').innerHTML=h;
 
-  $('#land-sub').textContent=`سعر ${F} فدان: ${money(m.landCost)} جنيه`;
-  let l=`<thead><tr><th>السنة</th><th>سعر الأرض</th><th>نسبة الزيادة</th><th>الزيادة</th><th>الإجمالي</th></tr></thead><tbody>`;
-  m.land.forEach(r=>l+=`<tr><td>${ORD[r.i]}</td><td>${money(r.val)}</td><td>20%</td><td>${money(r.inc)}</td><td class="net">${money(r.tot)}</td></tr>`);
+  $('#land-sub').textContent=`${F} فدان ${v.name} · زيادة 20% سنويًا`;
+  let l=`<thead><tr><th>السنة</th><th>نسبة الزيادة</th><th>الزيادة</th><th>قيمة الأرض في آخر السنة</th></tr></thead><tbody>`;
+  m.land.forEach(r=>l+=`<tr><td>${ORD[r.i]}</td><td>20%</td><td>${money(r.inc)}</td><td class="net">${money(r.tot)}</td></tr>`);
   $('#landt').innerHTML=l+'</tbody>';
 
   $('#sum-sub').textContent=`${F} فدان ${v.name}`;
   $('#sumlist').innerHTML=`
-    <div><span>ثمن شراء ${F} فدان</span><b>${money(m.landCost)}</b></div>
     <div><span>مصروفات الرعاية والإشراف على المستثمر ${key==='barhi'?'أول سنتين':'أول 3 سنوات'} حتى الإنتاجية</span><b>${money(m.pre)}</b></div>
     <div><span>إجمالي رأس المال المستثمر</span><b>${money(m.cost)}</b></div>
     <div><span>صافي أرباح التمور والفسائل خلال 10 سنوات</span><b>${money(m.netSum)}</b></div>
@@ -1626,6 +1625,7 @@ function problems(d){
   if(digits.length<10||digits.length>15)p.push(['phone','اكتب رقم موبايل صحيح (مثال 01012345678)']);
   if(d.city.length<2)p.push(['city','اكتب المحافظة أو المدينة']);
   if(!(d.area>0))p.push(['area','اكتب المساحة بالفدان (مثال 5 أو 2.5)']);
+  else if(d.area<1)p.push(['area','أقل مساحة للاستثمار فدان واحد']);
   return p;
 }
 function orderRefresh(){
