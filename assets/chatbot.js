@@ -61,6 +61,7 @@ function calcAnswer(q) {
   const area = parseArea(n);
   const hasNum = /\d/.test(n) || /فدان/.test(n);
   if (!hasNum || !CALC_WORDS.test(n) && !(vars.length && /\d/.test(n))) return null;
+  if (area && area > 0 && area < 1) return { text: 'أقل مساحة للاستثمار **فدان واحد** — مفيش أقل من فدان. جرّب مثلًا «عائد فدان مجدول» أو «عائد 2.5 فدان سيوي».' };
   if (!area || area <= 0 || area > 5000) return null;
   const F = fnum(area) + (area === 1 ? ' فدان' : area === 2 ? ' فدان (فدانين)' : ' فدان');
   const note = '\n\nالأرقام **استرشادية وليست التزامًا بعائد محدد**، وبتختلف حسب الأسعار وظروف الإنتاج.';
@@ -76,7 +77,6 @@ function calcAnswer(q) {
   const pay = m.payback !== null ? `\n• استرداد التكلفة متوقع في **السنة ${ORD[m.payback]}**.` : '';
   const text =
     `دراسة **${v.name}** على **${F}** (${money(m.palms)} نخلة، 10 سنين):\n` +
-    `• تمن الأرض: ${money(m.landCost)} ج\n` +
     `• مصروفات حتى التبشير: ${money(m.pre)} ج\n` +
     `• **إجمالي التكلفة: ${money(m.cost)} ج**\n` +
     `• صافي ربح التمور والفسائل (بعد نسبة الشركة): ${money(m.netSum)} ج\n` +
